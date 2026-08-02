@@ -1,0 +1,56 @@
+---
+interface Props {
+  variant?: "orange" | "king" | "fish" | "cross" | "compass";
+  size?: string;
+  class?: string;
+  label?: string;
+  surface?: boolean;
+}
+
+const {
+  variant = "orange",
+  size = "1.125rem",
+  class: className,
+  label,
+  surface = false,
+} = Astro.props;
+
+const sources = {
+  orange: "/assets/brand/personal-symbols/personal-orange-01.webp",
+  king: "/assets/brand/personal-symbols/personal-king-01.webp",
+  fish: "/assets/brand/personal-symbols/personal-fish-01.webp",
+  cross: "/assets/brand/personal-symbols/personal-cross-01.webp",
+  compass: "/assets/brand/personal-symbols/personal-compass-01.webp",
+};
+---
+
+<img
+  class:list={[
+    "personal-mark",
+    { "personal-mark-surface": surface },
+    className,
+  ]}
+  src={sources[variant]}
+  alt={label ?? ""}
+  aria-hidden={label ? undefined : "true"}
+  style={`--mark-size: ${size}`}
+  loading="eager"
+  decoding="async"
+  fetchpriority="low"
+/>
+
+<style>
+  .personal-mark {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .personal-mark-surface {
+    box-sizing: content-box;
+    border: 1px solid var(--orange);
+    background: var(--paper-light);
+    padding: 0.18rem;
+  }
+</style>

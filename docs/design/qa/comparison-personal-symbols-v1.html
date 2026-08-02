@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personal Field Marks — Source and Integration</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #071b30;
+        color: #f2ede2;
+        font-family: Arial, sans-serif;
+      }
+
+      main {
+        width: 2000px;
+        padding: 52px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        margin: 0;
+        font:
+          58px/1.05 Georgia,
+          serif;
+      }
+
+      header p {
+        max-width: 660px;
+        margin: 0;
+        font: 16px/1.45 monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .panel {
+        border: 1px solid rgb(242 237 226 / 35%);
+        background: #11130f;
+        padding: 24px;
+      }
+
+      .panel h2 {
+        margin: 0 0 18px;
+        font: 14px/1.2 monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sources {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgb(242 237 226 / 25%);
+        background: #f2ede2;
+      }
+
+      figure img {
+        display: block;
+        width: 100%;
+        height: 225px;
+        object-fit: contain;
+      }
+
+      figcaption {
+        background: #071b30;
+        padding: 10px 12px;
+        color: #f2ede2;
+        font: 12px/1.3 monospace;
+        letter-spacing: 0.05em;
+      }
+
+      .implementations {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .implementation {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .implementation img {
+        display: block;
+        width: 100%;
+        max-height: 670px;
+        border: 1px solid rgb(242 237 226 / 25%);
+        object-fit: contain;
+        object-position: top;
+      }
+
+      .implementation-wide {
+        grid-column: 1 / -1;
+      }
+
+      .implementation-wide img {
+        max-height: 260px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Personal Field Marks / V1</h1>
+        <p>
+          Generated source symbols above. Browser-rendered editorial placements
+          below. Orange, king, fish, cross, and compass form one repeatable
+          personal language.
+        </p>
+      </header>
+
+      <section class="panel">
+        <h2>Generated source system</h2>
+        <div class="sources">
+          <figure>
+            <img
+              src="../../../public/assets/brand/personal-symbols/personal-orange-01.png"
+              alt=""
+            />
+            <figcaption>P01 / CULTIVATE</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../../../public/assets/brand/personal-symbols/personal-king-01.png"
+              alt=""
+            />
+            <figcaption>P02 / STRATEGIZE</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../../../public/assets/brand/personal-symbols/personal-fish-01.png"
+              alt=""
+            />
+            <figcaption>P03 / OBSERVE</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../../../public/assets/brand/personal-symbols/personal-cross-01.png"
+              alt=""
+            />
+            <figcaption>P04 / BELIEVE</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="../../../public/assets/brand/personal-symbols/personal-compass-01.png"
+              alt=""
+            />
+            <figcaption>P05 / NAVIGATE</figcaption>
+          </figure>
+        </div>
+
+        <div class="implementations">
+          <figure class="implementation implementation-wide">
+            <img src="personal-symbols-index.png" alt="" />
+            <figcaption>FIELD INDEX / RECURRING LANGUAGE</figcaption>
+          </figure>
+          <figure class="implementation">
+            <img src="personal-symbols-work.png" alt="" />
+            <figcaption>SELECTED WORK / KING + SATELLITE GROVE</figcaption>
+          </figure>
+          <figure class="implementation">
+            <img src="personal-symbols-notes.png" alt="" />
+            <figcaption>NOTES / FISH + FIELD STATION</figcaption>
+          </figure>
+          <figure class="implementation">
+            <img src="personal-symbols-principles.png" alt="" />
+            <figcaption>PRINCIPLES / CROSS + TOPOGRAPHIC SYSTEM</figcaption>
+          </figure>
+          <figure class="implementation">
+            <img src="personal-symbols-current-final.png" alt="" />
+            <figcaption>CURRENT / COMPASS + DARK FIELD</figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

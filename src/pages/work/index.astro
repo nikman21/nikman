@@ -1,0 +1,163 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import { getPublicProjects } from "@/lib/content";
+
+const projects = await getPublicProjects();
+---
+
+<BaseLayout
+  title="Work | Nik Manuel"
+  description="Projects and systems Nik is building through Fresh Industries, beginning with InflateMate."
+>
+  <PageIntro
+    eyebrow="Work / Active systems"
+    title="Useful things, built patiently."
+    description="The work begins with real problems, especially in industries that have been overlooked by general-purpose software."
+    mark="king"
+    graphic="calibration"
+  />
+
+  <section class="project-list" aria-label="Selected work">
+    {
+      projects.map((project, index) => (
+        <a class="project-row" href={"/work/" + project.id + "/"}>
+          <div class="project-number">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <span>{project.data.status}</span>
+          </div>
+          <div class="project-title">
+            <p class="label project-label">
+              <PersonalMark
+                variant={project.id === "fresh-industries" ? "orange" : "king"}
+                size="1.05rem"
+              />
+              <span>{project.data.eyebrow}</span>
+            </p>
+            <h2>{project.data.title}</h2>
+          </div>
+          <p class="project-description">{project.data.description}</p>
+          <span class="project-arrow" aria-hidden="true">
+            →
+          </span>
+        </a>
+      ))
+    }
+  </section>
+
+  <aside class="work-note page-pad section">
+    <p class="label">Fresh Industries / Official slogan</p>
+    <p>Fix Today.<br />Build Tomorrow.</p>
+  </aside>
+</BaseLayout>
+
+<style>
+  .project-list {
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .project-row {
+    display: grid;
+    min-height: 18rem;
+    grid-template-columns: 9rem minmax(14rem, 0.9fr) minmax(18rem, 1.1fr) auto;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem var(--page-pad);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+  }
+
+  .project-row:hover {
+    background: var(--paper-light);
+  }
+
+  .project-number {
+    display: grid;
+    gap: 0.45rem;
+    align-self: start;
+    font-size: 0.68rem;
+    font-weight: 590;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .project-title h2 {
+    margin-block: 1.5rem 0;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 430;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+  }
+
+  .project-label {
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .project-description {
+    max-width: 34rem;
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 1.1rem;
+  }
+
+  .project-arrow {
+    font-family: var(--font-display);
+    font-size: 2rem;
+  }
+
+  .work-note {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+  }
+
+  .work-note > p:last-child {
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  @media (max-width: 860px) {
+    .project-row {
+      grid-template-columns: 5rem 1fr auto;
+    }
+
+    .project-description {
+      grid-column: 2 / -1;
+    }
+
+    .work-note {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .project-row {
+      min-height: 0;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      padding-block: 2rem;
+    }
+
+    .project-number {
+      grid-column: 1 / -1;
+      grid-template-columns: auto 1fr;
+    }
+
+    .project-title {
+      grid-column: 1;
+    }
+
+    .project-description {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -1,0 +1,185 @@
+---
+import { siteConfig } from "@/config";
+
+const pathname = Astro.url.pathname;
+
+function isCurrent(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/" aria-label="Nik Manuel, home">Nik Manuel</a>
+
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    {
+      siteConfig.nav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isCurrent(item.href) ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <p class="volume">{siteConfig.volume}</p>
+
+  <details class="mobile-nav">
+    <summary>Menu</summary>
+    <nav aria-label="Mobile navigation">
+      {
+        siteConfig.nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isCurrent(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </details>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    min-height: 4.5rem;
+    grid-template-columns: minmax(13rem, 1fr) 1.5fr auto;
+    align-items: stretch;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .wordmark,
+  .desktop-nav,
+  .volume {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-inline: clamp(1.5rem, 3vw, 2.75rem);
+  }
+
+  .wordmark {
+    border-right: 1px solid var(--hairline);
+    font-size: 1rem;
+    font-weight: 660;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .desktop-nav {
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+
+  .desktop-nav a {
+    position: relative;
+    min-height: 2.75rem;
+    align-content: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .desktop-nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.35rem;
+    left: 0;
+    height: 1px;
+    background: var(--orange);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 180ms var(--ease-out);
+  }
+
+  .desktop-nav a:hover::after,
+  .desktop-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .volume {
+    justify-content: flex-end;
+    border-left: 1px solid var(--hairline);
+    font-size: 0.72rem;
+    font-weight: 570;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  @media (max-width: 760px) {
+    .site-header {
+      min-height: 4.5rem;
+      grid-template-columns: 1fr auto;
+    }
+
+    .wordmark {
+      border-right: 0;
+      padding-inline: 1.25rem;
+    }
+
+    .desktop-nav,
+    .volume {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: block;
+      border-left: 1px solid var(--hairline);
+    }
+
+    .mobile-nav summary {
+      min-width: 5.5rem;
+      min-height: 4.5rem;
+      align-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      list-style: none;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .mobile-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-nav[open] nav {
+      position: absolute;
+      top: calc(100% + 1px);
+      right: 0;
+      left: 0;
+      display: grid;
+      border-bottom: 1px solid var(--hairline-strong);
+      background: var(--paper-light);
+    }
+
+    .mobile-nav nav a {
+      min-height: 3.6rem;
+      align-content: center;
+      border-bottom: 1px solid var(--hairline);
+      padding-inline: 1.25rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .mobile-nav nav a[aria-current="page"] {
+      box-shadow: inset 4px 0 0 var(--orange);
+    }
+  }
+</style>

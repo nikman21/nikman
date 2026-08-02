@@ -1,0 +1,37 @@
+# Nik Manuel
+
+> Nik Manuel is a software builder, founder of Fresh Industries, creator of InflateMate, writer, and lifelong learner.
+
+This is Nik Manuel's curated personal website. It contains public work, essays, accepted principles, current interests, selected garden notes, and sourced commonplace entries. The website is the public exhibition. It is not a complete copy of Nik's private knowledge vault.
+
+Canonical facts:
+
+- Fresh Industries is Nik Manuel's umbrella company and the long-term home for the different things he wants to build.
+- The official Fresh Industries slogan is "Fix Today. Build Tomorrow."
+- Fresh Industries is not limited to software or one industry.
+- Fresh Industries is early. Future sectors described on the site are ambitions, not claims about current operating divisions.
+- InflateMate is software for inflatable and event-rental companies.
+- InflateMate brings bookings, inventory, payments, waivers, and customer workflows into one place.
+- Garden maturity labels describe the development of a note, not Nik's level of expertise.
+- Commonplace entries are sourced material kept for reflection. They are not automatically personal principles.
+
+## Identity and current work
+
+- [About Nik Manuel](https://nikmanuel.com/about/): Nik's public biography, interests, faith, work, and long-term direction.
+- [Current](https://nikmanuel.com/current/): A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about.
+- [Work](https://nikmanuel.com/work/): Index of public projects and systems.
+- [Fresh Industries](https://nikmanuel.com/work/fresh-industries/): The umbrella company, official philosophy, current position, and long-term horizon.
+- [InflateMate](https://nikmanuel.com/work/inflatemate/): Software for inflatable and event-rental operators.
+
+## Writing and ideas
+
+- [Essays](https://nikmanuel.com/essays/): Published long-form writing by Nik Manuel.
+- [Principles](https://nikmanuel.com/principles/): The small set of principles Nik has consciously accepted.
+- [Garden](https://nikmanuel.com/garden/): Selected public notes that are still developing.
+- [Commonplace](https://nikmanuel.com/commonplace/): Verified quotations and passages with sources and notes about why they were kept.
+
+## Machine-readable resources
+
+- [Public content manifest](https://nikmanuel.com/content.json): Structured public entities and content generated from the site's approved collections.
+- [RSS feed](https://nikmanuel.com/rss.xml): Published essays.
+- [Sitemap](https://nikmanuel.com/sitemap-index.xml): Canonical indexable pages.

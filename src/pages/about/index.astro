@@ -1,0 +1,197 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import {
+  freshIndustriesEntity,
+  inflateMateEntity,
+  profilePageEntity,
+  structuredDataGraph,
+} from "@/lib/structured-data";
+
+const structuredData = structuredDataGraph(
+  Astro.site,
+  profilePageEntity(Astro.site),
+  freshIndustriesEntity(Astro.site),
+  inflateMateEntity(Astro.site),
+);
+---
+
+<BaseLayout
+  title="About | Nik Manuel"
+  description="Nik is a founder and software builder interested in what makes products, institutions, beliefs, relationships, and people last."
+  {structuredData}
+>
+  <PageIntro
+    eyebrow="About / Work in progress"
+    title="A builder studying what lasts."
+    description="I build practical systems, study old ideas, and write about the principles that help a person live and build with intention."
+    mark="orange"
+    graphic="calibration"
+  />
+
+  <article class="about-grid page-pad section">
+    <div class="about-index" aria-label="About topics">
+      <p class="label">In this field note</p>
+      <ol>
+        <li>Building</li>
+        <li>Learning</li>
+        <li>Faith and direction</li>
+        <li>The long horizon</li>
+      </ol>
+    </div>
+    <div class="prose about-prose">
+      <p>
+        I am Nik, a software builder, the founder of Fresh Industries, and the
+        creator of InflateMate. My interests move across software, business,
+        design, history, faith, and philosophy.
+      </p>
+      <p>
+        They can look unrelated from the outside, but I keep returning to the
+        same questions: What makes something last? What makes people trust it?
+        What gives a life direction?
+      </p>
+      <p>
+        I built InflateMate after college when I could not get a job in
+        technology. Rejection pushed me to become more creative and make
+        something of my own. Building a real product has taught me that software
+        is never only code. It is also design, communication, operations,
+        reliability, and promises kept to other people.
+      </p>
+      <p>
+        Fresh Industries is my umbrella company and the long-term home for the
+        different things I want to build. Its philosophy is “Fix Today. Build
+        Tomorrow.” That means improving systems and experiences that are
+        underserved or poorly designed, while also creating new products and
+        possibilities that do not exist yet. It is early, and I am building
+        toward that horizon one useful thing at a time.
+      </p>
+      <p>
+        I write because writing forces me to clarify what I believe. Some pieces
+        begin with software; others begin with history, faith, nature, or an
+        ordinary experience. The thread connecting them is my attempt to become
+        a better builder, Christian, leader, partner, and lifelong learner.
+      </p>
+      <p>
+        I do not want this site to present a finished version of me. It is a
+        record of work in progress: what I am building, what I am studying, and
+        the principles I have chosen to return to.
+      </p>
+    </div>
+  </article>
+
+  <section class="about-links">
+    <a href="/work/">
+      <span class="label about-link-label">
+        <PersonalMark variant="king" size="1.05rem" />
+        <span>01 / Work</span>
+      </span>
+      <strong>See what I am building</strong>
+      <span aria-hidden="true">→</span>
+    </a>
+    <a href="/essays/">
+      <span class="label about-link-label">
+        <PersonalMark variant="fish" size="1.05rem" />
+        <span>02 / Essays</span>
+      </span>
+      <strong>Read what I am learning</strong>
+      <span aria-hidden="true">→</span>
+    </a>
+    <a href="/principles/">
+      <span class="label about-link-label">
+        <PersonalMark variant="cross" size="1.05rem" />
+        <span>03 / Principles</span>
+      </span>
+      <strong>Explore what I return to</strong>
+      <span aria-hidden="true">→</span>
+    </a>
+    <a href="/garden/">
+      <span class="label about-link-label">
+        <PersonalMark variant="compass" size="1.05rem" />
+        <span>04 / Garden</span>
+      </span>
+      <strong>Visit ideas still growing</strong>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.45fr) minmax(0, 1fr);
+    gap: clamp(4rem, 10vw, 11rem);
+  }
+
+  .about-index {
+    align-self: start;
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 1.25rem;
+  }
+
+  .about-index ol {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    padding-left: 1.2rem;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+
+  .about-prose {
+    margin: 0;
+  }
+
+  .about-links {
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .about-links a {
+    display: grid;
+    min-height: 7rem;
+    grid-template-columns: 10rem 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding-inline: var(--page-pad);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+  }
+
+  .about-links a:hover {
+    background: var(--paper-light);
+  }
+
+  .about-links strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.3vw, 3rem);
+    font-weight: 470;
+    letter-spacing: -0.025em;
+  }
+
+  .about-link-label {
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-index {
+      display: none;
+    }
+
+    .about-links a {
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem 1rem;
+      padding-block: 1.5rem;
+    }
+
+    .about-links .label {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import { formatDate, getPublicGardenNotes } from "@/lib/content";
+
+const notes = await getPublicGardenNotes();
+---
+
+<BaseLayout
+  title="Garden | Nik Manuel"
+  description="A curated digital garden of connected ideas about attention, trust, tradition, and interface craft."
+>
+  <PageIntro
+    eyebrow="Garden / Connected notes"
+    title="Ideas still growing in public."
+    description="Useful concepts that support the essays and principles, labeled honestly by their present maturity."
+    mark="compass"
+    graphic="orbital"
+  />
+
+  <section class="garden-index" aria-label="Public garden notes">
+    {
+      notes.map((note, index) => (
+        <a class="garden-row" href={"/garden/" + note.id + "/"}>
+          <div class="garden-meta">
+            <span>{String(index + 1).padStart(3, "0")}</span>
+            <span>{note.data.maturity}</span>
+          </div>
+          <div class="garden-main">
+            <p class="label">{note.data.topic}</p>
+            <h2>{note.data.title}</h2>
+            <p>{note.data.summary}</p>
+          </div>
+          <div class="garden-date">
+            <span>Updated</span>
+            <span>{formatDate(note.data.updated)}</span>
+          </div>
+        </a>
+      ))
+    }
+  </section>
+
+  <aside class="garden-note page-pad section">
+    <p class="label">Maturity, not authority</p>
+    <p>Seedling, Growing, and Evergreen describe the note, not my expertise.</p>
+  </aside>
+</BaseLayout>
+
+<style>
+  .garden-index {
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .garden-row {
+    display: grid;
+    min-height: 16rem;
+    grid-template-columns: 8rem minmax(0, 1fr) 9rem;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding: 2.5rem var(--page-pad);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+  }
+
+  .garden-row:hover {
+    background: var(--paper-light);
+  }
+
+  .garden-meta,
+  .garden-date {
+    display: grid;
+    gap: 0.5rem;
+    align-self: start;
+    font-size: 0.68rem;
+    font-weight: 590;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .garden-date {
+    text-align: right;
+  }
+
+  .garden-main h2 {
+    max-width: 18ch;
+    margin-block: 1.4rem 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    font-weight: 430;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+  }
+
+  .garden-main > p:last-child {
+    max-width: 44rem;
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
+  .garden-note {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+  }
+
+  .garden-note p:last-child {
+    max-width: 22ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  @media (max-width: 720px) {
+    .garden-row {
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+    }
+
+    .garden-main {
+      grid-column: 1 / -1;
+    }
+
+    .garden-note {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

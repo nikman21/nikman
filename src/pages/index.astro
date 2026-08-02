@@ -1,0 +1,1015 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FieldPlate from "@/components/FieldPlate.astro";
+import PersonalFieldIndex from "@/components/PersonalFieldIndex.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import PracticeLoop from "@/components/PracticeLoop.astro";
+import { current } from "@/data/current";
+import {
+  freshIndustriesEntity,
+  inflateMateEntity,
+  structuredDataGraph,
+} from "@/lib/structured-data";
+import {
+  formatDate,
+  getAcceptedPrinciples,
+  getPublicCommonplaceEntries,
+  getPublicGardenNotes,
+  getPublicNotes,
+  getPublicProjects,
+} from "@/lib/content";
+
+const [notes, projects, principles, gardenNotes, commonplaceEntries] =
+  await Promise.all([
+    getPublicNotes(),
+    getPublicProjects(),
+    getAcceptedPrinciples(),
+    getPublicGardenNotes(),
+    getPublicCommonplaceEntries(),
+  ]);
+
+const featuredEssay = notes.find((note) => note.data.featured) ?? notes[0];
+const featuredCommonplace = commonplaceEntries[0];
+const structuredData = structuredDataGraph(
+  Astro.site,
+  freshIndustriesEntity(Astro.site),
+  inflateMateEntity(Astro.site),
+);
+---
+
+<BaseLayout {structuredData}>
+  <div class="hero-grid">
+    <FieldPlate />
+
+    <section class="hero-statement" aria-labelledby="home-title">
+      <div class="statement-header">
+        <p class="label">
+          Nik, software builder,<br />founder, and lifelong learner
+        </p>
+        <p class="label label-muted">01 / 00</p>
+      </div>
+
+      <h1 id="home-title" class="display">
+        I build software, study enduring ideas, and write about the principles
+        that shape a meaningful life.
+      </h1>
+      <div class="eyebrow-rule"></div>
+      <p class="intro-copy">
+        I am building InflateMate through Fresh Industries. I write about
+        building useful things, learning across disciplines, practicing faith,
+        and becoming the kind of person who can stay in a meaningful game for a
+        long time.
+      </p>
+      <div class="hero-actions">
+        <a class="text-link" href="/essays/why-i-built-a-personal-encyclopedia/"
+          >Read the latest essay&nbsp;→</a
+        >
+        <a class="text-link" href="/principles/">Explore my principles</a>
+        <a class="text-link" href="/work/">See what I am building</a>
+      </div>
+      <PracticeLoop />
+    </section>
+  </div>
+
+  <section id="index" class="editorial-index" aria-label="Featured index">
+    <article>
+      <div class="index-heading">
+        <p class="index-number">01 /</p>
+        <p class="label">Current work</p>
+      </div>
+      <div class="micro-scale" aria-hidden="true">
+        <span>0</span><span>10</span>
+      </div>
+      <div class="index-content">
+        {
+          projects.map((project) => (
+            <a href={"/work/" + project.id + "/"}>
+              <span>{project.data.title}</span>
+              <small>{project.data.description}</small>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    <article>
+      <div class="index-heading">
+        <p class="index-number">02 /</p>
+        <div
+          class="palette"
+          aria-label="Image palette: electric blue, burnt orange, vermilion, and moss"
+        >
+          <span class="swatch swatch-blue"></span>
+          <span class="swatch swatch-orange"></span>
+          <span class="swatch swatch-red"></span>
+          <span class="swatch swatch-green"></span>
+        </div>
+      </div>
+      <div class="micro-scale" aria-hidden="true">
+        <span>0</span><span>10</span>
+      </div>
+      {
+        featuredEssay && (
+          <div class="index-content">
+            <a class="feature-link" href={"/essays/" + featuredEssay.id + "/"}>
+              <span>{featuredEssay.data.title}</span>
+              <small>{featuredEssay.data.description}</small>
+              <em>
+                {formatDate(featuredEssay.data.published)} ·{" "}
+                {featuredEssay.data.readingMinutes} min read
+              </em>
+            </a>
+          </div>
+        )
+      }
+    </article>
+
+    <article>
+      <div class="index-heading">
+        <p class="index-number">03 /</p>
+        <p class="label">Question</p>
+      </div>
+      <div class="micro-scale" aria-hidden="true">
+        <span>0</span><span>10</span>
+      </div>
+      <div class="index-content">
+        <a class="feature-link" href="/principles/#build-what-compounds">
+          <span
+            >What am I doing today that will still matter in five years?</span
+          >
+          <small
+            >A question I return to daily. It keeps the noise down and the
+            signal clear.</small
+          >
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <PersonalFieldIndex />
+
+  <section class="work-feature page-pad section" aria-labelledby="work-title">
+    <img
+      class="work-calibration"
+      src="/assets/brand/editorial-framing/calibration-corner-01.webp"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="section-kicker">
+      <p class="label marked-label">
+        <PersonalMark variant="king" size="1.2rem" />
+        <span>Selected work / 01</span>
+      </p>
+      <p class="label status-chip">Building now</p>
+    </div>
+    <div class="work-layout">
+      <h2 id="work-title" class="section-title">
+        Tools for an industry that deserves better ones.
+      </h2>
+      <div class="work-copy">
+        <figure class="secondary-image">
+          <img
+            src="/assets/brand/landscapes/satellite-grove-01-plate.webp"
+            alt="Citrus trees beside a retro satellite dish under a cobalt sky"
+            loading="eager"
+            decoding="async"
+            fetchpriority="low"
+          />
+          <figcaption>
+            <span>Field image / P02</span>
+            <span>FRSH-02A</span>
+          </figcaption>
+        </figure>
+        <p>
+          InflateMate is software for inflatable and event-rental companies. It
+          brings bookings, inventory, payments, waivers, and customer workflows
+          into one place.
+        </p>
+        <p>
+          Building it has taught me that software is never only code. It is
+          design, operations, reliability, and promises kept to other people.
+        </p>
+        <a class="text-link" href="/work/inflatemate/"
+          >Explore InflateMate&nbsp;→</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="notes-feature section" aria-labelledby="essays-title">
+    <div class="page-pad notes-header">
+      <div>
+        <p class="label marked-label">
+          <PersonalMark variant="fish" size="1.2rem" />
+          <span>Essays from the workbench</span>
+        </p>
+        <h2 id="essays-title" class="section-title">
+          Learning in public, carefully.
+        </h2>
+      </div>
+      <div class="notes-aside">
+        <figure class="secondary-image">
+          <img
+            src="/assets/brand/landscapes/field-station-dawn-01-plate.webp"
+            alt="A remote field station beneath a cobalt sky and cream horizon"
+            loading="eager"
+            decoding="async"
+            fetchpriority="low"
+          />
+          <figcaption>
+            <span>Observation / P03</span>
+            <span>NT-01B</span>
+          </figcaption>
+        </figure>
+        <a class="text-link" href="/essays/">Browse essays&nbsp;→</a>
+      </div>
+    </div>
+    <div class="ruled-list">
+      {
+        notes.slice(0, 3).map((note, index) => (
+          <a href={"/essays/" + note.id + "/"}>
+            <span class="row-index">{String(index + 1).padStart(3, "0")}</span>
+            <span class="row-title">{note.data.title}</span>
+            <span class="row-meta">{formatDate(note.data.published)}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="principles-feature page-pad section"
+    aria-labelledby="principles-title"
+  >
+    <img
+      class="principles-system-asset"
+      src="/assets/brand/diagrams/topographic-registration-01.webp"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="section-kicker">
+      <p class="label marked-label">
+        <PersonalMark variant="cross" size="1.2rem" />
+        <span>Stone / Principles</span>
+      </p>
+      <a class="text-link" href="/principles/">All principles&nbsp;→</a>
+    </div>
+    <h2 id="principles-title" class="section-title">
+      Ideas chosen for practice, not display.
+    </h2>
+    <div class="principles-grid">
+      {
+        principles.map((principle) => (
+          <article>
+            <p class="label label-muted">0{principle.data.number}</p>
+            <h3>{principle.data.title}</h3>
+            <p>{principle.data.summary}</p>
+            <a href={"/principles/#" + principle.id}>
+              Return to the question&nbsp;→
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="current-feature section" aria-labelledby="current-title">
+    <img
+      class="current-system-asset"
+      src="/assets/brand/diagrams/orbital-citrus-system-01.webp"
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="page-pad current-layout">
+      <div>
+        <p class="label current-label">
+          <PersonalMark variant="compass" size="1rem" surface />
+          <span>Current / Updated {current.updated}</span>
+        </p>
+        <h2 id="current-title" class="section-title">
+          Where the attention is now.
+        </h2>
+      </div>
+      <div class="current-list">
+        <div>
+          <p class="label label-muted">Building</p>
+          <p>{current.building}</p>
+        </div>
+        <div>
+          <p class="label label-muted">Learning</p>
+          <p>{current.learning}</p>
+        </div>
+        <a class="text-link" href="/current/">Open the current page&nbsp;→</a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="garden-commonplace"
+    aria-label="Explore the garden and commonplace"
+  >
+    <article class="garden-preview page-pad section">
+      <div class="section-kicker compact-kicker">
+        <p class="label marked-label">
+          <PersonalMark variant="compass" size="1.15rem" />
+          <span>Garden / Growing ideas</span>
+        </p>
+        <a class="text-link" href="/garden/">Enter the garden&nbsp;→</a>
+      </div>
+      <h2 class="section-title">Connected notes, honestly labeled.</h2>
+      <div class="garden-preview-list">
+        {
+          gardenNotes.slice(0, 2).map((note) => (
+            <a href={"/garden/" + note.id + "/"}>
+              <span class="label label-muted">{note.data.maturity}</span>
+              <strong>{note.data.title}</strong>
+              <small>{note.data.summary}</small>
+            </a>
+          ))
+        }
+      </div>
+    </article>
+
+    {
+      featuredCommonplace && (
+        <article class="commonplace-preview page-pad section">
+          <div class="section-kicker compact-kicker">
+            <p class="label marked-label">
+              <PersonalMark variant="orange" size="1.15rem" />
+              <span>Commonplace / CP-001</span>
+            </p>
+            <a class="text-link" href="/commonplace/">
+              Open the commonplace&nbsp;→
+            </a>
+          </div>
+          <blockquote>{featuredCommonplace.data.quotation}</blockquote>
+          <p>
+            {featuredCommonplace.data.author},{" "}
+            <cite>{featuredCommonplace.data.work}</cite>
+          </p>
+          <div class="why-kept">
+            <p class="label">Why I kept it</p>
+            <p>{featuredCommonplace.data.whyKept}</p>
+          </div>
+        </article>
+      )
+    }
+  </section>
+
+  <section class="about-preview page-pad section">
+    <p class="label marked-label">
+      <PersonalMark variant="orange" size="1.15rem" />
+      <span>About / Work in progress</span>
+    </p>
+    <p>
+      I am interested in what makes things last: products, institutions,
+      beliefs, relationships, and people. This site is where I share what I am
+      building, what I am learning, and the principles I am trying to live by.
+    </p>
+    <a class="text-link" href="/about/">Read about Nik&nbsp;→</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .hero-statement {
+    position: relative;
+    min-width: 0;
+    padding: clamp(2.25rem, 3vw, 3rem) clamp(2rem, 3.25vw, 3rem)
+      clamp(2rem, 3vw, 3rem);
+  }
+
+  .statement-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: clamp(2.75rem, 3.8vw, 3.5rem);
+  }
+
+  .statement-header p:last-child {
+    text-align: right;
+  }
+
+  .hero-statement h1 {
+    max-width: 18ch;
+    margin-bottom: 0;
+    text-wrap: wrap;
+  }
+
+  @media (min-width: 861px) {
+    .hero-statement h1 {
+      font-size: clamp(2.65rem, 3.25vw, 3.35rem);
+      line-height: 0.94;
+    }
+  }
+
+  .hero-statement .intro-copy {
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    gap: 0.15rem;
+    justify-items: start;
+  }
+
+  .hero-actions .text-link {
+    font-size: 1rem;
+  }
+
+  .editorial-index {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .editorial-index > article {
+    min-width: 0;
+    min-height: 18rem;
+    padding: 1.5rem clamp(1.5rem, 3vw, 2.75rem) 2rem;
+  }
+
+  .editorial-index > article + article {
+    border-left: 1px solid var(--hairline-strong);
+  }
+
+  .index-heading {
+    display: flex;
+    min-height: 2.5rem;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .index-number {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+
+  .micro-scale {
+    display: flex;
+    height: 1.35rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-block: 0.7rem 1.6rem;
+    border-bottom: 1px solid var(--hairline-strong);
+    font-size: 0.6rem;
+  }
+
+  .palette {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .swatch {
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 1px solid var(--hairline);
+  }
+
+  .swatch-blue {
+    background: var(--blue);
+  }
+
+  .swatch-orange {
+    background: var(--orange);
+  }
+
+  .swatch-red {
+    background: var(--vermilion);
+  }
+
+  .swatch-green {
+    background: var(--moss);
+  }
+
+  .index-content {
+    display: grid;
+    gap: 1.6rem;
+  }
+
+  .index-content a {
+    display: grid;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .index-content span {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 2.1vw, 2rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .index-content small {
+    max-width: 34rem;
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .index-content em {
+    margin-top: 0.6rem;
+    font-size: 0.66rem;
+    font-style: normal;
+    font-weight: 580;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-kicker {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: clamp(3rem, 7vw, 6rem);
+  }
+
+  .marked-label {
+    display: inline-flex;
+    gap: 0.65rem;
+    align-items: center;
+  }
+
+  .status-chip {
+    border: 1px solid var(--ink);
+    background: var(--orange);
+    padding: 0.5rem 0.65rem;
+    color: var(--ink);
+  }
+
+  .secondary-image {
+    display: grid;
+    gap: 0.7rem;
+    margin: 0 0 1.6rem;
+  }
+
+  .secondary-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border: 1px solid var(--hairline-strong);
+    object-fit: cover;
+  }
+
+  .secondary-image figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 2px solid var(--orange);
+    padding-top: 0.55rem;
+  }
+
+  .secondary-image figcaption span {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .work-feature {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper-light);
+  }
+
+  .work-feature .section-kicker,
+  .work-layout {
+    position: relative;
+    z-index: 1;
+  }
+
+  .work-calibration {
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+    width: min(26rem, 38vw);
+    opacity: 0.28;
+    pointer-events: none;
+  }
+
+  .work-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: start;
+  }
+
+  .work-layout h2 {
+    max-width: 12ch;
+    margin: 0;
+  }
+
+  .work-copy p {
+    font-size: 1.08rem;
+  }
+
+  .work-copy p + p {
+    margin-top: 1.25rem;
+  }
+
+  .work-copy .text-link {
+    margin-top: 1.5rem;
+  }
+
+  .notes-feature {
+    padding-bottom: 0;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .notes-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .notes-header h2 {
+    max-width: 10ch;
+    margin-block: 1.5rem 0;
+  }
+
+  .notes-aside {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: end;
+  }
+
+  .notes-aside .secondary-image {
+    width: min(100%, 25rem);
+    margin: 0;
+  }
+
+  .ruled-list {
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .ruled-list a {
+    display: grid;
+    min-height: 5rem;
+    grid-template-columns: 6rem 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding-inline: var(--page-pad);
+    text-decoration: none;
+    transition:
+      background-color 180ms ease,
+      padding-inline 180ms var(--ease-out);
+  }
+
+  .ruled-list a:hover {
+    background: var(--paper-light);
+  }
+
+  .row-index,
+  .row-meta {
+    font-size: 0.68rem;
+    font-weight: 580;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .row-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 2rem);
+    line-height: 1.05;
+  }
+
+  .principles-feature {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .principles-feature .section-kicker,
+  .principles-feature > h2,
+  .principles-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  .principles-system-asset {
+    position: absolute;
+    top: clamp(7rem, 11vw, 11rem);
+    right: clamp(-8rem, -4vw, -2rem);
+    width: min(38rem, 52vw);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .principles-feature > h2 {
+    max-width: 13ch;
+    margin-bottom: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .principles-grid article {
+    padding: 2.5rem 2.5rem 2.5rem 0;
+  }
+
+  .principles-grid article + article {
+    border-left: 1px solid var(--hairline-strong);
+    padding-inline: 2.5rem 0;
+  }
+
+  .principles-grid h3 {
+    margin-block: 1.5rem 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3.6rem);
+    font-weight: 450;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .principles-grid p:not(.label) {
+    max-width: 34rem;
+  }
+
+  .principles-grid a {
+    display: inline-block;
+    margin-top: 1.4rem;
+    font-size: 0.82rem;
+    font-weight: 590;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .current-feature {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--hairline-strong);
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+
+  .current-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(4rem, 9vw, 10rem);
+  }
+
+  .current-layout h2 {
+    max-width: 10ch;
+    margin-top: 1.75rem;
+  }
+
+  .current-label {
+    display: inline-flex;
+    gap: 0.7rem;
+    align-items: center;
+  }
+
+  .current-system-asset {
+    position: absolute;
+    right: clamp(-7rem, -4vw, -2rem);
+    bottom: clamp(-8rem, -5vw, -3rem);
+    width: min(29rem, 48vw);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .current-list {
+    display: grid;
+    gap: 2.5rem;
+    align-content: end;
+  }
+
+  .current-list > div {
+    border-top: 1px solid rgba(248, 244, 235, 0.35);
+    padding-top: 1.2rem;
+  }
+
+  .current-list p:not(.label) {
+    margin-block: 0.85rem 0;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.35;
+  }
+
+  .current-list .text-link:hover {
+    color: var(--orange);
+  }
+
+  .garden-commonplace {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .garden-preview,
+  .commonplace-preview {
+    min-width: 0;
+  }
+
+  .commonplace-preview {
+    border-left: 1px solid var(--hairline-strong);
+    background: var(--paper-light);
+  }
+
+  .compact-kicker {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .compact-kicker .text-link {
+    font-size: 1rem;
+  }
+
+  .garden-preview > h2 {
+    max-width: 10ch;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .garden-preview-list {
+    display: grid;
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .garden-preview-list a {
+    display: grid;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 1.5rem;
+    text-decoration: none;
+  }
+
+  .garden-preview-list strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+    font-weight: 470;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .garden-preview-list small {
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .commonplace-preview blockquote {
+    max-width: 17ch;
+    margin: 0 0 2rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.8rem);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .commonplace-preview > p {
+    color: var(--ink-muted);
+  }
+
+  .why-kept {
+    max-width: 35rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
+    border-top: 2px solid var(--orange);
+    padding-top: 1.25rem;
+  }
+
+  .why-kept > p:last-child {
+    margin-block: 1rem 0;
+  }
+
+  .about-preview {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 1.2fr) auto;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .about-preview > p:nth-child(2) {
+    max-width: 30ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3.5vw, 3.25rem);
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+
+  @media (max-width: 1020px) {
+    .editorial-index {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .editorial-index > article:last-child {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--hairline-strong);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-statement {
+      border-top: 1px solid var(--hairline-strong);
+      padding-inline: var(--page-pad);
+    }
+
+    .statement-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .work-layout,
+    .current-layout,
+    .garden-commonplace,
+    .about-preview {
+      grid-template-columns: 1fr;
+    }
+
+    .commonplace-preview {
+      border-top: 1px solid var(--hairline-strong);
+      border-left: 0;
+    }
+
+    .notes-header {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .notes-aside {
+      justify-items: start;
+    }
+
+    .work-layout {
+      align-items: start;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .work-calibration,
+    .current-system-asset,
+    .principles-system-asset {
+      display: none;
+    }
+
+    .editorial-index {
+      grid-template-columns: 1fr;
+    }
+
+    .editorial-index > article {
+      min-height: auto;
+      padding-inline: 1.25rem;
+    }
+
+    .editorial-index > article + article,
+    .editorial-index > article:last-child {
+      grid-column: auto;
+      border-top: 1px solid var(--hairline-strong);
+      border-left: 0;
+    }
+
+    .section-kicker {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .ruled-list a {
+      grid-template-columns: 3rem 1fr;
+      gap: 1rem;
+      padding-block: 1.1rem;
+      padding-inline: 1.25rem;
+    }
+
+    .row-meta {
+      grid-column: 2;
+    }
+
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .principles-grid article,
+    .principles-grid article + article {
+      padding: 2rem 0;
+      border-left: 0;
+    }
+
+    .principles-grid article + article {
+      border-top: 1px solid var(--hairline-strong);
+    }
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+import { Picture } from "astro:assets";
+import landscape from "@/assets/space-field-orange-tree-01.png";
+---
+
+<figure class="field-plate">
+  <div class="field-meta field-meta-left" aria-hidden="true">
+    <span>41.8781° N</span>
+    <span>87.6298° W</span>
+    <span>FIELD / 02-A</span>
+  </div>
+  <div class="image-wrap">
+    <Picture
+      src={landscape}
+      formats={["avif", "webp"]}
+      widths={[640, 960, 1280, 1600]}
+      sizes="(max-width: 860px) 100vw, 58vw"
+      alt="An orange tree grows on a rocky red plain beneath a halftone moon and cobalt sky, with a small research station on the horizon."
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <figcaption>
+    <div class="scale" aria-hidden="true">
+      <span>0</span>
+      <span class="scale-line"></span>
+      <span>100</span>
+    </div>
+    <p>SCAN 08.01.26 / 06:12</p>
+    <p>IDX-05</p>
+  </figcaption>
+</figure>
+
+<style>
+  .field-plate {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    margin: 0;
+    background: var(--paper);
+  }
+
+  .field-meta {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--hairline);
+    padding-block: 1.5rem;
+    writing-mode: vertical-rl;
+  }
+
+  .field-meta span {
+    margin-block: 0.85rem;
+    font-size: 0.66rem;
+    font-weight: 590;
+    letter-spacing: 0.13em;
+  }
+
+  .image-wrap {
+    position: relative;
+    min-height: 43.5rem;
+    overflow: hidden;
+    background: var(--blue);
+  }
+
+  .image-wrap :global(picture),
+  .image-wrap :global(img) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-wrap :global(img) {
+    object-fit: cover;
+    object-position: 48% 54%;
+  }
+
+  figcaption {
+    grid-column: 2;
+    display: grid;
+    min-height: 3.35rem;
+    grid-template-columns: 1fr auto auto;
+    gap: 1.5rem;
+    align-items: center;
+    border-top: 1px solid var(--hairline);
+    padding-inline: 1.5rem;
+  }
+
+  figcaption p {
+    margin: 0;
+    font-size: 0.66rem;
+    font-weight: 590;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .scale {
+    display: grid;
+    max-width: 15rem;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.62rem;
+  }
+
+  .scale-line {
+    height: 0.45rem;
+    border-block: 1px solid var(--hairline-strong);
+  }
+
+  @media (max-width: 860px) {
+    .field-plate {
+      grid-template-columns: 1fr;
+    }
+
+    .field-meta {
+      display: none;
+    }
+
+    .image-wrap {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
+
+    .image-wrap :global(img) {
+      object-position: 44% 68%;
+    }
+
+    figcaption {
+      grid-column: 1;
+      padding-inline: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    figcaption {
+      grid-template-columns: 1fr auto;
+    }
+
+    figcaption p:first-of-type {
+      display: none;
+    }
+  }
+</style>

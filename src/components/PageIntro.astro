@@ -1,0 +1,161 @@
+---
+import PersonalMark from "@/components/PersonalMark.astro";
+
+type MarkVariant = "orange" | "king" | "fish" | "cross" | "compass";
+type GraphicVariant = "calibration" | "topographic" | "orbital" | "stamp";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  marker?: string;
+  mark?: MarkVariant;
+  graphic?: GraphicVariant;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  marker = "01 / 00",
+  mark,
+  graphic,
+} = Astro.props;
+
+const graphicSources: Record<GraphicVariant, string> = {
+  calibration: "/assets/brand/editorial-framing/calibration-corner-01.webp",
+  topographic: "/assets/brand/diagrams/topographic-registration-01.webp",
+  orbital: "/assets/brand/diagrams/orbital-citrus-system-01.webp",
+  stamp: "/assets/brand/editorial-framing/field-stamp-ring-01.webp",
+};
+---
+
+<header class="page-intro page-pad">
+  {
+    graphic && (
+      <img
+        class={`page-intro-graphic page-intro-graphic--${graphic}`}
+        src={graphicSources[graphic]}
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
+        fetchpriority="low"
+      />
+    )
+  }
+  <div class="page-intro-meta">
+    <p class="label intro-label">
+      {mark && <PersonalMark variant={mark} size="1.15rem" />}
+      <span>{eyebrow}</span>
+    </p>
+    <p class="label label-muted">{marker}</p>
+  </div>
+  <div class="page-intro-grid">
+    <h1 class="page-title">{title}</h1>
+    <p>{description}</p>
+  </div>
+</header>
+
+<style>
+  .page-intro {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 9vw, 8rem);
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .page-intro-graphic {
+    position: absolute;
+    z-index: 0;
+    right: clamp(-9rem, -6vw, -3rem);
+    width: min(44rem, 47vw);
+    max-width: none;
+    opacity: 0.09;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .page-intro-graphic--calibration {
+    top: -8%;
+  }
+
+  .page-intro-graphic--topographic {
+    top: 24%;
+    width: min(52rem, 56vw);
+  }
+
+  .page-intro-graphic--orbital {
+    top: 4%;
+    opacity: 0.075;
+  }
+
+  .page-intro-graphic--stamp {
+    top: -12%;
+    right: clamp(-5rem, -2vw, -1rem);
+    width: min(35rem, 40vw);
+    opacity: 0.08;
+  }
+
+  .page-intro-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: clamp(4rem, 9vw, 9rem);
+  }
+
+  .page-intro-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+    gap: clamp(3rem, 8vw, 9rem);
+    align-items: end;
+  }
+
+  h1,
+  p {
+    margin-bottom: 0;
+  }
+
+  .intro-label {
+    display: inline-flex;
+    gap: 0.65rem;
+    align-items: center;
+  }
+
+  .page-intro-grid > p {
+    max-width: 36rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+    line-height: 1.38;
+  }
+
+  @media (max-width: 760px) {
+    .page-intro-graphic {
+      right: -6rem;
+      width: 24rem;
+      opacity: 0.055;
+    }
+
+    .page-intro-graphic--topographic {
+      top: 38%;
+      width: 30rem;
+    }
+
+    .page-intro-graphic--stamp {
+      top: 4%;
+      width: 20rem;
+    }
+
+    .page-intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-intro-meta {
+      margin-bottom: 4rem;
+    }
+  }
+</style>

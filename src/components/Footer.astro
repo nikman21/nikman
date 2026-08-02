@@ -1,0 +1,101 @@
+---
+import PersonalMark from "@/components/PersonalMark.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <p class="footer-statement">Keep building. Keep learning. Keep writing.</p>
+    <nav aria-label="Secondary navigation">
+      <a href="/work/">Work</a>
+      <a href="/garden/">Garden</a>
+      <a href="/commonplace/">Commonplace</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </div>
+  <div class="footer-strip">
+    <PersonalMark variant="orange" size="1rem" />
+    <p>Work in progress / {year}</p>
+    <p>Vol. 01</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    padding: clamp(4rem, 8vw, 7rem) var(--page-pad);
+  }
+
+  .footer-statement {
+    max-width: 12ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 5.8rem);
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+  }
+
+  nav {
+    display: grid;
+    gap: 0.6rem;
+    justify-items: end;
+  }
+
+  nav a {
+    min-height: 2.75rem;
+    align-content: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-strip {
+    display: grid;
+    min-height: 3.25rem;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    background: var(--orange);
+    padding-inline: var(--page-pad);
+    color: var(--ink);
+  }
+
+  .footer-strip p {
+    margin: 0;
+    font-size: 0.68rem;
+    font-weight: 590;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .footer-strip p:last-child {
+    text-align: right;
+  }
+
+  @media (max-width: 680px) {
+    .footer-main {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    nav {
+      justify-items: start;
+    }
+
+    .footer-strip {
+      grid-template-columns: auto 1fr;
+    }
+
+    .footer-strip p:last-child {
+      display: none;
+    }
+  }
+</style>

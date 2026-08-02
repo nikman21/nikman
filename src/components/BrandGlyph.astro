@@ -1,0 +1,40 @@
+---
+interface Props {
+  variant?: "disc" | "slice" | "stamp";
+  size?: string;
+  class?: string;
+  label?: string;
+}
+
+const {
+  variant = "disc",
+  size = "1rem",
+  class: className,
+  label,
+} = Astro.props;
+
+const sources = {
+  disc: "/assets/brand/symbols/fresh-citrus-disc-01.webp",
+  slice: "/assets/brand/symbols/fresh-citrus-slice-01.webp",
+  stamp: "/assets/brand/editorial-framing/field-stamp-ring-01.webp",
+};
+---
+
+<img
+  class:list={["brand-glyph", className]}
+  src={sources[variant]}
+  alt={label ?? ""}
+  aria-hidden={label ? undefined : "true"}
+  style={`--glyph-size: ${size}`}
+  loading="lazy"
+  decoding="async"
+/>
+
+<style>
+  .brand-glyph {
+    width: var(--glyph-size);
+    height: var(--glyph-size);
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+</style>

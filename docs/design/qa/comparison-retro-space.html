@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Retro-space design comparison</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: #07172a;
+        color: #f2ede2;
+        font-family: Arial, sans-serif;
+      }
+
+      main {
+        display: grid;
+        min-height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      figure {
+        min-width: 0;
+        margin: 0;
+      }
+
+      figcaption {
+        height: 36px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        line-height: 36px;
+        text-transform: uppercase;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(242, 237, 226, 0.45);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <figure>
+        <figcaption>Selected visual target</figcaption>
+        <img
+          src="../references/retro-space-orange-tree-selected.png"
+          alt="Selected retro-space website mockup"
+        />
+      </figure>
+      <figure>
+        <figcaption>Browser implementation</figcaption>
+        <img
+          src="implementation-retro-space-final.png"
+          alt="Rendered retro-space website implementation"
+        />
+      </figure>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<section class="practice-loop" aria-labelledby="practice-loop-title">
+  <p id="practice-loop-title" class="label">A practice in motion</p>
+  <p class="visually-hidden">
+    Build informs study, study informs writing, and writing returns to building.
+  </p>
+  <div class="loop-figure" aria-hidden="true">
+    <div class="node node-build">Build</div>
+    <div class="node node-study">Study</div>
+    <div class="node node-write">Write</div>
+    <div class="connector connector-top"></div>
+    <div class="connector connector-left"></div>
+    <div class="connector connector-right"></div>
+    <div class="connector connector-bottom"></div>
+  </div>
+</section>
+
+<style>
+  .practice-loop {
+    margin-top: clamp(2.75rem, 4vw, 3.75rem);
+  }
+
+  .loop-figure {
+    position: relative;
+    min-height: 12rem;
+    margin-top: 1.5rem;
+  }
+
+  .node {
+    position: absolute;
+    z-index: 2;
+    background: var(--paper);
+    padding: 0.25rem 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    line-height: 1;
+  }
+
+  .node-build {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .node-study {
+    bottom: 0;
+    left: 0;
+  }
+
+  .node-write {
+    right: 0;
+    bottom: 0;
+  }
+
+  .connector {
+    position: absolute;
+    border-color: var(--hairline-strong);
+  }
+
+  .connector-top {
+    top: 1rem;
+    right: 11%;
+    left: 11%;
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .connector-left,
+  .connector-right {
+    top: 1rem;
+    bottom: 1.2rem;
+    border-left: 1px solid var(--hairline-strong);
+  }
+
+  .connector-left {
+    left: 11%;
+  }
+
+  .connector-right {
+    right: 11%;
+  }
+
+  .connector-bottom {
+    right: 11%;
+    bottom: 1.2rem;
+    left: 11%;
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .connector-top::after,
+  .connector-right::after,
+  .connector-bottom::after,
+  .connector-left::after {
+    position: absolute;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1px solid var(--hairline-strong);
+    border-bottom: 1px solid var(--hairline-strong);
+    content: "";
+  }
+
+  .connector-top::after {
+    top: -0.25rem;
+    right: -0.05rem;
+    transform: rotate(-45deg);
+  }
+
+  .connector-right::after {
+    right: -0.24rem;
+    bottom: -0.05rem;
+    transform: rotate(45deg);
+  }
+
+  .connector-bottom::after {
+    bottom: -0.24rem;
+    left: -0.05rem;
+    transform: rotate(135deg);
+  }
+
+  .connector-left::after {
+    top: -0.05rem;
+    left: -0.24rem;
+    transform: rotate(225deg);
+  }
+
+  @media (max-width: 480px) {
+    .loop-figure {
+      min-height: 9.5rem;
+    }
+
+    .node {
+      font-size: 1.35rem;
+    }
+  }
+</style>

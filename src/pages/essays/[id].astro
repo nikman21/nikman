@@ -1,0 +1,167 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import { formatDate } from "@/lib/content";
+import { blogPostingEntity, structuredDataGraph } from "@/lib/structured-data";
+
+export const getStaticPaths = (async () => {
+  const essays = await getCollection(
+    "notes",
+    ({ data }) => data.status === "published",
+  );
+  return essays.map((essay) => ({
+    params: { id: essay.id },
+    props: { essay },
+  }));
+}) satisfies GetStaticPaths;
+
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+const structuredData = structuredDataGraph(
+  Astro.site,
+  blogPostingEntity(Astro.site, {
+    path: "/essays/" + essay.id + "/",
+    headline: essay.data.title,
+    description: essay.data.description,
+    published: essay.data.published,
+    updated: essay.data.updated,
+    category: essay.data.category,
+  }),
+);
+---
+
+<BaseLayout
+  title={essay.data.title + " | Nik Manuel"}
+  description={essay.data.description}
+  type="article"
+  {structuredData}
+>
+  <article>
+    <header class="essay-hero page-pad">
+      <img
+        class="essay-hero-graphic"
+        src="/assets/brand/diagrams/topographic-registration-01.webp"
+        alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
+        fetchpriority="low"
+      />
+      <div class="essay-meta">
+        <p class="label essay-meta-label">
+          <PersonalMark variant="fish" size="1.15rem" />
+          <span>{essay.data.category}</span>
+        </p>
+        <p class="label label-muted">
+          <a href="/about/" rel="author">Nik Manuel</a> / {
+            formatDate(essay.data.published)
+          } / {essay.data.readingMinutes} min read
+        </p>
+      </div>
+      <h1 class="page-title">{essay.data.title}</h1>
+      <p class="essay-description">{essay.data.description}</p>
+    </header>
+    <div class="essay-body prose">
+      <Content />
+    </div>
+  </article>
+  <nav class="essay-next page-pad" aria-label="Continue exploring">
+    <a class="text-link" href="/essays/">← All essays</a>
+    {
+      essay.data.relatedPrinciples.length > 0 && (
+        <a
+          class="text-link"
+          href={"/principles/#" + essay.data.relatedPrinciples[0]}
+        >
+          Related principle&nbsp;→
+        </a>
+      )
+    }
+  </nav>
+</BaseLayout>
+
+<style>
+  .essay-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 10vw, 9rem) clamp(4rem, 8vw, 7rem);
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .essay-hero-graphic {
+    position: absolute;
+    z-index: 0;
+    top: 18%;
+    right: -10%;
+    width: min(58rem, 64vw);
+    max-width: none;
+    opacity: 0.075;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .essay-meta {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: clamp(4rem, 8vw, 8rem);
+  }
+
+  .essay-meta-label {
+    display: inline-flex;
+    gap: 0.65rem;
+    align-items: center;
+  }
+
+  .essay-meta a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .essay-hero h1 {
+    position: relative;
+    z-index: 1;
+    max-width: 16ch;
+  }
+
+  .essay-description {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0 auto;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+    line-height: 1.4;
+  }
+
+  .essay-body {
+    padding: var(--section-space) var(--page-pad);
+  }
+
+  .essay-next {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    border-top: 1px solid var(--hairline-strong);
+    padding-block: 2rem;
+  }
+
+  @media (max-width: 560px) {
+    .essay-hero-graphic {
+      top: 38%;
+      right: -7rem;
+      width: 30rem;
+      opacity: 0.05;
+    }
+
+    .essay-meta,
+    .essay-next {
+      align-items: start;
+      flex-direction: column;
+    }
+  }
+</style>

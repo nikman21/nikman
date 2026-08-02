@@ -1,0 +1,122 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import { getPublicCommonplaceEntries } from "@/lib/content";
+
+const entries = await getPublicCommonplaceEntries();
+---
+
+<BaseLayout
+  title="Commonplace | Nik Manuel"
+  description="Verified passages Nik has kept for reflection, attribution, and connection."
+>
+  <PageIntro
+    eyebrow="Commonplace / Preserved passages"
+    title="Words worth returning to."
+    description="Sourced quotations and passages that caught my attention, kept for reflection and not automatically adopted as principles."
+    mark="orange"
+    graphic="stamp"
+  />
+
+  <section class="commonplace-list" aria-label="Commonplace entries">
+    {
+      entries.map((entry, index) => (
+        <article class="commonplace-entry" id={entry.id}>
+          <div class="entry-index">
+            <PersonalMark variant="orange" size="1.1rem" />
+            <p class="label">CP / {String(index + 1).padStart(3, "0")}</p>
+          </div>
+          <div class="entry-main">
+            <p class="label">{entry.data.title}</p>
+            <blockquote>{entry.data.quotation}</blockquote>
+            <p class="attribution">
+              {entry.data.author}, <cite>{entry.data.work}</cite> (
+              {entry.data.originalDate})
+            </p>
+          </div>
+          <aside>
+            <p class="label">Why I kept it</p>
+            <p>{entry.data.whyKept}</p>
+            <a
+              class="text-link source-link"
+              href={entry.data.sourceUrl}
+              rel="external"
+            >
+              Read the verified source&nbsp;→
+            </a>
+          </aside>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .commonplace-list {
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .commonplace-entry {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    border-bottom: 1px solid var(--hairline-strong);
+    padding: clamp(4rem, 9vw, 8rem) var(--page-pad);
+  }
+
+  .entry-index {
+    display: flex;
+    gap: 0.65rem;
+    align-items: start;
+  }
+
+  blockquote {
+    max-width: 20ch;
+    margin: clamp(2rem, 5vw, 4rem) 0 2rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.5vw, 5.5rem);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .attribution {
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
+  aside {
+    align-self: end;
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: 1.25rem;
+  }
+
+  aside > p:not(.label) {
+    color: var(--ink-muted);
+  }
+
+  .source-link {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .commonplace-entry {
+      grid-template-columns: 5rem 1fr;
+    }
+
+    aside {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .commonplace-entry {
+      grid-template-columns: 1fr;
+    }
+
+    aside {
+      grid-column: 1;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import PersonalMark from "@/components/PersonalMark.astro";
+
+const marks = [
+  { id: "P01", label: "Cultivate", variant: "orange" as const },
+  { id: "P02", label: "Strategize", variant: "king" as const },
+  { id: "P03", label: "Observe", variant: "fish" as const },
+  { id: "P04", label: "Believe", variant: "cross" as const },
+  { id: "P05", label: "Navigate", variant: "compass" as const },
+];
+---
+
+<section class="personal-field-index" aria-label="Personal field marks">
+  {
+    marks.map((mark) => (
+      <div class="field-mark">
+        <PersonalMark variant={mark.variant} size="1.35rem" />
+        <span class="mark-id">{mark.id}</span>
+        <span class="mark-label">{mark.label}</span>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .personal-field-index {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-bottom: 1px solid var(--hairline-strong);
+    background: var(--paper-light);
+  }
+
+  .field-mark {
+    display: grid;
+    min-width: 0;
+    min-height: 5.25rem;
+    grid-template-columns: auto auto 1fr;
+    gap: 0.65rem;
+    align-items: center;
+    padding: 1rem clamp(0.8rem, 1.5vw, 1.4rem);
+  }
+
+  .field-mark + .field-mark {
+    border-left: 1px solid var(--hairline);
+  }
+
+  .mark-id,
+  .mark-label {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  .mark-id {
+    color: var(--ink-muted);
+  }
+
+  .mark-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 860px) {
+    .personal-field-index {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .field-mark:nth-child(4),
+    .field-mark:nth-child(5) {
+      border-top: 1px solid var(--hairline);
+    }
+
+    .field-mark:nth-child(4) {
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .field-mark {
+      min-height: 4.5rem;
+      grid-template-columns: auto 1fr;
+      gap: 0.35rem 0.55rem;
+      padding: 0.8rem;
+    }
+
+    .mark-id {
+      display: none;
+    }
+
+    .mark-label {
+      font-size: 0.56rem;
+    }
+  }
+</style>
