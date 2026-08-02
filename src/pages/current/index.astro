@@ -15,9 +15,13 @@ const updated = new Intl.DateTimeFormat("en-US", {
   description="A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about now."
 >
   <PageIntro
-    eyebrow={"Current / Updated " + updated}
+    eyebrow={"Current / " + current.period}
     title="Where the attention is now."
     description="A concise snapshot of the work, study, and questions in motion. This is not a task list or daily log."
+    marker={"Edition " +
+      String(current.edition).padStart(3, "0") +
+      " / Updated " +
+      updated}
     mark="compass"
     graphic="orbital"
   />
@@ -68,6 +72,16 @@ const updated = new Intl.DateTimeFormat("en-US", {
       </ul>
     </article>
   </section>
+
+  <aside class="edition-note page-pad">
+    <p class="label">
+      Archive note / Edition {String(current.edition).padStart(3, "0")}
+    </p>
+    <p>
+      Each future Current edition will preserve its date instead of replacing
+      the record.
+    </p>
+  </aside>
 
   <aside class="current-note page-pad section">
     <p class="label">Field note</p>
@@ -186,6 +200,20 @@ const updated = new Intl.DateTimeFormat("en-US", {
     color: var(--paper-light);
   }
 
+  .edition-note {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    padding-block: 2rem;
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .edition-note > p:last-child {
+    max-width: 42rem;
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
   blockquote {
     max-width: 18ch;
     margin: 2rem 0 3rem;
@@ -210,6 +238,11 @@ const updated = new Intl.DateTimeFormat("en-US", {
       min-height: 0;
       border-right: 0;
       padding-inline: 0;
+    }
+
+    .edition-note {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 </style>

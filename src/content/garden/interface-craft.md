@@ -10,6 +10,8 @@ order: 2
 relatedEssays: []
 relatedPrinciples:
   - build-what-compounds
+relatedGarden:
+  - trust-reduces-friction
 sources: []
 ---
 

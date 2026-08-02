@@ -18,6 +18,24 @@ const notes = await getPublicGardenNotes();
     graphic="orbital"
   />
 
+  <aside class="maturity-guide" aria-label="Garden note maturity guide">
+    <div>
+      <span>01</span><strong>Seedling</strong><small
+        >A question or early observation.</small
+      >
+    </div>
+    <div>
+      <span>02</span><strong>Growing</strong><small
+        >An idea gaining connections and evidence.</small
+      >
+    </div>
+    <div>
+      <span>03</span><strong>Evergreen</strong><small
+        >A durable note that still remains open to revision.</small
+      >
+    </div>
+  </aside>
+
   <section class="garden-index" aria-label="Public garden notes">
     {
       notes.map((note, index) => (
@@ -47,6 +65,49 @@ const notes = await getPublicGardenNotes();
 </BaseLayout>
 
 <style>
+  .maturity-guide {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 1px solid var(--hairline-strong);
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+
+  .maturity-guide > div {
+    display: grid;
+    min-height: 8.5rem;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.6rem 1rem;
+    align-content: center;
+    padding: 1.5rem var(--page-pad);
+  }
+
+  .maturity-guide > div + div {
+    border-left: 1px solid rgba(248, 244, 235, 0.25);
+  }
+
+  .maturity-guide span,
+  .maturity-guide small {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+
+  .maturity-guide span {
+    color: var(--orange);
+  }
+
+  .maturity-guide strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 470;
+  }
+
+  .maturity-guide small {
+    grid-column: 2;
+    color: rgba(248, 244, 235, 0.68);
+    line-height: 1.45;
+  }
+
   .garden-index {
     border-bottom: 1px solid var(--hairline-strong);
   }
@@ -114,6 +175,19 @@ const notes = await getPublicGardenNotes();
   }
 
   @media (max-width: 720px) {
+    .maturity-guide {
+      grid-template-columns: 1fr;
+    }
+
+    .maturity-guide > div {
+      min-height: 0;
+    }
+
+    .maturity-guide > div + div {
+      border-top: 1px solid rgba(248, 244, 235, 0.25);
+      border-left: 0;
+    }
+
     .garden-row {
       grid-template-columns: 1fr auto;
       gap: 1.5rem;

@@ -1,0 +1,332 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import PersonalMark from "@/components/PersonalMark.astro";
+import {
+  getAcceptedPrinciples,
+  getPublicCommonplaceEntries,
+  getPublicGardenNotes,
+  getPublicNotes,
+  getPublicProjects,
+} from "@/lib/content";
+
+const [projects, essays, garden, commonplace, principles] = await Promise.all([
+  getPublicProjects(),
+  getPublicNotes(),
+  getPublicGardenNotes(),
+  getPublicCommonplaceEntries(),
+  getAcceptedPrinciples(),
+]);
+
+const archiveAreas = [
+  {
+    number: "01",
+    title: "Build",
+    definition: "Things made and tested in the world.",
+    detail:
+      "Products, companies, experiments, and the lessons they leave behind.",
+    href: "/work/",
+    count: projects.length,
+    mark: "king" as const,
+  },
+  {
+    number: "02",
+    title: "Essays",
+    definition: "Finished thinking.",
+    detail: "Longer ideas developed enough to publish intentionally.",
+    href: "/essays/",
+    count: essays.length,
+    mark: "fish" as const,
+  },
+  {
+    number: "03",
+    title: "Garden",
+    definition: "Ideas still growing.",
+    detail:
+      "Notes, research, observations, questions, and experiments in motion.",
+    href: "/garden/",
+    count: garden.length,
+    mark: "compass" as const,
+  },
+  {
+    number: "04",
+    title: "Commonplace",
+    definition: "Things worth remembering.",
+    detail: "Sourced passages and ideas from other people, kept with context.",
+    href: "/commonplace/",
+    count: commonplace.length,
+    mark: "orange" as const,
+  },
+  {
+    number: "05",
+    title: "Principles",
+    definition: "Ideas I am trying to live.",
+    detail:
+      "A small personal canon tested through practice rather than display.",
+    href: "/principles/",
+    count: principles.length,
+    mark: "cross" as const,
+  },
+  {
+    number: "06",
+    title: "Current",
+    definition: "What has my attention now.",
+    detail:
+      "A dated snapshot of the work, study, media, and questions in motion.",
+    href: "/current/",
+    count: 1,
+    mark: "compass" as const,
+  },
+];
+
+const topics = Array.from(
+  new Set([
+    ...essays.map((entry) => entry.data.category),
+    ...garden.map((entry) => entry.data.topic),
+  ]),
+).sort();
+---
+
+<BaseLayout
+  title="Explore the archive | Nik Manuel"
+  description="A map of Nik Manuel's work, essays, garden notes, commonplace entries, principles, and current interests."
+>
+  <PageIntro
+    eyebrow="Explore / Archive map"
+    title="One world, entered through many doors."
+    description="A field guide to the things I build, study, write, preserve, and practice over time."
+    mark="orange"
+    graphic="orbital"
+  />
+
+  <section class="archive-intro page-pad" aria-labelledby="archive-cycle-title">
+    <p class="label">The recurring cycle</p>
+    <h2 id="archive-cycle-title">
+      Build creates questions. Study gives them context. Writing carries the
+      learning forward.
+    </h2>
+  </section>
+
+  <nav class="archive-map" aria-label="Archive areas">
+    {
+      archiveAreas.map((area) => (
+        <a href={area.href}>
+          <span class="archive-number">{area.number}</span>
+          <span class="archive-mark">
+            <PersonalMark variant={area.mark} size="1.25rem" />
+          </span>
+          <span class="archive-main">
+            <strong>{area.title}</strong>
+            <em>{area.definition}</em>
+            <small>{area.detail}</small>
+          </span>
+          <span class="archive-count">
+            <span>{String(area.count).padStart(2, "0")}</span>
+            <small>{area.count === 1 ? "entry" : "entries"}</small>
+          </span>
+        </a>
+      ))
+    }
+  </nav>
+
+  <section
+    class="topic-register page-pad section"
+    aria-labelledby="topic-title"
+  >
+    <div>
+      <p class="label">Topic register / Current</p>
+      <h2 id="topic-title">Threads running through the archive.</h2>
+    </div>
+    <ol>
+      {
+        topics.map((topic, index) => (
+          <li>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {topic}
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-intro {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+    gap: clamp(3rem, 9vw, 9rem);
+    padding-block: clamp(4rem, 8vw, 7rem);
+    border-bottom: 1px solid var(--hairline-strong);
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+
+  .archive-intro h2 {
+    max-width: 22ch;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.8vw, 5rem);
+    font-weight: 430;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .archive-map {
+    border-bottom: 1px solid var(--hairline-strong);
+  }
+
+  .archive-map > a {
+    display: grid;
+    min-height: 12rem;
+    grid-template-columns: 4rem 3rem minmax(0, 1fr) 5rem;
+    gap: clamp(1.25rem, 3vw, 3rem);
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    padding: 2rem var(--page-pad);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+  }
+
+  .archive-map > a:hover {
+    background: var(--paper-light);
+  }
+
+  .archive-number,
+  .archive-count {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .archive-main {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.8fr) minmax(18rem, 1.2fr);
+    gap: 0.45rem clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .archive-main strong {
+    grid-row: 1 / 3;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.5vw, 4.7rem);
+    font-weight: 450;
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .archive-main em {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.7rem);
+    font-style: normal;
+    line-height: 1.2;
+  }
+
+  .archive-main small {
+    max-width: 30rem;
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .archive-count {
+    display: grid;
+    justify-items: end;
+  }
+
+  .archive-count span {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 450;
+  }
+
+  .topic-register {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(20rem, 1.2fr);
+    gap: clamp(4rem, 10vw, 10rem);
+  }
+
+  .topic-register h2 {
+    max-width: 12ch;
+    margin-block: 1.5rem 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 430;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .topic-register ol {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--hairline-strong);
+    list-style: none;
+  }
+
+  .topic-register li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 1.15rem;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+  }
+
+  .topic-register li span {
+    padding-top: 0.3rem;
+    color: var(--ink-muted);
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 880px) {
+    .archive-main {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .archive-main strong {
+      grid-row: auto;
+    }
+
+    .archive-main small {
+      grid-column: 1 / -1;
+    }
+
+    .topic-register {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .archive-intro {
+      grid-template-columns: 1fr;
+    }
+
+    .archive-map > a {
+      grid-template-columns: 2rem 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      padding-block: 2rem;
+    }
+
+    .archive-mark {
+      display: none;
+    }
+
+    .archive-main {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+
+    .archive-main small {
+      grid-column: auto;
+    }
+
+    .archive-count small {
+      display: none;
+    }
+  }
+</style>

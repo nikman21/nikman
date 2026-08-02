@@ -17,9 +17,10 @@ Canonical facts:
 
 ## Identity and current work
 
+- [Explore the archive](https://nikmanuel.com/explore/): A map of the site's public areas and the distinctions between them.
 - [About Nik Manuel](https://nikmanuel.com/about/): Nik's public biography, interests, faith, work, and long-term direction.
 - [Current](https://nikmanuel.com/current/): A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about.
-- [Work](https://nikmanuel.com/work/): Index of public projects and systems.
+- [Build](https://nikmanuel.com/work/): A long-term record of public projects, companies, systems, and experiments.
 - [Fresh Industries](https://nikmanuel.com/work/fresh-industries/): The umbrella company, official philosophy, current position, and long-term horizon.
 - [InflateMate](https://nikmanuel.com/work/inflatemate/): Software for inflatable and event-rental operators.
 

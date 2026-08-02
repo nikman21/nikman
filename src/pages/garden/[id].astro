@@ -22,6 +22,13 @@ export const getStaticPaths = (async () => {
 
 const { note } = Astro.props;
 const { Content } = await render(note);
+const publicGarden = await getCollection(
+  "garden",
+  ({ data }) => data.status === "published",
+);
+const relatedNotes = publicGarden.filter((entry) =>
+  note.data.relatedGarden.includes(entry.id),
+);
 const structuredData = structuredDataGraph(
   Astro.site,
   gardenArticleEntity(Astro.site, {
@@ -39,6 +46,8 @@ const structuredData = structuredDataGraph(
   title={note.data.title + " | Garden by Nik Manuel"}
   description={note.data.summary}
   type="article"
+  published={note.data.created}
+  updated={note.data.updated}
   {structuredData}
 >
   <article>
@@ -68,6 +77,27 @@ const structuredData = structuredDataGraph(
     <div class="garden-body prose">
       <Content />
     </div>
+    {
+      relatedNotes.length > 0 && (
+        <aside
+          class="related-notes page-pad"
+          aria-labelledby="related-notes-title"
+        >
+          <p id="related-notes-title" class="label">
+            Connected notes
+          </p>
+          <div>
+            {relatedNotes.map((related, index) => (
+              <a href={"/garden/" + related.id + "/"}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{related.data.title}</strong>
+                <small>{related.data.maturity}</small>
+              </a>
+            ))}
+          </div>
+        </aside>
+      )
+    }
   </article>
   <nav class="garden-next page-pad" aria-label="Continue exploring">
     <a class="text-link" href="/garden/">← All garden notes</a>
@@ -138,6 +168,43 @@ const structuredData = structuredDataGraph(
     padding-block: 2rem;
   }
 
+  .related-notes {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.4fr) minmax(0, 1fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
+    border-top: 1px solid var(--hairline-strong);
+    background: var(--paper-light);
+  }
+
+  .related-notes > div {
+    border-top: 1px solid var(--hairline-strong);
+  }
+
+  .related-notes a {
+    display: grid;
+    min-height: 5rem;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    border-bottom: 1px solid var(--hairline);
+    text-decoration: none;
+  }
+
+  .related-notes span,
+  .related-notes small {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .related-notes strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 470;
+  }
+
   @media (max-width: 560px) {
     .garden-graphic {
       right: -7rem;
@@ -149,6 +216,10 @@ const structuredData = structuredDataGraph(
     .garden-next {
       align-items: start;
       flex-direction: column;
+    }
+
+    .related-notes {
+      grid-template-columns: 1fr;
     }
   }
 </style>

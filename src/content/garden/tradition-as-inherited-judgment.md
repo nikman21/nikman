@@ -9,6 +9,8 @@ status: published
 order: 3
 relatedEssays: []
 relatedPrinciples: []
+relatedGarden:
+  - trust-reduces-friction
 sources: []
 ---
 

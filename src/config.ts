@@ -7,9 +7,10 @@ export const siteConfig = {
   image: "/images/processed-horizon.png",
   volume: "VOL. 01 / 2026",
   nav: [
-    { label: "Home", href: "/" },
+    { label: "Explore", href: "/explore/" },
+    { label: "Build", href: "/work/" },
     { label: "Essays", href: "/essays/" },
-    { label: "Principles", href: "/principles/" },
+    { label: "Garden", href: "/garden/" },
     { label: "Current", href: "/current/" },
     { label: "About", href: "/about/" },
   ],

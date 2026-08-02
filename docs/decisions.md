@@ -190,3 +190,19 @@ Alternatives:
 Reason:
 
 The background should establish the retro-futurist world without becoming the page's main focal point. Quieting the raster asset preserves the blue/orange identity and keeps the accepted shell width, hero crop, typography, and editorial rhythm unchanged.
+
+## 2026-08-02 — Make the homepage a map and Explore the archive index
+
+Decision:
+
+Use the homepage as a concise path through Build, Study, and Write. Add Explore as the explicit archive map. Keep Build, Essays, Garden, Current, and About in primary navigation, with Principles and Commonplace available through Explore and the footer.
+
+Alternatives:
+
+- Keep every public area expanded on the homepage.
+- Put all destinations in primary navigation.
+- Collapse Essays, Garden, Commonplace, and Principles into one undifferentiated writing archive.
+
+Reason:
+
+The previous homepage repeated too much of the destination pages and made each section feel equally important. The revised hierarchy helps a first-time visitor understand Nik, Fresh Industries, InflateMate, the Build, Study, Write cycle, and the different kinds of public thinking without changing the established visual identity.

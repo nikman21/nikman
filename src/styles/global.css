@@ -87,7 +87,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 3px solid var(--orange);
   outline-offset: 4px;
 }
 
@@ -119,6 +119,7 @@ h1,
 h2,
 h3 {
   text-wrap: balance;
+  scroll-margin-top: 2rem;
 }
 
 p {
@@ -142,7 +143,7 @@ p {
 }
 
 .page-shell {
-  width: min(calc(100% - 3rem), 1180px);
+  width: min(calc(100% - 3rem), 1320px);
   margin-inline: auto;
   margin-block: clamp(3rem, 5vw, 5rem);
   border: 1px solid var(--hairline-strong);

@@ -4,6 +4,12 @@ eyebrow: Long horizon / 02
 description: My umbrella company and the long-term home for improving what exists today and building what should exist tomorrow.
 audience: People and industries with problems worth understanding and solving
 role: Founder
+kind: company
+started: 2024
+topics:
+  - Business
+  - Design
+  - Systems
 status: active
 order: 2
 featured: true

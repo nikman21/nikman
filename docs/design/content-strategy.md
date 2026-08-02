@@ -40,26 +40,29 @@ The conceptual story is Stone & Current:
 
 Primary:
 
-- Index
-- Work
-- Notes
+- Explore
+- Build
+- Essays
+- Garden
+- Current
 - About
 
-Secondary routes:
+The wordmark returns home, so a separate Home label is unnecessary. Explore is the archive map and explains how every public area differs. Principles and Commonplace remain first-class destinations inside Explore and the footer without competing for primary navigation space.
 
-- Principles
-- Current
+Content roles:
 
-Index is the homepage. It acts as an editorial front page rather than a directory.
-
-Principles and Current remain discoverable through the homepage, Notes, About, and footer. They do not need primary-nav weight at launch.
+- Essays: finished thinking.
+- Garden: ideas still growing.
+- Commonplace: things worth remembering.
+- Principles: ideas Nik is trying to live.
+- Current: what has Nik's attention now.
 
 ## Homepage hierarchy
 
 ### Header
 
-- Nik Manuel wordmark.
-- Index, Work, Notes, About.
+- Nik Manuel wordmark and home link.
+- Explore, Build, Essays, Garden, Current, About.
 - Volume/year marker.
 
 ### Hero image
@@ -80,29 +83,25 @@ Nik builds software, studies enduring ideas, and keeps notes on the systems shap
 
 Primary action:
 
-Enter the index.
+Enter the archive.
 
-### Practice loop
+### Practice cycle
 
-Build → Study → Write → Build.
+Build, Study, and Write are presented as one recurring practice. Building creates questions, study gives them context, and writing carries the learning back into future work.
 
-The loop establishes that products, learning, and writing are not separate identities.
+### Homepage map
 
-### Three-part index
+1. Hero and identity.
+2. Build, Study, Write.
+3. Building now: InflateMate.
+4. Relationship between Nik Manuel, Fresh Industries, and InflateMate.
+5. Three recent essays.
+6. One returning principle or question.
+7. Concise Current snapshot.
+8. Two Garden notes.
+9. Restrained archival footer.
 
-1. Current work: InflateMate and Fresh Industries.
-2. Recent note: Why I Built a Personal Encyclopedia Instead of a Productivity System.
-3. Returning question: What am I doing today that will still matter in five years?
-
-### Deeper homepage sections
-
-- Selected work feature.
-- Notes preview.
-- Accepted principles preview.
-- Current snapshot.
-- About preview.
-
-Each section uses rows, type, rules, and whitespace. Cards are reserved for no launch content.
+The homepage opens doors into the archive. It does not reproduce full destination pages. Each section uses rows, type, rules, images, and whitespace instead of conventional cards.
 
 ## Work
 
@@ -131,7 +130,7 @@ Do not publish unverified:
 - Awards.
 - Unsupported outcome claims.
 
-## Notes
+## Essays
 
 Purpose: show how Nik thinks and learns.
 
@@ -141,7 +140,7 @@ Why I Built a Personal Encyclopedia Instead of a Productivity System.
 
 The essay may be lightly adapted for web readability while preserving Nik's candid voice.
 
-Notes taxonomy at launch:
+Essay taxonomy at launch:
 
 - Building
 - Technology

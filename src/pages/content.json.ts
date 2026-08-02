@@ -30,6 +30,7 @@ export async function GET(context: APIContext) {
     site: {
       name: "Nik Manuel",
       url: url("/"),
+      archiveMap: url("/explore/"),
       description:
         "A curated personal website about building useful systems, studying enduring ideas, and living by considered principles.",
       language: "en-US",
@@ -103,6 +104,9 @@ export async function GET(context: APIContext) {
         maturity: note.data.maturity,
         created: dateOnly(note.data.created),
         updated: dateOnly(note.data.updated),
+        relatedGarden: note.data.relatedGarden.map((id) =>
+          url("/garden/" + id + "/"),
+        ),
         sources: note.data.sources,
       })),
       commonplace: commonplace.map((entry) => ({
@@ -123,6 +127,12 @@ export async function GET(context: APIContext) {
         description: project.data.description,
         audience: project.data.audience,
         role: project.data.role,
+        kind: project.data.kind,
+        started: project.data.started,
+        parent: project.data.parent
+          ? url("/work/" + project.data.parent + "/")
+          : undefined,
+        topics: project.data.topics,
         status: project.data.status,
       })),
     },

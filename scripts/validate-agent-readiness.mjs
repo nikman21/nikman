@@ -43,6 +43,7 @@ requireTypes("dist/index.html", [
   "SoftwareApplication",
 ]);
 requireTypes("dist/about/index.html", ["Person", "ProfilePage"]);
+requireTypes("dist/explore/index.html", ["Person", "WebSite"]);
 requireTypes("dist/essays/a-run-without-technology/index.html", [
   "Person",
   "BlogPosting",
@@ -90,6 +91,7 @@ for (const requiredText of [
   "# Nik Manuel",
   "Fix Today. Build Tomorrow.",
   "https://nikmanuel.com/content.json",
+  "https://nikmanuel.com/explore/",
   "https://nikmanuel.com/sitemap-index.xml",
 ]) {
   assert(

@@ -12,6 +12,8 @@ interface Props {
   type?: "website" | "article";
   noindex?: boolean;
   canonicalPath?: string;
+  published?: Date | string;
+  updated?: Date | string;
   structuredData?: JsonLdEntity;
 }
 
@@ -22,6 +24,8 @@ const {
   type = "website",
   noindex = false,
   canonicalPath,
+  published,
+  updated,
   structuredData,
 } = Astro.props;
 
@@ -40,6 +44,7 @@ const serializedJsonLd = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
     <meta name="description" content={description} />
     <meta name="author" content={siteConfig.name} />
     <meta name="theme-color" content="#F2EDE2" />
+    <meta name="color-scheme" content="light" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="author" href="/about/" />
@@ -51,14 +56,40 @@ const serializedJsonLd = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
       href="/rss.xml"
     />
     <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Nik Manuel" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
+    <meta
+      property="og:image:alt"
+      content="A processed orange landscape beneath a cobalt sky"
+    />
+    {
+      published && (
+        <meta
+          property="article:published_time"
+          content={new Date(published).toISOString()}
+        />
+      )
+    }
+    {
+      updated && (
+        <meta
+          property="article:modified_time"
+          content={new Date(updated).toISOString()}
+        />
+      )
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+    <meta
+      name="twitter:image:alt"
+      content="A processed orange landscape beneath a cobalt sky"
+    />
     <title>{title}</title>
     <script is:inline type="application/ld+json" set:html={serializedJsonLd} />
   </head>

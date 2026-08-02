@@ -36,6 +36,8 @@ const structuredData = structuredDataGraph(
   title={essay.data.title + " | Nik Manuel"}
   description={essay.data.description}
   type="article"
+  published={essay.data.published}
+  updated={essay.data.updated ?? essay.data.published}
   {structuredData}
 >
   <article>

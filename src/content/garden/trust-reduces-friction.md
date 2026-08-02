@@ -11,6 +11,9 @@ relatedEssays:
   - playing-long-term-games
 relatedPrinciples:
   - build-what-compounds
+relatedGarden:
+  - interface-craft
+  - tradition-as-inherited-judgment
 sources: []
 ---
 

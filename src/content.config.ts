@@ -42,6 +42,7 @@ const garden = defineCollection({
     order: z.number().int().positive().default(99),
     relatedEssays: z.array(z.string()).default([]),
     relatedPrinciples: z.array(z.string()).default([]),
+    relatedGarden: z.array(z.string()).default([]),
     sources: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
   }),
 });
@@ -74,6 +75,10 @@ const projects = defineCollection({
     description: z.string(),
     audience: z.string(),
     role: z.string(),
+    kind: z.enum(["company", "product", "experiment", "project"]),
+    started: z.number().int(),
+    parent: z.string().optional(),
+    topics: z.array(z.string()).default([]),
     status: z.enum(["active", "exploring", "archived"]),
     order: z.number().int(),
     featured: z.boolean().default(false),

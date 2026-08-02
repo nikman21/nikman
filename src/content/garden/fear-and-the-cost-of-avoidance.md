@@ -11,6 +11,8 @@ relatedEssays:
   - playing-long-term-games
 relatedPrinciples:
   - find-the-positive
+relatedGarden:
+  - trust-reduces-friction
 sources: []
 ---
 

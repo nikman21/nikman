@@ -4,6 +4,12 @@ import PageIntro from "@/components/PageIntro.astro";
 import { formatDate, getPublicNotes } from "@/lib/content";
 
 const essays = await getPublicNotes();
+const years = Array.from(
+  new Set(essays.map((essay) => essay.data.published.getUTCFullYear())),
+).sort((a, b) => b - a);
+const topics = Array.from(
+  new Set(essays.map((essay) => essay.data.category)),
+).sort();
 ---
 
 <BaseLayout
@@ -17,6 +23,23 @@ const essays = await getPublicNotes();
     mark="fish"
     graphic="stamp"
   />
+
+  <aside class="essay-register page-pad" aria-label="Essay archive summary">
+    <p class="label">Archive register</p>
+    <div>
+      <p class="register-years">
+        {
+          years
+            .map(
+              (year) =>
+                `${year} / ${essays.filter((essay) => essay.data.published.getUTCFullYear() === year).length} published`,
+            )
+            .join("  ")
+        }
+      </p>
+      <p class="register-topics">{topics.join(" / ")}</p>
+    </div>
+  </aside>
 
   <section class="essays-index" aria-label="Published essays">
     {
@@ -49,6 +72,37 @@ const essays = await getPublicNotes();
 </BaseLayout>
 
 <style>
+  .essay-register {
+    display: grid;
+    grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+    gap: clamp(2rem, 7vw, 7rem);
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--hairline-strong);
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+
+  .essay-register > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .register-years,
+  .register-topics {
+    margin: 0;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .register-topics {
+    max-width: 42rem;
+    color: rgba(248, 244, 235, 0.65);
+    text-align: right;
+  }
+
   .essays-index {
     border-bottom: 1px solid var(--hairline-strong);
   }
@@ -116,6 +170,17 @@ const essays = await getPublicNotes();
   }
 
   @media (max-width: 760px) {
+    .essay-register,
+    .essay-register > div {
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .register-topics {
+      text-align: left;
+    }
+
     .essay-row {
       grid-template-columns: 1fr auto;
       gap: 1.5rem;

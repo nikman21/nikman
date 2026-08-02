@@ -6,10 +6,15 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="footer-main">
-    <p class="footer-statement">Keep building. Keep learning. Keep writing.</p>
+    <div class="footer-identity">
+      <p class="label">Nik Manuel / Personal archive</p>
+      <p class="footer-statement">Build. Study. Write.</p>
+      <p class="footer-context">Built through Fresh Industries.</p>
+    </div>
     <nav aria-label="Secondary navigation">
+      <a href="/explore/">Explore</a>
       <a href="/work/">Work</a>
-      <a href="/garden/">Garden</a>
+      <a href="/principles/">Principles</a>
       <a href="/commonplace/">Commonplace</a>
       <a href="/rss.xml">RSS</a>
     </nav>
@@ -31,16 +36,27 @@ const year = new Date().getFullYear();
     grid-template-columns: 1fr auto;
     gap: 2rem;
     align-items: end;
-    padding: clamp(4rem, 8vw, 7rem) var(--page-pad);
+    padding: clamp(3rem, 6vw, 5rem) var(--page-pad);
+  }
+
+  .footer-identity {
+    display: grid;
+    gap: 1rem;
   }
 
   .footer-statement {
-    max-width: 12ch;
+    max-width: 15ch;
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 6vw, 5.8rem);
+    font-size: clamp(2.5rem, 4.8vw, 4.6rem);
     letter-spacing: -0.045em;
     line-height: 0.95;
+  }
+
+  .footer-context {
+    margin: 0;
+    color: var(--ink-muted);
+    font-size: 0.82rem;
   }
 
   nav {

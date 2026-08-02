@@ -4,6 +4,13 @@ eyebrow: Current work / 01
 description: Software for inflatable and event-rental companies, bringing bookings, inventory, payments, waivers, and customer workflows into one place.
 audience: Inflatable and event-rental business owners
 role: Founder, product designer, and software builder
+kind: product
+started: 2024
+parent: fresh-industries
+topics:
+  - Software
+  - Systems
+  - Business
 status: active
 order: 1
 featured: true
