@@ -42,7 +42,7 @@ export async function GET(context: APIContext) {
         url: url("/about/"),
         roles: [
           "Software builder",
-          "Founder of Fresh Industries",
+          "Co-founder of Fresh Industries",
           "Creator of InflateMate",
           "Writer",
         ],
@@ -55,7 +55,7 @@ export async function GET(context: APIContext) {
         slogan: "Fix Today. Build Tomorrow.",
         status: "Early and active",
         description:
-          "Nik Manuel's umbrella company and the long-term home for improving what exists today and building what should exist tomorrow.",
+          "The company co-founded by Nik Manuel for software products, creative media, and services.",
       },
       inflateMate: {
         type: "SoftwareApplication",

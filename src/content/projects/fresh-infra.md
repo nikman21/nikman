@@ -3,7 +3,7 @@ title: Fresh Infra
 eyebrow: Shared foundations
 description: A private toolkit for the parts my apps keep needing, from documents and file storage to bookings, payments, and recovery.
 audience: My applications and the people who depend on them
-role: Builder and platform designer
+role: Engineering and platform design
 kind: project
 started: 2026
 parent: fresh-industries
@@ -27,9 +27,9 @@ Fresh Infra is where I am turning that work into reusable foundations. It curren
 
 A document-signing engine can be shared. A rental company's rules, a product's branding, its authorization decisions, and its database belong to the application using it.
 
-That boundary matters. I want to reuse the hard parts without making every new product behave like InflateMate. Each app owns its configuration, accounts, data, and migrations. The packages do not reach back into a product's checkout.
+Each app owns its configuration, accounts, data, and migrations. The packages do not reach back into a product's checkout. I want to reuse the hard parts without making every new product behave like InflateMate.
 
-## How it works
+## Packages and application boundaries
 
 The toolkit includes authentication, organizations, UI, files, documents, a document builder, bookings, payments, billing, contacts, email, and a website foundation. Browser-safe contracts and server-only services have separate entry points.
 
@@ -37,6 +37,4 @@ Applications select their own storage, payment accounts, and policies. I test th
 
 ## Where it is today
 
-I am building and testing the toolkit on my Linux server. It is still in development and has not replaced InflateMate's production services.
-
-I am also spending more time with infrastructure engineering, Go, and Docker. Building Fresh Infra gives those interests practical questions to work on.
+I test the toolkit on my Linux server. It is still in development and has not replaced InflateMate's production services.

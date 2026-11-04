@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import heroImage from "@/assets/space-field-orange-tree-01.png";
 import ProjectCard from "@/components/ProjectCard.astro";
 import VideoEmbed from "@/components/VideoEmbed.astro";
+import ExternalLinkIcon from "@/components/ExternalLinkIcon.astro";
 import {
   getPublicProjects,
   getPublicNotes,
@@ -34,22 +35,22 @@ const structuredData = structuredDataGraph(
 <BaseLayout {structuredData}>
   <section class="home-hero">
     <div class="hero-copy">
-      <p class="label">Nik Manuel · Building & exploring</p><h1>
-        I build things.<br />And follow the questions.
+      <h1>
+        Software, stories,<br />and experiments
       </h1><p class="hero-intro">
-        Software, creative tools, businesses, and the occasional rabbit hole.
-        This is where I share what I make and what I’m figuring out along the
-        way.
-      </p><div class="hero-links">
-        <a class="text-link" href="/work/">See what I’m building →</a><a
-          class="text-link"
-          href="/essays/">Read my writing →</a
-        >
-      </div><p class="hero-aside">
-        Currently building through <a href="/work/fresh-industries/"
+        I’m Nik, co-founder of <a href="/work/fresh-industries/"
           >Fresh Industries</a
-        >.
-      </p>
+        >. I work on rental software, creative tools, and ways to give agents
+        useful context. I write about what I learn along the way.
+      </p><div class="hero-links">
+        <a class="text-link" href="/work/">Browse projects →</a>{
+          essays[0] && (
+            <a class="text-link" href={`/essays/${essays[0].id}/`}>
+              Latest essay →
+            </a>
+          )
+        }
+      </div>
     </div>
     <figure class="hero-image">
       <Image
@@ -60,14 +61,14 @@ const structuredData = structuredDataGraph(
         quality={85}
         fetchpriority="high"
         loading="eager"
-      /><figcaption>A little room to explore.</figcaption>
+      />
     </figure>
   </section>
   <section class="home-builds page-pad section" aria-labelledby="builds-title">
     <div class="section-heading">
       <div>
-        <h2 id="builds-title">What I’m building</h2>
-      </div><a class="text-link" href="/work/">All projects →</a>
+        <h2 id="builds-title">Selected work</h2>
+      </div>
     </div><div class="build-grid">
       {featured.map((project) => <ProjectCard {project} />)}
     </div>
@@ -82,19 +83,13 @@ const structuredData = structuredDataGraph(
       </div><a class="text-link" href="/essays/">All writing →</a>
     </div><div class="writing-grid">
       {
-        essays.slice(0, 3).map((essay, index) => (
+        essays.slice(0, 3).map((essay) => (
           <article>
             <>
-              <span class="writing-number">
-                0{index + 1} / {essay.data.category}
-              </span>
               <h3>
                 <a href={`/essays/${essay.id}/`}>{essay.data.title}</a>
               </h3>
               <p>{essay.data.description}</p>
-              <a class="text-link" href={`/essays/${essay.id}/`}>
-                Read the essay →
-              </a>
             </>
           </article>
         ))
@@ -109,7 +104,7 @@ const structuredData = structuredDataGraph(
         class="text-link"
         href="https://www.youtube.com/@n1kmanue1"
         target="_blank"
-        rel="noreferrer">My YouTube channel ↗</a
+        rel="noreferrer">YouTube channel<ExternalLinkIcon /></a
       >
     </div><div class="video-grid">
       {
@@ -125,18 +120,16 @@ const structuredData = structuredDataGraph(
   </section>
   <section class="home-now page-pad section" aria-labelledby="now-title">
     <div>
-      <p class="label">Now · Updated {current.updated}</p><h2 id="now-title">
+      <p class="label">Updated {current.updated}</p><h2 id="now-title">
         Lately
       </h2>
     </div><div class="now-copy">
-      <p>
-        Building the businesses under Fresh Industries. Exploring
-        infrastructure, Go, and Docker on my Linux server. Writing, making
-        content, and experimenting with AI animation.
-      </p><p class="now-small">
-        Away from the keyboard: more workouts, Dark Matter, and smooth jazz—or a
-        return to my 2016–2018 rap playlist.
-      </p><a class="text-link" href="/current/">The full snapshot →</a>
+      <p>Go and Docker on my Linux server, writing, and animation with AI.</p><p
+        class="now-small"
+      >
+        More workouts, Dark Matter, and smooth jazz, with occasional trips back
+        to my 2016–2018 rap playlist.
+      </p><a class="text-link" href="/current/">November update →</a>
     </div>
   </section>
   <section
@@ -147,7 +140,7 @@ const structuredData = structuredDataGraph(
       <h2 id="explore-title">Notes and interests</h2><p>
         History, faith, design, attention, and how to live. Some ideas are ready
         for an essay. Others need more time.
-      </p><a class="text-link" href="/explore/">Explore the rest →</a>
+      </p><a class="text-link" href="/explore/">Browse by subject →</a>
     </div><div class="explore-list">
       {
         notes.slice(0, 2).map((note) => (
@@ -177,7 +170,7 @@ const structuredData = structuredDataGraph(
   }
   .hero-copy h1 {
     max-width: 14ch;
-    margin: 2rem 0 1.5rem;
+    margin: 0 0 1.5rem;
     font: 430 clamp(3rem, 5vw, 5rem)/0.98 var(--font-display);
     letter-spacing: -0.045em;
   }
@@ -195,11 +188,6 @@ const structuredData = structuredDataGraph(
   .hero-links .text-link {
     font-size: 1.1rem;
   }
-  .hero-aside {
-    margin: 1.5rem 0 0;
-    color: var(--ink-muted);
-    font-size: 0.88rem;
-  }
   .hero-image {
     position: relative;
     margin: 0;
@@ -211,14 +199,6 @@ const structuredData = structuredDataGraph(
     height: 100%;
     object-fit: cover;
     max-height: 37rem;
-  }
-  .hero-image figcaption {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 1.5rem;
-    background: var(--paper);
-    padding: 0.4rem 0.65rem;
-    font-size: 0.8rem;
   }
   .section-heading {
     display: flex;
@@ -264,14 +244,10 @@ const structuredData = structuredDataGraph(
     border-top: 1px solid var(--hairline);
     padding-top: 1.25rem;
   }
-  .writing-number {
-    font-size: 0.78rem;
-    color: var(--ink-muted);
-  }
   .writing-grid h3 {
     font: 480 clamp(1.6rem, 2.5vw, 2.35rem)/1.1 var(--font-display);
     letter-spacing: -0.025em;
-    margin: 1rem 0;
+    margin: 0 0 1rem;
   }
   .writing-grid h3 a {
     text-decoration: none;
@@ -279,9 +255,6 @@ const structuredData = structuredDataGraph(
   .writing-grid p {
     color: var(--ink-muted);
     font-size: 0.95rem;
-  }
-  .writing-grid .text-link {
-    font-size: 1.05rem;
   }
   .home-now {
     display: grid;

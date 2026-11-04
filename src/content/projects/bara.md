@@ -3,7 +3,7 @@ title: Bara
 eyebrow: Creative tools
 description: A local creative studio where people and agents work through the same editing engine, with originals and changes kept intact.
 audience: People making artwork, stories, and animation with their own tools
-role: Builder and creative direction
+role: Engineering and creative direction
 kind: product
 started: 2026
 parent: fresh-industries
@@ -17,15 +17,15 @@ stack: [Rust, React, Tauri, CLI, Local files]
 question: How can a person and an agent edit the same document without losing work?
 image: /images/projects/bara-editor.webp
 imageAlt: Bara's native editor with an editable poster, layer list, and drawing tools
-imageCaption: The native editor with demonstration artwork. Interface and content are from the project.
+imageCaption: Native editor with demonstration artwork
 demo: animation
 ---
 
-## I want to make things with the tools I build
+## The tools behind the artwork
 
 I have been getting into animation with AI. But I want more control than asking a model for a finished clip and hoping the next result matches the last one.
 
-Bara is a local creative workspace for making and editing the underlying work: artwork, scenes, storyboards, and motion. It connects my interest in building software with the things I want to create with it.
+Bara gives me access to the underlying artwork, scenes, storyboards, and motion. I want to edit those pieces directly, then use the same tools to create my own work.
 
 ## One engine for a person and an agent
 
@@ -37,12 +37,12 @@ That makes originals, document versions, and recovery important. If an agent cha
 
 The simple character above is exported fixture artwork from the native animation work. The video is an actual MP4 export: 48 frames at 24 frames per second. The saved sequence and the agent-edited frame are separate outputs. The viewer lets you compare them without running the entire native editor in this page.
 
-## How it works
+## Rust core, desktop shell
 
 A Rust core handles the shared document and editing behavior. The workspace includes command-line, desktop, media, and native host crates. The newer desktop shell uses React and Tauri over that existing engine.
 
 The project also explores reversible editing, local rendering and export, portable creative documents, and synchronization that preserves conflicting work instead of silently choosing a winner.
 
-## Still figuring out
+## Current work
 
-Bara is in development. Different native features and platform builds have different verification boundaries. I am continuing to work on the everyday editing experience, recovery, and how people and agents share a workspace comfortably.
+Bara is in development. I’m working on the everyday editing experience, recovery, and how people and agents share a document.

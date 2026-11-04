@@ -12,9 +12,8 @@ const entries = await getPublicCommonplaceEntries();
   description="Verified passages Nik has kept for reflection, attribution, and connection."
 >
   <PageIntro
-    eyebrow="Commonplace / Preserved passages"
     title="Commonplace"
-    description="Sourced quotations and passages that caught my attention, kept for reflection and not automatically adopted as principles."
+    description="Passages I’ve kept, with their sources and my notes."
     mark="orange"
     graphic="stamp"
   />
@@ -49,7 +48,7 @@ const entries = await getPublicCommonplaceEntries();
               href={entry.data.sourceUrl}
               rel="external"
             >
-              Read the verified source&nbsp;→
+              Original source&nbsp;→
             </a>
             {entry.data.relatedContent
               .filter((path) => path.startsWith("/essays/"))

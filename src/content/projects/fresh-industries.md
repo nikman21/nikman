@@ -1,9 +1,9 @@
 ---
 title: Fresh Industries
-eyebrow: Long horizon / 02
-description: My umbrella company and the long-term home for improving what exists today and building what should exist tomorrow.
+eyebrow: Company
+description: The company I co-founded for software products, creative media, and services.
 audience: People and industries with problems worth understanding and solving
-role: Founder
+role: Co-founder
 kind: company
 started: 2024
 topics:
@@ -14,40 +14,20 @@ status: active
 order: 99
 featured: false
 public: true
-stage: Building the businesses
+stage: Active
 externalUrl: https://freshindustries.co
 ---
 
 ## Fix Today. Build Tomorrow.
 
-Fresh Industries is my umbrella company and the long-term home for the different things I want to build. It is not only a software company, and it is not meant to be limited to one industry.
-
-Its official slogan is **Fix Today. Build Tomorrow.**
-
-**Fix Today** means improving industries, systems, workflows, products, and experiences that are outdated, underserved, inefficient, fragmented, or poorly designed.
-
-**Build Tomorrow** means creating new systems, products, technologies, experiences, companies, and ideas that may not exist yet.
-
-Fresh Industries is built to do both: improve what exists today and build what should exist tomorrow.
-
-## The operating idea
-
-1. Find a problem today.
-2. Understand it.
-3. Design a better system.
-4. Build the solution.
-5. Create the next possibility.
+Fresh Industries is the company I co-founded for work across software, creative media, and services. It gives these projects a shared home while leaving room for businesses in other industries.
 
 ## The work today
 
-InflateMate is one current example of **Fix Today**. It is software for inflatable and event-rental companies, an industry that has been underserved by modern software.
+[InflateMate](/work/inflatemate/) helps party-rental operators manage bookings, inventory, payments, and waivers. It has real paying customers and keeps me close to the everyday problems of running a product.
 
-The product gives operators better tools for bookings, inventory, payments, waivers, customer workflows, and day-to-day operations. It represents the Fresh Industries approach: find an overlooked problem, understand the people living with it, and improve the work through better technology, systems, and design.
+Other work includes [Fresh Infra](/work/fresh-infra/) for shared application foundations, [Bara](/work/bara/) for creative editing, and [Osef](/work/osef/) for personal capture. [Fresh TV](/work/fresh-tv/) and [The Line List](/work/the-line-list/) take those interests into video programming and manufacturing workflows.
 
-## The horizon
+## Beyond software
 
-Long term, Fresh Industries may build across software, AI, automation, games, media, food, manufacturing, physical products, experimental ventures, and industries we have not entered yet.
-
-That is the direction, not a claim about the company today. Fresh Industries is early. The ambition is large, but the work is being built patiently and practically, one useful thing at a time.
-
-The long-term goal is to become a recognizable and respected brand known for thoughtful innovation, useful products, good systems, and strong design.
+Longer term, I want Fresh Industries to reach into media, hardware, manufacturing, and other useful products. The company is early; the projects above are the work today.

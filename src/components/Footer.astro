@@ -1,46 +1,43 @@
 ---
 import PersonalMark from "@/components/PersonalMark.astro";
+import ExternalLinkIcon from "@/components/ExternalLinkIcon.astro";
 import { siteConfig } from "@/config";
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
+<footer class="site-footer" id="connect">
   <div class="footer-main">
     <div class="footer-identity">
-      <p class="label">Nik Manuel</p>
-      <p class="footer-context">
-        Building through <a href="/work/fresh-industries/">Fresh Industries</a>.
-      </p>
+      <h2 class="label">Elsewhere</h2>
       <div class="footer-socials" aria-label="Find me elsewhere">
         {
           siteConfig.socials.map((social) => (
             <a href={social.href} target="_blank" rel="noreferrer">
-              {social.label} ↗
+              {social.label}
+              <ExternalLinkIcon />
             </a>
           ))
         }
       </div>
     </div>
     <nav aria-label="Secondary navigation">
-      <a href="/explore/">Explore</a>
-      <a href="/work/">Build</a>
       <a href="/garden/">Garden</a>
       <a href="/principles/">Principles</a>
       <a href="/commonplace/">Commonplace</a>
-      <a href="/rss.xml">Follow the writing · RSS</a>
+      <a href="/rss.xml">RSS feed</a>
     </nav>
   </div>
   <div class="footer-strip">
     <PersonalMark variant="orange" size="1rem" />
-    <p>Work in progress / {year}</p>
-    <a href="/about/#connect">Say hello ↗</a>
+    <p>© {year} Nik Manuel</p>
   </div>
 </footer>
 
 <style>
   .site-footer {
     border-top: 1px solid var(--hairline-strong);
+    scroll-margin-top: 2rem;
   }
 
   .footer-main {
@@ -56,10 +53,8 @@ const year = new Date().getFullYear();
     gap: 1rem;
   }
 
-  .footer-context {
+  .footer-identity h2 {
     margin: 0;
-    color: var(--ink-muted);
-    font-size: 0.82rem;
   }
 
   .footer-socials {
@@ -73,12 +68,6 @@ const year = new Date().getFullYear();
     min-height: 44px;
     font-size: 0.88rem;
   }
-  .footer-strip > a {
-    font-size: 0.85rem;
-    min-height: 44px;
-    align-content: center;
-  }
-
   nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -97,7 +86,7 @@ const year = new Date().getFullYear();
   .footer-strip {
     display: grid;
     min-height: 3.25rem;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     gap: 1rem;
     align-items: center;
     background: var(--orange);
@@ -125,14 +114,6 @@ const year = new Date().getFullYear();
 
     nav {
       justify-items: start;
-    }
-
-    .footer-strip {
-      grid-template-columns: auto 1fr auto;
-    }
-
-    .footer-strip p:last-child {
-      display: none;
     }
   }
 </style>

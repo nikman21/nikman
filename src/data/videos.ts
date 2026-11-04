@@ -12,7 +12,7 @@ export const videos = [
     title:
       "The Line List: An Agent-Native Manufacturing Workspace Built With WebMCP",
     description:
-      "A walkthrough of a workspace where a founder and an agent build the same product brief.",
+      "A founder and an agent prepare a product brief, packaging options, and manufacturer research in the same workspace.",
     duration: "1:41",
   },
 ] as const;

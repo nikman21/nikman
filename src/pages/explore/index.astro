@@ -8,9 +8,9 @@ const [essays, garden] = await Promise.all([
 ]);
 const areas = [
   {
-    title: "Build",
+    title: "Projects",
     href: "/work/",
-    detail: "Software, creative tools, businesses, and interactive examples.",
+    detail: "Rental software, creative tools, infrastructure, and prototypes.",
   },
   {
     title: "Writing",
@@ -38,7 +38,7 @@ const areas = [
   {
     title: "Now",
     href: "/current/",
-    detail: "What I am building, reading, listening to, and exploring.",
+    detail: "This month’s work, books, music, and interests.",
   },
 ];
 const topics = Array.from(
@@ -52,15 +52,14 @@ const topicId = (topic: string) =>
 ---
 
 <BaseLayout
-  title="Explore | Nik Manuel"
+  title="Index | Nik Manuel"
   description="Find a way into Nik's projects, writing, notes, principles, and current interests."
 >
   <PageIntro
-    eyebrow="Explore"
-    title="Explore"
-    description="A few ways into this place, depending on what caught your attention."
+    title="Index"
+    description="Projects, essays, notes, and the subjects connecting them."
   />
-  <nav class="area-grid page-pad section" aria-label="Explore the site">
+  <nav class="area-grid page-pad section" aria-label="Site sections">
     {
       areas.map((area) => (
         <a href={area.href}>
@@ -76,9 +75,10 @@ const topicId = (topic: string) =>
     }
   </nav>
   <section class="topics page-pad section" aria-labelledby="topics-title">
-    <p class="label">By interest</p><h2 id="topics-title">
-      Browse by interest
-    </h2><nav class="topic-links" aria-label="Topics">
+    <h2 id="topics-title">By subject</h2><nav
+      class="topic-links"
+      aria-label="Topics"
+    >
       {topics.map((topic) => <a href={`#${topicId(topic)}`}>{topic}</a>)}
     </nav><div class="topic-groups">
       {

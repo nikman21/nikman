@@ -19,9 +19,9 @@ export const currentEditions: [CurrentEdition, ...CurrentEdition[]] = [
     period: "November 2026",
     updated: "2026-11-02",
     building:
-      "Building the businesses under Fresh Industries: InflateMate, Fresh Infra, Bara, Osef, and the other projects that keep giving me new questions.",
+      "InflateMate, Fresh Infra, Bara, and Osef, alongside the other businesses under Fresh Industries.",
     learning:
-      "Looking into infrastructure software engineering, exploring Go and Docker on my Linux server, and paying closer attention to the design of everyday things.",
+      "Infrastructure engineering, Go, and Docker on my Linux server. Also paying closer attention to the design of everyday things.",
     reading: [
       "The Design of Everyday Things · nonfiction",
       "This Is Marketing · nonfiction",

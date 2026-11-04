@@ -1,17 +1,17 @@
 export const siteConfig = {
   name: "Nik Manuel",
   shortName: "Nik",
-  title: "Nik Manuel | Builder, founder, and curious person",
+  title: "Nik Manuel | Software, stories, and experiments",
   description:
-    "Nik Manuel builds software and creative tools, and writes about technology, design, history, attention, and the things he is figuring out.",
+    "Software, creative tools, and essays by Nik Manuel, co-founder of Fresh Industries.",
   image: "/images/processed-horizon.png",
   volume: "VOL. 01 / 2026",
   nav: [
-    { label: "Build", href: "/work/" },
+    { label: "Projects", href: "/work/" },
     { label: "Writing", href: "/essays/" },
     { label: "Now", href: "/current/" },
     { label: "About", href: "/about/" },
-    { label: "Explore", href: "/explore/" },
+    { label: "Index", href: "/explore/" },
   ],
   socials: [
     { label: "YouTube", href: "https://www.youtube.com/@n1kmanue1" },

@@ -26,9 +26,8 @@ const relatedEssayTitles: Record<string, string> = {
   description="A small personal canon of ideas Nik has consciously chosen to practice, test, and return to."
 >
   <PageIntro
-    eyebrow="Stone / Accepted principles"
     title="Principles"
-    description="These are not declarations that I have life figured out. They are ideas I have consciously chosen to practice, test, and return to."
+    description="Ideas I try to put into practice, with the experiences behind them."
     mark="cross"
     graphic="topographic"
   />
@@ -50,7 +49,7 @@ const relatedEssayTitles: Record<string, string> = {
             </div>
             {entry.data.relatedNotes.length > 0 && (
               <div class="related-writing">
-                <p class="label">Related public writing</p>
+                <p class="label">Related essays</p>
                 {entry.data.relatedNotes.map((slug) => (
                   <a href={"/essays/" + slug + "/"}>
                     {relatedEssayTitles[slug] ?? "Read the related essay"}

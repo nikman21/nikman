@@ -58,8 +58,7 @@ export function websiteEntity(site?: URL): JsonLdEntity {
     "@id": ids.website,
     name: "Nik Manuel",
     url: absoluteUrl("/", site),
-    description:
-      "Nik builds software and creative tools, and shares what he makes, writes, and figures out along the way.",
+    description: siteConfig.description,
     author: { "@id": ids.person },
     publisher: { "@id": ids.person },
     inLanguage: "en-US",
@@ -90,7 +89,7 @@ export function freshIndustriesEntity(site?: URL): JsonLdEntity {
     url: absoluteUrl("/work/fresh-industries/", site),
     slogan: "Fix Today. Build Tomorrow.",
     description:
-      "Nik Manuel's umbrella company and the long-term home for improving what exists today and building what should exist tomorrow.",
+      "The company co-founded by Nik Manuel for software products, creative media, and services.",
     founder: { "@id": ids.person },
   };
 }

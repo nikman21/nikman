@@ -7,12 +7,12 @@ import { current, currentEditions } from "@/data/current";
 
 <BaseLayout
   title="Now | Nik Manuel"
-  description="What Nik is building, reading, learning, listening to, and exploring in November 2026."
+  description="Nik’s work, reading, music, and current interests in November 2026."
 >
   <PageIntro
-    eyebrow={`Now · ${current.period}`}
-    title="What has my attention."
-    description="The work, books, music, and questions filling my days at the moment."
+    eyebrow="Now"
+    title={current.period}
+    description="Linux, creative tools, a few books, and more time in the gym."
     marker={`Updated ${current.updated}`}
   />
   <CurrentSnapshot edition={current} />

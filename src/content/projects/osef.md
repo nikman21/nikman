@@ -1,9 +1,9 @@
 ---
 title: Osef
 eyebrow: Capture and return
-description: A quiet home for voice, images, and links. Save the original now, and let a connected agent work with it later.
+description: Local capture for voice, images, and links, with optional sync and agent access you control.
 audience: People with thoughts to keep and an agent they already use
-role: Builder and product design
+role: Design and engineering
 kind: experiment
 started: 2026
 parent: fresh-industries
@@ -19,7 +19,7 @@ image: /images/projects/osef-home.webp
 imageWidth: 393
 imageHeight: 852
 imageAlt: Osef's warm, minimal capture screen with one microphone action and Image and Link options
-imageCaption: The working capture interface. Browser preview of the mobile application.
+imageCaption: Capture screen from the mobile prototype
 ---
 
 ## An idea should not need a filing system
@@ -28,7 +28,7 @@ I wanted a place to keep a thought without first deciding what to call it, where
 
 Osef starts with capture: voice, an image, or a link. Saving does not ask an agent to analyze anything. The original is useful on its own.
 
-## Save before the network gets a vote
+## Local capture, optional sync
 
 The original saves locally before optional private sync and processing. An unavailable service should not turn a passing thought into a lost recording.
 
@@ -38,7 +38,7 @@ Saving an original, syncing a copy, and allowing an agent to read it are separat
 
 An agent's summary is not the original thought. Osef keeps attributed agent notes beneath the source, with a separate permission for adding them. The original remains available to return to.
 
-## How it works
+## Device storage and MCP
 
 The application uses Expo and React Native, local device storage, and an Express API with PostgreSQL for optional private sync. Account-authorized MCP tools let a connected agent search and retrieve synced material. Ownership, permissions, and revocation are checked by the service.
 

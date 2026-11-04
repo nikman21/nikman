@@ -1,12 +1,12 @@
 # Nik Manuel
 
-> Nik Manuel is a software builder, founder of Fresh Industries, creator of InflateMate, writer, and lifelong learner.
+> Nik Manuel is a software developer, co-founder of Fresh Industries, creator of InflateMate, and writer.
 
 This is Nik Manuel's curated personal website. It contains public work, essays, accepted principles, current interests, selected garden notes, and sourced commonplace entries. The website is the public exhibition. It is not a complete copy of Nik's private knowledge vault.
 
 Canonical facts:
 
-- Fresh Industries is Nik Manuel's umbrella company and the long-term home for the different things he wants to build.
+- Fresh Industries is the company co-founded by Nik Manuel for software products, creative media, and services.
 - The official Fresh Industries slogan is "Fix Today. Build Tomorrow."
 - Fresh Industries is not limited to software or one industry.
 - Fresh Industries is early. Future sectors described on the site are ambitions, not claims about current operating divisions.
@@ -17,10 +17,10 @@ Canonical facts:
 
 ## Identity and current work
 
-- [Explore the archive](https://nikman.tech/explore/): A map of the site's public areas and the distinctions between them.
+- [Index](https://nikman.tech/explore/): Site sections and a subject index.
 - [About Nik Manuel](https://nikman.tech/about/): Nik's public biography, interests, faith, work, and long-term direction.
-- [Current](https://nikman.tech/current/): A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about.
-- [Build](https://nikman.tech/work/): A long-term record of public projects, companies, systems, and experiments.
+- [Now](https://nikman.tech/current/): The latest work, books, music, and interests.
+- [Projects](https://nikman.tech/work/): Software products, prototypes, and creative tools.
 - [Fresh Industries](https://nikman.tech/work/fresh-industries/): The umbrella company, official philosophy, current position, and long-term horizon.
 - [InflateMate](https://nikman.tech/work/inflatemate/): Software for inflatable and event-rental operators.
 - [Fresh Infra](https://nikman.tech/work/fresh-infra/): Shared foundations for Nik's applications. A private toolkit in development.

@@ -4,6 +4,7 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectDemo from "@/components/ProjectDemo.astro";
 import VideoEmbed from "@/components/VideoEmbed.astro";
+import ExternalLinkIcon from "@/components/ExternalLinkIcon.astro";
 import {
   freshIndustriesEntity,
   inflateMateEntity,
@@ -23,7 +24,7 @@ const structuredData = structuredDataGraph(
 ---
 
 <BaseLayout
-  title={`${project.data.title} | Build by Nik Manuel`}
+  title={`${project.data.title} | Nik Manuel`}
   description={project.data.description}
   type="article"
   {structuredData}
@@ -59,7 +60,8 @@ const structuredData = structuredDataGraph(
               target="_blank"
               rel="noreferrer"
             >
-              Visit {project.data.title} ↗
+              Visit {project.data.title}
+              <ExternalLinkIcon />
             </a>
           )
         }

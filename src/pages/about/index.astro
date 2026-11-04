@@ -2,10 +2,10 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AboutMedia from "@/components/AboutMedia.astro";
 import VideoEmbed from "@/components/VideoEmbed.astro";
+import ExternalLinkIcon from "@/components/ExternalLinkIcon.astro";
 import { aboutMedia, aboutProfile } from "@/data/about";
 import { current } from "@/data/current";
 import { videos } from "@/data/videos";
-import { siteConfig } from "@/config";
 import {
   profilePageEntity,
   freshIndustriesEntity,
@@ -55,17 +55,12 @@ const rabbitHoles = [
       <h1>Hi, I’m Nik</h1>
       <p class="name-line">{aboutProfile.fullName}, but I go by Nik.</p>
       <p class="hero-intro">
-        I’m {aboutProfile.age}, based in {aboutProfile.location}, and usually in
-        the middle of building something or figuring out how it works.
+        I’m {aboutProfile.age} and live in {aboutProfile.location}. Most days,
+        I’m working on software or a creative project.
       </p>
       <p class="hero-intro">
-        Software, businesses, creative tools, martial arts, and a growing pile
-        of books. I like having a few different things to be curious about.
-      </p>
-      <p class="hero-note">
-        Currently building through <a href="/work/fresh-industries/"
-          >Fresh Industries</a
-        >.
+        Martial arts and a growing pile of books take up the rest of my
+        attention.
       </p>
     </div>
     <div class="hero-media">
@@ -79,12 +74,12 @@ const rabbitHoles = [
   </header>
 
   <nav class="about-index page-pad" aria-label="On this page">
-    <a href="#story">My story</a>
+    <a href="#story">Story</a>
     <a href="#wrestling">Wrestling</a>
-    <a href="#building">What I’m building</a>
-    <a href="#outside">Outside the work</a>
-    <a href="#rabbit-holes">Current rabbit holes</a>
-    <a href="#connect">Say hello</a>
+    <a href="#building">Projects</a>
+    <a href="#outside">Off-screen</a>
+    <a href="#rabbit-holes">Interests</a>
+    <a href="#connect">Contact</a>
   </nav>
 
   <section
@@ -103,21 +98,18 @@ const rabbitHoles = [
     </div>
     <div class="about-copy">
       <p>
-        After graduating from ASU, I wanted to work in technology. When I
-        couldn’t get a job in it, I started creating work of my own. Building
-        InflateMate gave that frustration somewhere to go.
+        InflateMate started after I graduated from ASU and couldn’t get a job in
+        technology. A real product gave me somewhere to put that energy.
       </p>
       <p>
-        Since then, building has meant more than writing code. It has meant
-        listening to customers, trying to explain an idea clearly, learning
-        design, and figuring out what to do when something goes wrong.
+        Since then, customer support has become as much a part of the job as
+        code. A question about an invoice can send me back to a screen I thought
+        was finished.
       </p>
       <p>
-        I like jumping into subjects I don’t understand yet. A web app, a
-        server, a 3D printer, or an animation workflow can all pull me in. I
-        want to understand how something works well enough to make something
-        with it. I’m learning as I go, making mistakes, and getting more
-        comfortable sharing the process.
+        That same curiosity takes me from a web app to a Linux server, a 3D
+        printer, or an animation. I learn best when I can try something and see
+        what happens.
       </p>
     </div>
   </section>
@@ -156,7 +148,7 @@ const rabbitHoles = [
           class="text-link full-match-link"
           href="/media/nik-state-final-full.mp4"
           target="_blank"
-          rel="noreferrer">Watch the full match (3:39) ↗</a
+          rel="noreferrer">Watch the full match (3:39)<ExternalLinkIcon /></a
         >
       </div>
     </div>
@@ -168,13 +160,14 @@ const rabbitHoles = [
     aria-labelledby="building-title"
   >
     <div class="section-intro">
-      <h2 id="building-title">Building with Fresh Industries</h2>
+      <h2 id="building-title">
+        <a href="/work/fresh-industries/">Fresh Industries</a>
+      </h2>
       <p>
-        I co-founded <a href="/work/fresh-industries/">Fresh Industries</a>,
-        where we’re developing software products, creative tools, and services.
-        It’s the broader home for the businesses and experiments we’re building.
+        I co-founded the company as a home for software products, creative
+        tools, and services. Here are a few current projects.
       </p>
-      <a class="text-link" href="/work/">Explore the projects →</a>
+      <a class="text-link" href="/work/">All projects →</a>
     </div>
     <div class="work-notebook">
       <article>
@@ -188,26 +181,24 @@ const rabbitHoles = [
       <article id="hatch">
         <h3>Hatch</h3>
         <p>
-          My self-hosted deployment and infrastructure platform. I’m learning
-          infrastructure engineering by actually building it. Alongside that,
-          <a href="/work/fresh-infra/">Fresh Infra</a> is the shared toolkit I’m developing
-          for my applications.
+          A self-hosted deployment platform. It’s how I’m getting deeper into
+          infrastructure, alongside <a href="/work/fresh-infra/">Fresh Infra</a
+          >, a shared toolkit for my applications.
         </p>
       </article>
       <article>
         <h3><a href="/work/bara/">Bara</a></h3>
         <p>
-          An experimental, local-first creative studio for design and media
-          workflows. It brings together two things I enjoy: making tools and
-          using them to create artwork, animation, and stories.
+          A local creative studio for artwork and animation, with one editing
+          engine shared by its interface and agent tools.
         </p>
       </article>
       <article>
         <h3><a href="/work/osef/">Osef</a> and Nima</h3>
         <p>
-          Experiments in personal context, knowledge, and agentic workspaces.
-          I’m exploring how the things we capture and learn can become useful
-          context for the tools and agents we work with.
+          Experiments in personal context, knowledge, and agentic workspaces. I
+          want the things I save to be useful later, without losing the
+          originals.
         </p>
       </article>
     </div>
@@ -219,7 +210,7 @@ const rabbitHoles = [
     aria-labelledby="curiosity"
   >
     <div class="section-intro">
-      <h2 id="curiosity">There’s more around the keyboard</h2>
+      <h2 id="curiosity">Away from the desk</h2>
       <p>
         I read fiction alongside design and marketing books, work out, and spend
         time with history, faith, and philosophy. Sometimes getting outside
@@ -241,7 +232,7 @@ const rabbitHoles = [
           2016–2018 rap. A different kind of concentration music.
         </p>
       </div>
-      <a class="text-link" href="/current/">The full Now update →</a>
+      <a class="text-link" href="/current/">November update →</a>
     </div>
   </section>
 
@@ -251,19 +242,16 @@ const rabbitHoles = [
     aria-labelledby="sharing-title"
   >
     <div class="section-intro">
-      <h2 id="sharing-title">Sharing what I’m learning</h2>
+      <h2 id="sharing-title">Videos and writing</h2>
       <p>
-        I recently started making YouTube videos to document what I’m learning
-        and help everyday people get better at using AI. A lot of the useful
-        things happening in technology are still unfamiliar outside of tech. I
-        want to help make them easier to understand and try.
+        I make YouTube videos to document what I’m learning and help everyday
+        people use AI. Explaining a tool or walking through a project helps me
+        understand it better, too.
       </p>
       <p>
-        My mission is to inspire curiosity, creativity, and the confidence to
-        build things. I want to understand something, create from that
-        knowledge, and share the process.
+        I hope they give people the confidence to try something on their own.
       </p>
-      <a class="text-link" href="/essays/">Read my writing →</a>
+      <a class="text-link" href="/essays/">Essays →</a>
     </div>
     <VideoEmbed id={featuredVideo.id} title={featuredVideo.title} />
   </section>
@@ -274,9 +262,7 @@ const rabbitHoles = [
     aria-labelledby="rabbit-title"
   >
     <div class="section-intro">
-      <p class="label">Lately</p>
-      <h2 id="rabbit-title">Current rabbit holes</h2>
-      <p>The questions I’m poking at right now.</p>
+      <h2 id="rabbit-title">Current interests</h2>
     </div>
     <div class="rabbit-list">
       {
@@ -287,35 +273,6 @@ const rabbitHoles = [
               <p>{item.detail}</p>
             </>
           </article>
-        ))
-      }
-    </div>
-  </section>
-
-  <section
-    class="about-section page-pad connect-layout"
-    id="connect"
-    aria-labelledby="connect-title"
-  >
-    <div>
-      <h2 id="connect-title">Say hello</h2>
-      <p>
-        If you’re building something, following a similar rabbit hole, or just
-        want to talk, I’d enjoy hearing from you.
-        <a
-          href="https://www.linkedin.com/in/nikolas-manuel-dev/"
-          target="_blank"
-          rel="noreferrer">You can reach me on LinkedIn</a
-        >.
-      </p>
-    </div>
-    <div class="connect-links">
-      <a href="/essays/">Writing →</a>
-      {
-        siteConfig.socials.map((social) => (
-          <a href={social.href} target="_blank" rel="noreferrer">
-            {social.label} ↗
-          </a>
         ))
       }
     </div>
@@ -346,11 +303,6 @@ const rabbitHoles = [
     font-size: 1.12rem;
     line-height: 1.7;
     margin-bottom: 1rem;
-  }
-  .hero-note {
-    margin: 2rem 0 0;
-    color: var(--ink-muted);
-    font-size: 0.9rem;
   }
   .hero-media {
     width: 100%;
@@ -395,8 +347,7 @@ const rabbitHoles = [
     margin: 0 0 0.75rem;
   }
   .about-copy p,
-  .section-intro > p,
-  .connect-layout p {
+  .section-intro > p {
     max-width: 44rem;
     font-size: 1.05rem;
     line-height: 1.75;
@@ -497,27 +448,6 @@ const rabbitHoles = [
   .rabbit-list h3 {
     font-size: 1.65rem;
   }
-  .connect-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.45fr);
-    gap: 3rem;
-    border-bottom: 0;
-  }
-  .connect-layout p {
-    max-width: 36rem;
-    margin-bottom: 0;
-  }
-  .connect-links {
-    display: grid;
-    align-content: start;
-    gap: 0.25rem;
-  }
-  .connect-links a {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    width: fit-content;
-  }
   .text-link {
     font-size: 1.05rem;
   }
@@ -544,8 +474,7 @@ const rabbitHoles = [
     .sharing-layout,
     .rabbit-layout,
     .section-heading-copy,
-    .wrestling-media,
-    .connect-layout {
+    .wrestling-media {
       grid-template-columns: 1fr;
     }
     .hero-media {
@@ -555,9 +484,6 @@ const rabbitHoles = [
     h1 {
       font-size: clamp(3.5rem, 12vw, 4.5rem);
     }
-    .hero-note {
-      margin-top: 1.5rem;
-    }
     .about-index {
       column-gap: 1.5rem;
     }
@@ -566,13 +492,6 @@ const rabbitHoles = [
     }
     .personal-notebook {
       padding: 1.5rem;
-    }
-    .connect-links {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.5rem 1.5rem;
-    }
-    .connect-layout {
-      gap: 1.5rem;
     }
   }
 </style>

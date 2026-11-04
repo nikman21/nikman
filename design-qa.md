@@ -1,5 +1,13 @@
 # Design QA — personal home refresh
 
+## November 3 — repetition and copy cleanup
+
+Applied the owner's phone feedback across the site using [Unslop](https://github.com/heydamir/unslop) by Damir Sokolovsky, CC BY 4.0. Removed repeated hero framing, duplicate page-label/title pairs, generic card actions, the redundant writing register, and About's second contact list. Footer socials now appear once, and `/about/#connect` reaches that shared contact destination. Navigation uses Projects and Index; specific project descriptions replace recurring general-purpose headings and slogans. Shared SVG arrows replace the characters that appeared as emoji on iPhone. Existing artwork, photos, footage, fonts, colors, source quotations, and accepted principle titles remain.
+
+The generated-copy audit covers all 36 pages. Home's build/explore count falls from 15 to 1; About from 13 to 1; Projects from 6 to 0. Remaining occurrences in those pages are an existing essay summary and the approved wrestling paragraph. The footer falls from 33 words to 14. The build and Astro check pass with 0 errors/warnings/hints, and all 1,078 internal destination/asset/anchor checks pass. Discovery validation passes. Local About contains one contact anchor, one LinkedIn link, and its existing wrestling video. Details and the nine-pass record: [copy-cleanup-2026-11-03.md](docs/copy-cleanup-2026-11-03.md).
+
+Browser use remains disabled in Work settings. This pass uses the owner's screenshots and generated HTML/server evidence; it does not claim a new desktop/mobile rendering or screenshot. Code/content validation: passed. Visual browser QA: unavailable.
+
 ## November 3 — supplied photos and wrestling edit
 
 Replaced About's portrait and tournament-photo placeholders with the owner's supplied images, preserving their full proportions and adding responsive WebP portrait sizes. Replaced the clip placeholder with a 44.6-second edit of the supplied 3:39 recording: six chronological cuts, tighter framing, a short paper/ink/orange title, and original arena sound. A native player with a poster, descriptive sound captions, and no autoplay accompanies a full-match link. Source and rendered-video contact sheets were inspected, and an edge-clipping draft cut was removed. Nik confirmed he is the wrestler on the right; the opening title and matching poster identify him in that shot. No result overlay is added.

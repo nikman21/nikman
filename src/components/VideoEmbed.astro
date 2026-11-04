@@ -1,4 +1,5 @@
 ---
+import ExternalLinkIcon from "@/components/ExternalLinkIcon.astro";
 interface Props {
   id: string;
   title: string;
@@ -17,14 +18,14 @@ const { id, title, description } = Astro.props;
         height="360"
         loading="lazy"
       />
-      <span>Play video <span aria-hidden="true">↗</span></span>
+      <span>Play video</span>
     </button>
   </div>
   <figcaption>
     <strong>{title}</strong>{description && <p>{description}</p>}<a
       href={`https://www.youtube.com/watch?v=${id}`}
       target="_blank"
-      rel="noreferrer">Watch on YouTube</a
+      rel="noreferrer">Watch on YouTube<ExternalLinkIcon /></a
     >
   </figcaption>
 </figure>
