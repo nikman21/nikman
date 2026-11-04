@@ -185,7 +185,7 @@ p {
   font-size: clamp(2.8rem, 5.4vw, 5.1rem);
   font-weight: 430;
   letter-spacing: -0.05em;
-  line-height: 0.94;
+  line-height: 1.02;
 }
 
 .section-title {
@@ -245,7 +245,7 @@ p {
 
 .prose h2,
 .prose h3 {
-  margin-block-start: 2.4em;
+  margin-block-start: 1.7em;
   font-weight: 520;
   letter-spacing: -0.025em;
   line-height: 1.12;

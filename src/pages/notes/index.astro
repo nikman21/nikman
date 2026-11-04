@@ -49,8 +49,8 @@ const notes = await getPublicNotes();
 
   .note-row {
     display: grid;
-    min-height: 18rem;
-    grid-template-columns: 10rem minmax(0, 1fr) 9rem;
+    min-height: 12rem;
+    grid-template-columns: 9rem minmax(0, 1fr) 7rem;
     gap: clamp(2rem, 6vw, 6rem);
     align-items: center;
     border-bottom: 1px solid var(--hairline);
@@ -79,13 +79,13 @@ const notes = await getPublicNotes();
   }
 
   h2 {
-    max-width: 16ch;
+    max-width: 30ch;
     margin-bottom: 1.25rem;
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    font-size: clamp(1.9rem, 3.2vw, 3.2rem);
     font-weight: 430;
     letter-spacing: -0.05em;
-    line-height: 0.94;
+    line-height: 1.08;
   }
 
   .note-row p {

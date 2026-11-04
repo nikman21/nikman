@@ -73,7 +73,7 @@ const { Content } = await render(note);
   .note-hero {
     position: relative;
     overflow: hidden;
-    padding-block: clamp(4rem, 10vw, 9rem) clamp(4rem, 8vw, 7rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
     border-bottom: 1px solid var(--hairline-strong);
   }
 
@@ -95,7 +95,7 @@ const { Content } = await render(note);
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    margin-bottom: clamp(4rem, 8vw, 8rem);
+    margin-bottom: 1.75rem;
   }
 
   .note-meta-label {
@@ -107,14 +107,14 @@ const { Content } = await render(note);
   .note-hero h1 {
     position: relative;
     z-index: 1;
-    max-width: 16ch;
+    max-width: 23ch;
   }
 
   .note-description {
     position: relative;
     z-index: 1;
     max-width: 42rem;
-    margin: clamp(2.5rem, 5vw, 4rem) 0 0 auto;
+    margin: 1.5rem 0 0;
     font-family: var(--font-display);
     font-size: clamp(1.35rem, 2.3vw, 1.85rem);
     line-height: 1.4;
