@@ -13,9 +13,9 @@ const notes = await getPublicNotes();
   canonicalPath="/essays/"
 >
   <PageIntro
-    eyebrow="Essays / Developed arguments"
-    title="Writing to find the shape of an idea."
-    description="Personal experiences, durable questions, and ideas developed far enough to leave the workshop."
+    title="Writing"
+    description="Essays on software, attention, faith, and everyday life."
+    marker={`${notes.length} essays`}
     mark="fish"
     graphic="stamp"
   />
@@ -40,14 +40,6 @@ const notes = await getPublicNotes();
       ))
     }
   </section>
-
-  <aside class="notes-aside page-pad section">
-    <p class="label">Publishing rule</p>
-    <p>
-      This URL remains as a compatibility path. Essays now live at their
-      canonical public home.
-    </p>
-  </aside>
 </BaseLayout>
 
 <style>
@@ -76,7 +68,7 @@ const notes = await getPublicNotes();
     display: grid;
     gap: 0.5rem;
     align-self: start;
-    font-size: 0.68rem;
+    font-size: 0.875rem;
     font-weight: 590;
     letter-spacing: 0.01em;
     text-transform: none;
@@ -102,22 +94,13 @@ const notes = await getPublicNotes();
     color: var(--ink-muted);
   }
 
-  .notes-aside {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
-  }
-
-  .notes-aside p:last-child {
-    max-width: 21ch;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    letter-spacing: -0.045em;
-    line-height: 0.98;
-  }
-
   @media (max-width: 760px) {
+    h2 {
+      max-width: 30ch;
+      font-size: clamp(1.9rem, 3.2vw, 3.2rem);
+      line-height: 1.08;
+    }
+
     .note-row {
       grid-template-columns: 1fr auto;
       gap: 1.5rem;
@@ -135,10 +118,6 @@ const notes = await getPublicNotes();
     .note-date {
       grid-column: 2;
       grid-row: 1;
-    }
-
-    .notes-aside {
-      grid-template-columns: 1fr;
     }
   }
 

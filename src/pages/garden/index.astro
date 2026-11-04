@@ -184,11 +184,29 @@ const notes = await getPublicGardenNotes();
 
     .garden-row {
       grid-template-columns: 1fr auto;
-      gap: 1.5rem;
+      gap: 1.25rem;
+    }
+
+    .garden-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      grid-column: 1;
+    }
+
+    .garden-date {
+      grid-column: 2;
+      grid-row: 1;
     }
 
     .garden-main {
       grid-column: 1 / -1;
+      grid-row: 2;
+    }
+
+    .garden-main h2 {
+      margin-top: 0.75rem;
+      line-height: 1.08;
     }
 
     .garden-note {

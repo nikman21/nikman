@@ -133,6 +133,23 @@ const { Content } = await render(note);
   }
 
   @media (max-width: 560px) {
+    .note-hero {
+      padding-block: 2.5rem;
+    }
+
+    .note-hero h1 {
+      max-width: 23ch;
+    }
+
+    .note-description {
+      margin-top: 1.5rem;
+    }
+
+    .note-meta {
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
     .note-hero-graphic {
       top: 38%;
       right: -7rem;
@@ -144,6 +161,10 @@ const { Content } = await render(note);
     .note-next {
       align-items: start;
       flex-direction: column;
+    }
+
+    .note-next {
+      gap: 0.75rem;
     }
   }
 </style>

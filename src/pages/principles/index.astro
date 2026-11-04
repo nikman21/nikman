@@ -179,6 +179,13 @@ const relatedEssayTitles: Record<string, string> = {
   }
 
   @media (max-width: 620px) {
+    .principle-main h2 {
+      max-width: none;
+      font-size: clamp(2.3rem, 10.5vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
     .principle {
       grid-template-columns: 1fr;
     }

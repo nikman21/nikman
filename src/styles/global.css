@@ -37,7 +37,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
   margin: 0;
   position: relative;
@@ -239,6 +239,10 @@ p {
   margin-block-start: 1.35em;
 }
 
+.prose > :first-child {
+  margin-block-start: 0;
+}
+
 .prose h2,
 .prose h3 {
   margin-block-start: 2.4em;
@@ -308,7 +312,19 @@ p {
   }
 
   .page-title {
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    font-size: clamp(2.2rem, 10vw, 3.25rem);
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+  }
+
+  .prose h2,
+  .prose h3 {
+    margin-block-start: 1.7em;
+  }
+
+  .prose > :first-child {
+    margin-block-start: 0;
   }
 
   .section {
