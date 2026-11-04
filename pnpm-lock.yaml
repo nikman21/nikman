@@ -23,6 +23,9 @@ importers:
       astro:
         specifier: 7.1.6
         version: 7.1.6(@emnapi/core@2.0.0-alpha.3)(@emnapi/runtime@2.0.0-alpha.3)(@types/node@24.13.2)(yaml@2.9.0)
+      cookie:
+        specifier: 2.0.1
+        version: 2.0.1
       sharp:
         specifier: 0.35.3
         version: 0.35.3(@types/node@24.13.2)

@@ -1,0 +1,103 @@
+---
+import type { CurrentEdition } from "@/data/current";
+interface Props {
+  edition: CurrentEdition;
+}
+const { edition } = Astro.props;
+---
+
+<div class="snapshot page-pad">
+  <section>
+    <h2>Building</h2><p>{edition.building}</p><a class="text-link" href="/work/"
+      >Explore the projects →</a
+    >
+  </section>
+  <section>
+    <h2>Learning</h2><p>{edition.learning}</p>{
+      edition.course && (
+        <a
+          class="text-link"
+          href={edition.course.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {edition.course.title} ↗
+        </a>
+      )
+    }
+  </section>
+  <section>
+    <h2>Reading</h2><ul>{edition.reading.map((title) => <li>{title}</li>)}</ul>
+  </section>
+  <section>
+    <h2>Listening</h2><ul>
+      {
+        edition.listening.map((item) => (
+          <li>
+            <>
+              <strong>{item.title}</strong>
+              <span>{item.creator}</span>
+            </>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section><h2>Practicing</h2><p>{edition.practicing}</p></section>
+  <section>
+    <h2>Questions I’m carrying</h2><ul>
+      {edition.thinking.map((question) => <li>{question}</li>)}
+    </ul>
+  </section>
+</div>
+<style>
+  .snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+    padding-block: 1rem 3rem;
+  }
+  .snapshot section {
+    border-bottom: 1px solid var(--hairline);
+    padding: 2rem 0;
+  }
+  .snapshot h2 {
+    font: 500 clamp(1.7rem, 2.5vw, 2.4rem)/1.1 var(--font-display);
+    letter-spacing: -0.025em;
+    margin: 0 0 1.25rem;
+  }
+  .snapshot p,
+  .snapshot li {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .snapshot p {
+    max-width: 36rem;
+  }
+  .snapshot ul {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .snapshot li strong {
+    font-weight: 500;
+  }
+  .snapshot li span {
+    display: block;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+  .snapshot .text-link {
+    font-size: 1.05rem;
+  }
+  @media (max-width: 700px) {
+    .snapshot {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .snapshot section {
+      padding: 1.7rem 0;
+    }
+  }
+</style>

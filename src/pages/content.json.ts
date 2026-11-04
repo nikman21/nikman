@@ -7,6 +7,7 @@ import {
   getPublicProjects,
 } from "@/lib/content";
 import { current } from "@/data/current";
+import { siteConfig } from "@/config";
 
 function dateOnly(date: Date) {
   return date.toISOString().slice(0, 10);
@@ -31,8 +32,7 @@ export async function GET(context: APIContext) {
       name: "Nik Manuel",
       url: url("/"),
       archiveMap: url("/explore/"),
-      description:
-        "A curated personal website about building useful systems, studying enduring ideas, and living by considered principles.",
+      description: siteConfig.description,
       language: "en-US",
     },
     entities: {
@@ -46,6 +46,7 @@ export async function GET(context: APIContext) {
           "Creator of InflateMate",
           "Writer",
         ],
+        sameAs: siteConfig.socials.map((social) => social.href),
       },
       freshIndustries: {
         type: "Organization",
@@ -134,6 +135,15 @@ export async function GET(context: APIContext) {
           : undefined,
         topics: project.data.topics,
         status: project.data.status,
+        stage: project.data.stage,
+        stack: project.data.stack,
+        externalUrl: project.data.externalUrl,
+        example: project.data.demo
+          ? url("/work/" + project.id + "/#demo")
+          : undefined,
+        video: project.data.videoId
+          ? "https://www.youtube.com/watch?v=" + project.data.videoId
+          : undefined,
       })),
     },
   };

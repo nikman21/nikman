@@ -10,6 +10,8 @@ order: 4
 relatedPrinciples: []
 ---
 
+_The [passages I kept](/commonplace/#society-and-government) are part of my commonplace book._
+
 Thomas Paine opens _Common Sense_ by separating two ideas that are easy to treat as one:
 
 > Society is produced by our wants, and government by our wickedness.

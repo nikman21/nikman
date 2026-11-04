@@ -1,4 +1,49 @@
-export const currentEditions = [
+export interface CurrentEdition {
+  slug: string;
+  edition: number;
+  period: string;
+  updated: string;
+  building: string;
+  learning: string;
+  practicing: string;
+  reading: string[];
+  listening: { title: string; creator: string; format: string }[];
+  thinking: string[];
+  course?: { title: string; url: string };
+}
+
+export const currentEditions: [CurrentEdition, ...CurrentEdition[]] = [
+  {
+    slug: "2026-11",
+    edition: 2,
+    period: "November 2026",
+    updated: "2026-11-02",
+    building:
+      "Building the businesses under Fresh Industries: InflateMate, Fresh Infra, Bara, Osef, and the other projects that keep giving me new questions.",
+    learning:
+      "Looking into infrastructure software engineering, exploring Go and Docker on my Linux server, and paying closer attention to the design of everyday things.",
+    reading: [
+      "The Design of Everyday Things · nonfiction",
+      "This Is Marketing · nonfiction",
+      "Protocols · nonfiction",
+      "Dark Matter · fiction",
+    ],
+    listening: [
+      { title: "Smooth jazz", creator: "While I work", format: "On rotation" },
+      {
+        title: "My old high school playlist",
+        creator: "Mostly 2016–2018 rap",
+        format: "Back in rotation",
+      },
+    ],
+    practicing:
+      "Working out more and trying a semi animal-based diet. Getting into writing, making content, and experimenting with animation using AI.",
+    thinking: [
+      "How do I make tools that feel simple while the systems behind them get more capable?",
+      "What should a person and an agent share in a workspace?",
+      "How can the things I build help me create more of my own work?",
+    ],
+  },
   {
     slug: "2026-08",
     edition: 1,
@@ -28,6 +73,6 @@ export const currentEditions = [
       "How can I pursue ambition without losing my faith, integrity, relationships, or soul?",
     ],
   },
-] as const;
+];
 
 export const current = currentEditions[0];

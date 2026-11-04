@@ -1,0 +1,94 @@
+---
+import {
+  getPublicNotes,
+  getPublicGardenNotes,
+  getAcceptedPrinciples,
+} from "@/lib/content";
+interface Props {
+  essayIds?: string[];
+  gardenIds?: string[];
+  principleIds?: string[];
+}
+const { essayIds = [], gardenIds = [], principleIds = [] } = Astro.props;
+const [essays, notes, principles] = await Promise.all([
+  getPublicNotes(),
+  getPublicGardenNotes(),
+  getAcceptedPrinciples(),
+]);
+const links = [
+  ...essays
+    .filter((e) => essayIds.includes(e.id))
+    .map((e) => ({
+      href: `/essays/${e.id}/`,
+      title: e.data.title,
+      kind: "Essay",
+    })),
+  ...notes
+    .filter((n) => gardenIds.includes(n.id))
+    .map((n) => ({
+      href: `/garden/${n.id}/`,
+      title: n.data.title,
+      kind: `${n.data.maturity} note`,
+    })),
+  ...principles
+    .filter((p) => principleIds.includes(p.id))
+    .map((p) => ({
+      href: `/principles/#${p.id}`,
+      title: p.data.title,
+      kind: "Principle",
+    })),
+];
+---
+
+{
+  links.length > 0 && (
+    <aside class="related-reading page-pad" aria-label="Keep exploring">
+      <>
+        <p class="label">A connected thread</p>
+        <ul>
+          {links.map((link) => (
+            <li>
+              <a href={link.href}>
+                {link.title} <span aria-hidden="true">→</span>
+              </a>
+              <small>{link.kind}</small>
+            </li>
+          ))}
+        </ul>
+      </>
+    </aside>
+  )
+}
+<style>
+  .related-reading {
+    border-top: 1px solid var(--hairline);
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 2rem;
+  }
+  .related-reading ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.3rem;
+  }
+  .related-reading li {
+    display: grid;
+    gap: 0.4rem;
+  }
+  .related-reading a {
+    font: 500 clamp(1.3rem, 2vw, 1.7rem)/1.2 var(--font-display);
+  }
+  .related-reading small {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+  @media (max-width: 650px) {
+    .related-reading {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

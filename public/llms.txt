@@ -17,22 +17,29 @@ Canonical facts:
 
 ## Identity and current work
 
-- [Explore the archive](https://nikmanuel.com/explore/): A map of the site's public areas and the distinctions between them.
-- [About Nik Manuel](https://nikmanuel.com/about/): Nik's public biography, interests, faith, work, and long-term direction.
-- [Current](https://nikmanuel.com/current/): A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about.
-- [Build](https://nikmanuel.com/work/): A long-term record of public projects, companies, systems, and experiments.
-- [Fresh Industries](https://nikmanuel.com/work/fresh-industries/): The umbrella company, official philosophy, current position, and long-term horizon.
-- [InflateMate](https://nikmanuel.com/work/inflatemate/): Software for inflatable and event-rental operators.
+- [Explore the archive](https://nikman.tech/explore/): A map of the site's public areas and the distinctions between them.
+- [About Nik Manuel](https://nikman.tech/about/): Nik's public biography, interests, faith, work, and long-term direction.
+- [Current](https://nikman.tech/current/): A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about.
+- [Build](https://nikman.tech/work/): A long-term record of public projects, companies, systems, and experiments.
+- [Fresh Industries](https://nikman.tech/work/fresh-industries/): The umbrella company, official philosophy, current position, and long-term horizon.
+- [InflateMate](https://nikman.tech/work/inflatemate/): Software for inflatable and event-rental operators.
+- [Fresh Infra](https://nikman.tech/work/fresh-infra/): Shared foundations for Nik's applications. A private toolkit in development.
+- [Bara](https://nikman.tech/work/bara/): A local creative workspace for people and agents, with native editing and animation artifacts. In development.
+- [Osef](https://nikman.tech/work/osef/): An iPhone-first capture prototype with local saving, optional sync, and selected agent access.
+- [Fresh TV](https://nikman.tech/work/fresh-tv/): A television-style video discovery experiment. The application is at [tv.freshindustries.co](https://tv.freshindustries.co/).
+- [The Line List](https://nikman.tech/work/the-line-list/): A manufacturing workspace with a public video walkthrough.
+
+Bara's exported frames and MP4 are actual project artifacts. Project stage labels distinguish active products from development work and experiments. Project pages contain descriptions, selected artifacts, and relevant external links; they do not include mock application examples.
 
 ## Writing and ideas
 
-- [Essays](https://nikmanuel.com/essays/): Published long-form writing by Nik Manuel.
-- [Principles](https://nikmanuel.com/principles/): The small set of principles Nik has consciously accepted.
-- [Garden](https://nikmanuel.com/garden/): Selected public notes that are still developing.
-- [Commonplace](https://nikmanuel.com/commonplace/): Verified quotations and passages with sources and notes about why they were kept.
+- [Essays](https://nikman.tech/essays/): Published long-form writing by Nik Manuel.
+- [Principles](https://nikman.tech/principles/): The small set of principles Nik has consciously accepted.
+- [Garden](https://nikman.tech/garden/): Selected public notes that are still developing.
+- [Commonplace](https://nikman.tech/commonplace/): Verified quotations and passages with sources and notes about why they were kept.
 
 ## Machine-readable resources
 
-- [Public content manifest](https://nikmanuel.com/content.json): Structured public entities and content generated from the site's approved collections.
-- [RSS feed](https://nikmanuel.com/rss.xml): Published essays.
-- [Sitemap](https://nikmanuel.com/sitemap-index.xml): Canonical indexable pages.
+- [Public content manifest](https://nikman.tech/content.json): Structured public entities and content generated from the site's approved collections.
+- [RSS feed](https://nikman.tech/rss.xml): Published essays.
+- [Sitemap](https://nikman.tech/sitemap-index.xml): Canonical indexable pages.

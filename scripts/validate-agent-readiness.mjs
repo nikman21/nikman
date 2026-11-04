@@ -6,7 +6,9 @@ const dist = path.join(root, "dist");
 const jsonLdMarker = '<script type="application/ld+json">';
 
 function read(relativePath) {
-  return fs.readFileSync(path.join(root, relativePath), "utf8");
+  return fs
+    .readFileSync(path.join(root, relativePath), "utf8")
+    .replace(/\r\n/g, "\n");
 }
 
 function assert(condition, message) {
@@ -81,7 +83,7 @@ for (const directive of [
   "User-agent: OAI-SearchBot\nAllow: /",
   "User-agent: ChatGPT-User\nAllow: /",
   "User-agent: GPTBot\nDisallow: /",
-  "Sitemap: https://nikmanuel.com/sitemap-index.xml",
+  "Sitemap: https://nikman.tech/sitemap-index.xml",
 ]) {
   assert(robots.includes(directive), `Missing robots directive: ${directive}`);
 }
@@ -90,9 +92,9 @@ const llms = read("dist/llms.txt");
 for (const requiredText of [
   "# Nik Manuel",
   "Fix Today. Build Tomorrow.",
-  "https://nikmanuel.com/content.json",
-  "https://nikmanuel.com/explore/",
-  "https://nikmanuel.com/sitemap-index.xml",
+  "https://nikman.tech/content.json",
+  "https://nikman.tech/explore/",
+  "https://nikman.tech/sitemap-index.xml",
 ]) {
   assert(
     llms.includes(requiredText),

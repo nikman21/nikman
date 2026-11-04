@@ -1,960 +1,385 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import FieldPlate from "@/components/FieldPlate.astro";
-import PersonalMark from "@/components/PersonalMark.astro";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/space-field-orange-tree-01.png";
+import ProjectCard from "@/components/ProjectCard.astro";
+import VideoEmbed from "@/components/VideoEmbed.astro";
+import {
+  getPublicProjects,
+  getPublicNotes,
+  getPublicGardenNotes,
+} from "@/lib/content";
 import { current } from "@/data/current";
+import { videos } from "@/data/videos";
 import {
   freshIndustriesEntity,
   inflateMateEntity,
   structuredDataGraph,
 } from "@/lib/structured-data";
-import {
-  formatDate,
-  getAcceptedPrinciples,
-  getPublicGardenNotes,
-  getPublicNotes,
-} from "@/lib/content";
-
-const [essays, principles, gardenNotes] = await Promise.all([
+const [projects, essays, notes] = await Promise.all([
+  getPublicProjects(),
   getPublicNotes(),
-  getAcceptedPrinciples(),
   getPublicGardenNotes(),
 ]);
-
-const featuredPrinciple = principles[0];
+const featured = projects
+  .filter((project) => project.data.featured)
+  .slice(0, 4);
 const structuredData = structuredDataGraph(
   Astro.site,
   freshIndustriesEntity(Astro.site),
   inflateMateEntity(Astro.site),
 );
-
-const practice = [
-  {
-    number: "01",
-    label: "Build",
-    mark: "king" as const,
-    copy: "I make software, products, experiments, and businesses.",
-  },
-  {
-    number: "02",
-    label: "Study",
-    mark: "compass" as const,
-    copy: "I explore engineering, history, systems, design, philosophy, and faith.",
-  },
-  {
-    number: "03",
-    label: "Write",
-    mark: "fish" as const,
-    copy: "I document what I learn, believe, test, and discover.",
-  },
-];
 ---
 
 <BaseLayout {structuredData}>
-  <div class="hero-grid">
-    <FieldPlate />
-
-    <section class="hero-statement" aria-labelledby="home-title">
-      <div class="statement-header">
-        <p class="label">Nik Manuel<br />Builder / student / writer</p>
-        <p class="label label-muted">Field note / 01</p>
-      </div>
-
-      <h1 id="home-title" class="display">
-        I build software, study enduring ideas, and write about the principles
-        that shape a meaningful life.
-      </h1>
-      <div class="eyebrow-rule"></div>
-      <p class="intro-copy">
-        This is a living record of the things I build, the questions I study,
-        and the ideas I am trying to practice.
-      </p>
-      <div class="hero-actions">
-        <a class="text-link" href="/explore/">Enter the archive&nbsp;→</a>
-        <a class="text-link" href="/work/inflatemate/">See the current build</a>
-      </div>
-    </section>
-  </div>
-
-  <section class="practice-section" aria-labelledby="practice-title">
-    <div class="practice-heading page-pad">
-      <div>
-        <p class="label">A practice in motion / 01</p>
-        <h2 id="practice-title">Build. Study. Write.</h2>
-      </div>
-      <p>
-        Building creates questions. Study gives them context. Writing turns what
-        I learn into something I can return to and build from again.
-      </p>
-    </div>
-    <ol class="practice-grid">
-      {
-        practice.map((item) => (
-          <li>
-            <div class="practice-meta">
-              <span>{item.number}</span>
-              <PersonalMark variant={item.mark} size="1.2rem" />
-            </div>
-            <h3>{item.label}</h3>
-            <p>{item.copy}</p>
-          </li>
-        ))
-      }
-    </ol>
-    <p class="practice-return label page-pad">
-      The work returns to the beginning / Repeat with better questions
-    </p>
-  </section>
-
-  <section
-    class="building-section page-pad section"
-    aria-labelledby="building-title"
-  >
-    <img
-      class="building-calibration"
-      src="/assets/brand/editorial-framing/calibration-corner-01.webp"
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="section-kicker">
-      <p class="label marked-label">
-        <PersonalMark variant="king" size="1.2rem" />
-        <span>Building now / 01</span>
-      </p>
-      <p class="label status-chip">Active system</p>
-    </div>
-
-    <div class="building-grid">
-      <div class="building-lead">
-        <p class="label label-muted">InflateMate</p>
-        <h2 id="building-title">
-          Tools for an industry that deserves better ones.
-        </h2>
-        <p class="building-intro">
-          Software for inflatable and event-rental companies, bringing bookings,
-          inventory, payments, waivers, and customer workflows into one place.
-        </p>
-        <a class="text-link" href="/work/inflatemate/"
-          >Explore InflateMate&nbsp;→</a
+  <section class="home-hero">
+    <div class="hero-copy">
+      <p class="label">Nik Manuel · Building & exploring</p><h1>
+        I build things.<br />And follow the questions.
+      </h1><p class="hero-intro">
+        Software, creative tools, businesses, and the occasional rabbit hole.
+        This is where I share what I make and what I’m figuring out along the
+        way.
+      </p><div class="hero-links">
+        <a class="text-link" href="/work/">See what I’m building →</a><a
+          class="text-link"
+          href="/essays/">Read my writing →</a
         >
-      </div>
-
-      <figure class="building-image">
-        <img
-          src="/assets/brand/landscapes/satellite-grove-01-plate.webp"
-          alt="Citrus trees beside a retro satellite dish under a cobalt sky"
-          width="768"
-          height="512"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>
-          <span>Field image / P02</span>
-          <span>FRSH-02A</span>
-        </figcaption>
-      </figure>
+      </div><p class="hero-aside">
+        Currently building through <a href="/work/fresh-industries/"
+          >Fresh Industries</a
+        >.
+      </p>
     </div>
-
-    <div
-      class="work-lineage"
-      aria-label="Relationship between Nik Manuel, Fresh Industries, and InflateMate"
-    >
+    <figure class="hero-image">
+      <Image
+        src={heroImage}
+        alt="An orange tree on a red plain under a cobalt sky and moon"
+        width={900}
+        format="webp"
+        quality={85}
+        fetchpriority="high"
+        loading="eager"
+      /><figcaption>A little room to explore.</figcaption>
+    </figure>
+  </section>
+  <section class="home-builds page-pad section" aria-labelledby="builds-title">
+    <div class="section-heading">
       <div>
-        <p class="label label-muted">01 / Builder</p>
-        <strong>Nik Manuel</strong>
-        <p>I find problems worth understanding and stay with the work.</p>
-      </div>
-      <div>
-        <p class="label label-muted">02 / Umbrella</p>
-        <strong>Fresh Industries</strong>
-        <p>The long-term home for companies, products, and experiments.</p>
-        <a href="/work/fresh-industries/">Fix Today. Build Tomorrow.&nbsp;→</a>
-      </div>
-      <div>
-        <p class="label label-muted">03 / Current system</p>
-        <strong>InflateMate</strong>
-        <p>The first public example of improving an overlooked industry.</p>
-      </div>
+        <h2 id="builds-title">What I’m building</h2>
+      </div><a class="text-link" href="/work/">All projects →</a>
+    </div><div class="build-grid">
+      {featured.map((project) => <ProjectCard {project} />)}
     </div>
   </section>
-
-  <section class="writing-section section" aria-labelledby="writing-title">
-    <div class="writing-heading page-pad">
+  <section
+    class="home-writing page-pad section"
+    aria-labelledby="writing-title"
+  >
+    <div class="section-heading">
       <div>
-        <p class="label marked-label">
-          <PersonalMark variant="fish" size="1.2rem" />
-          <span>Latest writing / Finished thinking</span>
-        </p>
-        <h2 id="writing-title">Ideas developed far enough to publish.</h2>
-      </div>
-      <figure>
-        <img
-          src="/assets/brand/landscapes/field-station-dawn-01-plate.webp"
-          alt="A remote field station beneath a cobalt sky and cream horizon"
-          width="768"
-          height="512"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>
-          <span>Observation / P03</span><span>NT-01B</span>
-        </figcaption>
-      </figure>
-    </div>
-    <div class="writing-list">
+        <h2 id="writing-title">Recent writing</h2>
+      </div><a class="text-link" href="/essays/">All writing →</a>
+    </div><div class="writing-grid">
       {
         essays.slice(0, 3).map((essay, index) => (
-          <a href={"/essays/" + essay.id + "/"}>
-            <span class="writing-number">
-              {String(index + 1).padStart(3, "0")}
-            </span>
-            <span class="writing-title">{essay.data.title}</span>
-            <span class="writing-meta">
-              {essay.data.category}
-              <br />
-              {formatDate(essay.data.published)} / {essay.data.readingMinutes}{" "}
-              min
-            </span>
-          </a>
+          <article>
+            <>
+              <span class="writing-number">
+                0{index + 1} / {essay.data.category}
+              </span>
+              <h3>
+                <a href={`/essays/${essay.id}/`}>{essay.data.title}</a>
+              </h3>
+              <p>{essay.data.description}</p>
+              <a class="text-link" href={`/essays/${essay.id}/`}>
+                Read the essay →
+              </a>
+            </>
+          </article>
         ))
       }
     </div>
-    <div class="section-link page-pad">
-      <a class="text-link" href="/essays/">Browse all essays&nbsp;→</a>
-    </div>
   </section>
-
-  {
-    featuredPrinciple && (
-      <section
-        class="principle-spotlight page-pad section"
-        aria-labelledby="principle-title"
+  <section class="home-video page-pad section" aria-labelledby="video-title">
+    <div class="section-heading">
+      <div>
+        <h2 id="video-title">Videos</h2>
+      </div><a
+        class="text-link"
+        href="https://www.youtube.com/@n1kmanue1"
+        target="_blank"
+        rel="noreferrer">My YouTube channel ↗</a
       >
-        <img
-          src="/assets/brand/diagrams/topographic-registration-01.webp"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="principle-meta">
-          <p class="label marked-label">
-            <PersonalMark variant="cross" size="1.15rem" surface />
-            <span>Principle / 0{featuredPrinciple.data.number}</span>
-          </p>
-          <p class="label">Ideas I am trying to live</p>
-        </div>
-        <div class="principle-grid">
-          <div>
-            <p class="label">{featuredPrinciple.data.title}</p>
-            <h2 id="principle-title">{featuredPrinciple.data.question}</h2>
-          </div>
-          <div>
-            <p>{featuredPrinciple.data.summary}</p>
-            <a class="text-link" href={"/principles/#" + featuredPrinciple.id}>
-              Read the principle&nbsp;→
-            </a>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  <section
-    class="current-section page-pad section"
-    aria-labelledby="current-title"
-  >
-    <div class="current-heading">
-      <div>
-        <p class="label marked-label">
-          <PersonalMark variant="compass" size="1.15rem" />
-          <span>Current / Updated {current.updated}</span>
-        </p>
-        <h2 id="current-title">Where the attention is now.</h2>
-      </div>
-      <a class="text-link" href="/current/">Open the full snapshot&nbsp;→</a>
-    </div>
-    <div class="current-grid">
-      <article>
-        <p class="label label-muted">Building</p>
-        <p>InflateMate and the systems around it.</p>
-      </article>
-      <article>
-        <p class="label label-muted">Studying</p>
-        <p>
-          Interface design, software systems, history, faith, and AI agents.
-        </p>
-      </article>
-      <article>
-        <p class="label label-muted">Reading</p>
-        <p>{current.reading[0]} and {current.reading[1]}.</p>
-      </article>
-      <article>
-        <p class="label label-muted">Thinking about</p>
-        <p>{current.thinking[2]}</p>
-      </article>
-    </div>
-  </section>
-
-  <section
-    class="garden-section page-pad section"
-    aria-labelledby="garden-title"
-  >
-    <img
-      class="garden-diagram"
-      src="/assets/brand/diagrams/orbital-citrus-system-01.webp"
-      alt=""
-      aria-hidden="true"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="garden-heading">
-      <div>
-        <p class="label marked-label">
-          <PersonalMark variant="compass" size="1.15rem" />
-          <span>Garden / Ideas still growing</span>
-        </p>
-        <h2 id="garden-title">Notes that have not finished becoming.</h2>
-      </div>
-      <p>
-        Research, observations, and questions labeled by their current maturity.
-      </p>
-    </div>
-    <div class="garden-list">
+    </div><div class="video-grid">
       {
-        gardenNotes.slice(0, 2).map((note, index) => (
-          <a href={"/garden/" + note.id + "/"}>
-            <span class="label label-muted">
-              0{index + 1} / {note.data.maturity}
-            </span>
-            <strong>{note.data.title}</strong>
-            <small>{note.data.summary}</small>
-          </a>
+        videos.map((video) => (
+          <VideoEmbed
+            id={video.id}
+            title={video.title}
+            description={video.description}
+          />
         ))
       }
     </div>
-    <a class="text-link garden-link" href="/garden/">Enter the garden&nbsp;→</a>
+  </section>
+  <section class="home-now page-pad section" aria-labelledby="now-title">
+    <div>
+      <p class="label">Now · Updated {current.updated}</p><h2 id="now-title">
+        Lately
+      </h2>
+    </div><div class="now-copy">
+      <p>
+        Building the businesses under Fresh Industries. Exploring
+        infrastructure, Go, and Docker on my Linux server. Writing, making
+        content, and experimenting with AI animation.
+      </p><p class="now-small">
+        Away from the keyboard: more workouts, Dark Matter, and smooth jazz—or a
+        return to my 2016–2018 rap playlist.
+      </p><a class="text-link" href="/current/">The full snapshot →</a>
+    </div>
+  </section>
+  <section
+    class="home-explore page-pad section"
+    aria-labelledby="explore-title"
+  >
+    <div>
+      <h2 id="explore-title">Notes and interests</h2><p>
+        History, faith, design, attention, and how to live. Some ideas are ready
+        for an essay. Others need more time.
+      </p><a class="text-link" href="/explore/">Explore the rest →</a>
+    </div><div class="explore-list">
+      {
+        notes.slice(0, 2).map((note) => (
+          <a href={`/garden/${note.id}/`}>
+            <>
+              <span class="label label-muted">{note.data.maturity} note</span>
+              <strong>{note.data.title}</strong>
+            </>
+          </a>
+        ))
+      }<a href="/principles/"
+        ><span class="label label-muted">Principles</span><strong
+          >Ideas I try to practice</strong
+        ></a
+      >
+    </div>
   </section>
 </BaseLayout>
-
 <style>
-  .hero-grid {
+  .home-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    grid-template-columns: 1.15fr 0.85fr;
     border-bottom: 1px solid var(--hairline-strong);
   }
-
-  .hero-statement {
-    min-width: 0;
-    padding: clamp(2.25rem, 3vw, 3.5rem);
+  .hero-copy {
+    padding: clamp(2rem, 4.5vw, 4.5rem) var(--page-pad);
   }
-
-  .statement-header,
-  .section-kicker,
-  .principle-meta,
-  .current-heading {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+  .hero-copy h1 {
+    max-width: 14ch;
+    margin: 2rem 0 1.5rem;
+    font: 430 clamp(3rem, 5vw, 5rem)/0.98 var(--font-display);
+    letter-spacing: -0.045em;
   }
-
-  .statement-header {
-    margin-bottom: clamp(3rem, 5vw, 5.5rem);
+  .hero-intro {
+    max-width: 35rem;
+    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
   }
-
-  .statement-header p:last-child {
-    text-align: right;
-  }
-
-  .hero-statement h1 {
-    max-width: 17ch;
-    margin-bottom: 0;
-    font-size: clamp(2.75rem, 3.4vw, 3.75rem);
-    line-height: 0.94;
-  }
-
-  .hero-statement .intro-copy {
-    max-width: 31rem;
-    margin-bottom: 1.75rem;
-    font-size: clamp(1.05rem, 1.45vw, 1.3rem);
-  }
-
-  .hero-actions {
+  .hero-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
+    gap: 0.3rem 1.5rem;
+    margin-top: 1.5rem;
   }
-
-  .hero-actions .text-link {
-    font-size: 1rem;
+  .hero-links .text-link {
+    font-size: 1.1rem;
   }
-
-  .practice-section {
-    border-bottom: 1px solid var(--hairline-strong);
+  .hero-aside {
+    margin: 1.5rem 0 0;
+    color: var(--ink-muted);
+    font-size: 0.88rem;
+  }
+  .hero-image {
+    position: relative;
+    margin: 0;
+    min-width: 0;
+    background: #093269;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 37rem;
+  }
+  .hero-image figcaption {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--paper);
+    padding: 0.4rem 0.65rem;
+    font-size: 0.8rem;
+  }
+  .section-heading {
+    display: flex;
+    gap: 2rem;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  .section-heading h2,
+  .home-now h2,
+  .home-explore h2 {
+    margin: 1rem 0 0;
+    font: 450 clamp(2.2rem, 3.8vw, 3.8rem)/1.02 var(--font-display);
+    letter-spacing: -0.035em;
+  }
+  .section-heading h2 {
+    max-width: 21ch;
+  }
+  .section-heading > .text-link {
+    flex: none;
+  }
+  .build-grid,
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 2rem;
+  }
+  .home-writing,
+  .home-video,
+  .home-now,
+  .home-explore {
+    border-top: 1px solid var(--hairline-strong);
+  }
+  .home-writing {
     background: var(--paper-light);
   }
-
-  .practice-heading {
+  .writing-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: end;
-    padding-block: clamp(4rem, 7vw, 6.5rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
   }
-
-  .practice-heading h2,
-  .writing-heading h2,
-  .current-heading h2,
-  .garden-heading h2 {
-    margin-block: 1.4rem 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5vw, 5.25rem);
-    font-weight: 430;
-    letter-spacing: -0.045em;
-    line-height: 0.96;
+  .writing-grid article {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.25rem;
   }
-
-  .practice-heading > p,
-  .garden-heading > p {
-    max-width: 33rem;
-    margin: 0;
+  .writing-number {
+    font-size: 0.78rem;
     color: var(--ink-muted);
+  }
+  .writing-grid h3 {
+    font: 480 clamp(1.6rem, 2.5vw, 2.35rem)/1.1 var(--font-display);
+    letter-spacing: -0.025em;
+    margin: 1rem 0;
+  }
+  .writing-grid h3 a {
+    text-decoration: none;
+  }
+  .writing-grid p {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+  .writing-grid .text-link {
     font-size: 1.05rem;
   }
-
-  .practice-grid {
+  .home-now {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin: 0;
-    padding: 0;
-    border-block: 1px solid var(--hairline-strong);
-    list-style: none;
-  }
-
-  .practice-grid li {
-    min-height: 18rem;
-    padding: clamp(2rem, 4vw, 3.5rem) var(--page-pad);
-  }
-
-  .practice-grid li + li {
-    border-left: 1px solid var(--hairline-strong);
-  }
-
-  .practice-meta {
-    display: flex;
-    justify-content: space-between;
-    color: var(--ink-muted);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-  }
-
-  .practice-grid h3 {
-    margin-block: 3rem 1rem;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 450;
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-
-  .practice-grid p {
-    max-width: 26rem;
-    margin: 0;
-    color: var(--ink-muted);
-  }
-
-  .practice-return {
-    margin: 0;
-    padding-block: 1.25rem;
-    text-align: right;
-  }
-
-  .marked-label {
-    display: inline-flex;
-    gap: 0.65rem;
-    align-items: center;
-  }
-
-  .section-kicker {
-    position: relative;
-    z-index: 1;
-    align-items: center;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
-  }
-
-  .status-chip {
-    border: 1px solid var(--ink);
-    background: var(--orange);
-    padding: 0.5rem 0.65rem;
-  }
-
-  .building-section {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .building-calibration {
-    position: absolute;
-    top: 2rem;
-    right: 1rem;
-    width: min(28rem, 36vw);
-    opacity: 0.18;
-    pointer-events: none;
-  }
-
-  .building-grid {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: end;
-  }
-
-  .building-lead h2 {
-    max-width: 13ch;
-    margin-block: 1.5rem 2rem;
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 6vw, 6rem);
-    font-weight: 430;
-    letter-spacing: -0.05em;
-    line-height: 0.93;
-  }
-
-  .building-intro {
-    max-width: 40rem;
-    font-size: 1.08rem;
-  }
-
-  .building-image,
-  .writing-heading figure {
-    margin: 0;
-  }
-
-  .building-image img,
-  .writing-heading img {
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    border: 1px solid var(--hairline-strong);
-    object-fit: cover;
-  }
-
-  .building-image figcaption,
-  .writing-heading figcaption {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 0.6rem;
-    border-top: 2px solid var(--orange);
-    padding-top: 0.5rem;
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .work-lineage {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: clamp(4rem, 8vw, 7rem);
-    border-block: 1px solid var(--hairline-strong);
-  }
-
-  .work-lineage > div {
-    padding: 1.75rem clamp(1.25rem, 2.5vw, 2.5rem);
-  }
-
-  .work-lineage > div + div {
-    border-left: 1px solid var(--hairline-strong);
-  }
-
-  .work-lineage strong {
-    display: block;
-    margin-top: 1.4rem;
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 470;
-    letter-spacing: -0.035em;
-    line-height: 1;
-  }
-
-  .work-lineage p:not(.label) {
-    min-height: 4rem;
-    margin-block: 1rem;
-    color: var(--ink-muted);
-    font-size: 0.9rem;
-  }
-
-  .work-lineage a {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .writing-section {
-    padding-bottom: 0;
-    border-top: 1px solid var(--hairline-strong);
-    background: var(--paper-light);
-  }
-
-  .writing-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.55fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: end;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
-  }
-
-  .writing-heading h2 {
-    max-width: 13ch;
-  }
-
-  .writing-list {
-    border-top: 1px solid var(--hairline-strong);
-  }
-
-  .writing-list a {
-    display: grid;
-    min-height: 7rem;
-    grid-template-columns: 5rem minmax(0, 1fr) 15rem;
-    gap: 2rem;
-    align-items: center;
-    border-bottom: 1px solid var(--hairline);
-    padding: 1.5rem var(--page-pad);
-    text-decoration: none;
-    transition: background-color 180ms ease;
-  }
-
-  .writing-list a:hover {
-    background: var(--paper);
-  }
-
-  .writing-number,
-  .writing-meta {
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    line-height: 1.6;
-    text-transform: uppercase;
-  }
-
-  .writing-meta {
-    color: var(--ink-muted);
-    text-align: right;
-  }
-
-  .writing-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.8vw, 2.8rem);
-    letter-spacing: -0.035em;
-    line-height: 1;
-  }
-
-  .section-link {
-    display: flex;
-    justify-content: flex-end;
-    padding-block: 1.75rem;
-  }
-
-  .principle-spotlight {
-    position: relative;
-    overflow: hidden;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 3rem;
     background: var(--ink);
     color: var(--paper-light);
   }
-
-  .principle-spotlight > img {
-    position: absolute;
-    right: -7rem;
-    bottom: -10rem;
-    width: min(42rem, 55vw);
-    opacity: 0.09;
-    pointer-events: none;
+  .now-copy > p:first-child {
+    font: 450 clamp(1.4rem, 2.3vw, 2rem)/1.4 var(--font-display);
   }
-
-  .principle-meta,
-  .principle-grid {
-    position: relative;
-    z-index: 1;
+  .now-small {
+    color: #d0d3ca;
   }
-
-  .principle-grid {
+  .home-now .text-link:hover {
+    color: #ffab85;
+  }
+  .home-explore {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
-    gap: clamp(4rem, 10vw, 10rem);
-    align-items: end;
-    margin-top: clamp(4rem, 8vw, 8rem);
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
   }
-
-  .principle-grid h2 {
-    max-width: 15ch;
-    margin-block: 1.25rem 0;
-    font-family: var(--font-display);
-    font-size: clamp(3.2rem, 6.5vw, 6.8rem);
-    font-weight: 430;
-    letter-spacing: -0.05em;
-    line-height: 0.92;
-  }
-
-  .principle-grid > div:last-child > p {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    line-height: 1.4;
-  }
-
-  .principle-grid .text-link:hover {
-    color: var(--orange);
-  }
-
-  .current-section {
-    border-top: 1px solid var(--hairline-strong);
-  }
-
-  .current-heading {
-    align-items: end;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
-  }
-
-  .current-heading h2 {
-    max-width: 12ch;
-  }
-
-  .current-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    border-block: 1px solid var(--hairline-strong);
-  }
-
-  .current-grid article {
-    min-height: 15rem;
-    padding: 1.75rem;
-  }
-
-  .current-grid article + article {
-    border-left: 1px solid var(--hairline-strong);
-  }
-
-  .current-grid article > p:last-child {
-    margin-block: 3rem 0;
-    font-family: var(--font-display);
-    font-size: clamp(1.35rem, 2.2vw, 2rem);
-    letter-spacing: -0.025em;
-    line-height: 1.16;
-  }
-
-  .garden-section {
-    position: relative;
-    overflow: hidden;
-    border-top: 1px solid var(--hairline-strong);
-    background: var(--paper-light);
-  }
-
-  .garden-diagram {
-    position: absolute;
-    top: -7rem;
-    right: -7rem;
-    width: min(34rem, 45vw);
-    opacity: 0.08;
-    pointer-events: none;
-  }
-
-  .garden-heading,
-  .garden-list,
-  .garden-link {
-    position: relative;
-    z-index: 1;
-  }
-
-  .garden-heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.6fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: end;
-  }
-
-  .garden-heading h2 {
-    max-width: 13ch;
-  }
-
-  .garden-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: clamp(3rem, 6vw, 5rem);
-    border-block: 1px solid var(--hairline-strong);
-  }
-
-  .garden-list a {
-    display: grid;
-    gap: 1rem;
-    min-height: 18rem;
-    padding: 2rem;
-    text-decoration: none;
-    transition: background-color 180ms ease;
-  }
-
-  .garden-list a + a {
-    border-left: 1px solid var(--hairline-strong);
-  }
-
-  .garden-list a:hover {
-    background: var(--paper);
-  }
-
-  .garden-list strong {
-    margin-top: auto;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw, 3.5rem);
-    font-weight: 470;
-    letter-spacing: -0.04em;
-    line-height: 1;
-  }
-
-  .garden-list small {
-    max-width: 32rem;
+  .home-explore > div > p:not(.label) {
+    max-width: 30rem;
+    margin-top: 1.5rem;
     color: var(--ink-muted);
-    font-size: 0.88rem;
-    line-height: 1.5;
   }
-
-  .garden-link {
-    margin-top: 2rem;
+  .explore-list a {
+    display: grid;
+    gap: 0.7rem;
+    border-top: 1px solid var(--hairline);
+    padding: 1.3rem 0;
+    text-decoration: none;
   }
-
-  @media (max-width: 980px) {
-    .current-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .current-grid article:nth-child(3) {
-      border-top: 1px solid var(--hairline-strong);
-      border-left: 0;
-    }
-
-    .current-grid article:nth-child(4) {
-      border-top: 1px solid var(--hairline-strong);
-    }
+  .explore-list strong {
+    font: 470 1.65rem/1.12 var(--font-display);
   }
-
   @media (max-width: 860px) {
-    .hero-grid,
-    .practice-heading,
-    .building-grid,
-    .writing-heading,
-    .principle-grid,
-    .garden-heading {
+    .home-hero {
       grid-template-columns: 1fr;
     }
-
-    .hero-statement {
-      border-top: 1px solid var(--hairline-strong);
-      padding-inline: var(--page-pad);
+    .hero-copy h1 {
+      max-width: 17ch;
     }
-
-    .work-lineage {
+    .hero-image {
+      max-height: 17rem;
+      overflow: hidden;
+    }
+    .hero-image img {
+      height: 17rem;
+      object-position: center 70%;
+    }
+    .writing-grid {
       grid-template-columns: 1fr;
     }
-
-    .work-lineage > div + div {
-      border-top: 1px solid var(--hairline-strong);
-      border-left: 0;
-    }
-
-    .work-lineage p:not(.label) {
-      min-height: 0;
-    }
-
-    .writing-heading figure {
-      width: min(100%, 30rem);
-    }
-
-    .principle-grid {
-      align-items: start;
+    .home-now,
+    .home-explore {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
-
-  @media (max-width: 680px) {
-    .building-calibration,
-    .principle-spotlight > img,
-    .garden-diagram {
-      display: none;
+  @media (max-width: 620px) {
+    .hero-copy {
+      padding-block: 2rem;
     }
-
-    .statement-header,
-    .section-kicker,
-    .principle-meta,
-    .current-heading {
-      align-items: flex-start;
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 11.5vw, 3.8rem);
+      margin: 1.5rem 0 1rem;
+    }
+    .hero-copy > .label {
+      max-width: 24ch;
+      line-height: 1.5;
+    }
+    .hero-links {
+      margin-top: 1rem;
+    }
+    .hero-aside {
+      margin-top: 1rem;
+    }
+    .hero-image {
+      max-height: 12rem;
+    }
+    .hero-image img {
+      height: 12rem;
+    }
+    .section-heading {
+      align-items: start;
       flex-direction: column;
-    }
-
-    .statement-header p:last-child {
-      text-align: left;
-    }
-
-    .hero-statement h1 {
-      font-size: clamp(3.25rem, 15vw, 4.8rem);
-    }
-
-    .practice-grid,
-    .current-grid,
-    .garden-list {
-      grid-template-columns: 1fr;
-    }
-
-    .practice-grid li {
-      min-height: 0;
-      padding-inline: 1.25rem;
-    }
-
-    .practice-grid li + li,
-    .current-grid article + article,
-    .current-grid article:nth-child(3),
-    .garden-list a + a {
-      border-top: 1px solid var(--hairline-strong);
-      border-left: 0;
-    }
-
-    .practice-grid h3 {
-      margin-top: 2rem;
-    }
-
-    .practice-return {
-      text-align: left;
-    }
-
-    .building-lead h2 {
-      font-size: clamp(3.2rem, 14vw, 4.8rem);
-    }
-
-    .writing-list a {
-      grid-template-columns: 3rem 1fr;
       gap: 1rem;
-      padding-inline: 1.25rem;
+      margin-bottom: 2rem;
     }
-
-    .writing-meta {
-      grid-column: 2;
-      text-align: left;
+    .build-grid,
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
-
-    .current-grid article {
-      min-height: 0;
-      padding: 1.5rem 0;
-    }
-
-    .current-grid article > p:last-child {
-      margin-top: 2rem;
-    }
-
-    .garden-list a {
-      min-height: 14rem;
-      padding-inline: 0;
+    .home-explore {
+      gap: 2rem;
     }
   }
 </style>

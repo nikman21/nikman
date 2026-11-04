@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import CurrentSnapshot from "@/components/CurrentSnapshot.astro";
+import { currentEditions } from "@/data/current";
+export const getStaticPaths = (async () =>
+  currentEditions.slice(1).map((edition) => ({
+    params: { slug: edition.slug },
+    props: { edition },
+  }))) satisfies GetStaticPaths;
+const { edition } = Astro.props;
+---
+
+<BaseLayout
+  title={`${edition.period} | Earlier snapshot by Nik Manuel`}
+  description={`An archived snapshot from ${edition.period}.`}
+>
+  <PageIntro
+    eyebrow="Earlier snapshot"
+    title={edition.period}
+    description="Kept as it was. This edition describes that moment rather than what I am doing today."
+    marker={`Updated ${edition.updated}`}
+  />
+  <div class="archive-return page-pad">
+    <a class="text-link" href="/current/">See what’s current →</a>
+  </div><CurrentSnapshot {edition} />
+</BaseLayout>
+<style>
+  .archive-return {
+    padding-top: 1rem;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import PersonalMark from "@/components/PersonalMark.astro";
+import { siteConfig } from "@/config";
 
 const year = new Date().getFullYear();
 ---
@@ -7,22 +8,33 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-identity">
-      <p class="label">Nik Manuel / Personal archive</p>
-      <p class="footer-statement">Build. Study. Write.</p>
-      <p class="footer-context">Built through Fresh Industries.</p>
+      <p class="label">Nik Manuel</p>
+      <p class="footer-context">
+        Building through <a href="/work/fresh-industries/">Fresh Industries</a>.
+      </p>
+      <div class="footer-socials" aria-label="Find me elsewhere">
+        {
+          siteConfig.socials.map((social) => (
+            <a href={social.href} target="_blank" rel="noreferrer">
+              {social.label} ↗
+            </a>
+          ))
+        }
+      </div>
     </div>
     <nav aria-label="Secondary navigation">
       <a href="/explore/">Explore</a>
-      <a href="/work/">Work</a>
+      <a href="/work/">Build</a>
+      <a href="/garden/">Garden</a>
       <a href="/principles/">Principles</a>
       <a href="/commonplace/">Commonplace</a>
-      <a href="/rss.xml">RSS</a>
+      <a href="/rss.xml">Follow the writing · RSS</a>
     </nav>
   </div>
   <div class="footer-strip">
     <PersonalMark variant="orange" size="1rem" />
     <p>Work in progress / {year}</p>
-    <p>Vol. 01</p>
+    <a href="/about/#connect">Say hello ↗</a>
   </div>
 </footer>
 
@@ -33,24 +45,15 @@ const year = new Date().getFullYear();
 
   .footer-main {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr);
     gap: 2rem;
-    align-items: end;
-    padding: clamp(3rem, 6vw, 5rem) var(--page-pad);
+    align-items: start;
+    padding: clamp(2rem, 4vw, 3rem) var(--page-pad);
   }
 
   .footer-identity {
     display: grid;
     gap: 1rem;
-  }
-
-  .footer-statement {
-    max-width: 15ch;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4.8vw, 4.6rem);
-    letter-spacing: -0.045em;
-    line-height: 0.95;
   }
 
   .footer-context {
@@ -59,18 +62,36 @@ const year = new Date().getFullYear();
     font-size: 0.82rem;
   }
 
+  .footer-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+  .footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.88rem;
+  }
+  .footer-strip > a {
+    font-size: 0.85rem;
+    min-height: 44px;
+    align-content: center;
+  }
+
   nav {
     display: grid;
-    gap: 0.6rem;
-    justify-items: end;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.5rem;
+    justify-items: start;
   }
 
   nav a {
     min-height: 2.75rem;
     align-content: center;
     font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
   }
 
   .footer-strip {
@@ -88,8 +109,8 @@ const year = new Date().getFullYear();
     margin: 0;
     font-size: 0.68rem;
     font-weight: 590;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
   }
 
   .footer-strip p:last-child {
@@ -107,7 +128,7 @@ const year = new Date().getFullYear();
     }
 
     .footer-strip {
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto 1fr auto;
     }
 
     .footer-strip p:last-child {

@@ -21,6 +21,8 @@ const notes = defineCollection({
     readingMinutes: z.number().int().positive(),
     order: z.number().int().positive().default(99),
     relatedPrinciples: z.array(z.string()).default([]),
+    relatedGarden: z.array(z.string()).default([]),
+    relatedEssays: z.array(z.string()).default([]),
   }),
 });
 
@@ -84,6 +86,19 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     public: z.boolean().default(false),
     externalUrl: z.url().optional(),
+    stage: z.string().default("In development"),
+    stack: z.array(z.string()).default([]),
+    question: z.string().optional(),
+    image: z.string().optional(),
+    imageWidth: z.number().int().positive().default(1500),
+    imageHeight: z.number().int().positive().default(980),
+    imageAlt: z.string().optional(),
+    imageCaption: z.string().optional(),
+    demo: z.literal("animation").optional(),
+    videoId: z
+      .string()
+      .regex(/^[A-Za-z0-9_-]{11}$/)
+      .optional(),
   }),
 });
 

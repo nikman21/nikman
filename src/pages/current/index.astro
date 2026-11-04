@@ -1,248 +1,38 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import { current } from "@/data/current";
-
-const updated = new Intl.DateTimeFormat("en-US", {
-  month: "long",
-  day: "numeric",
-  year: "numeric",
-}).format(new Date(current.updated + "T12:00:00"));
+import CurrentSnapshot from "@/components/CurrentSnapshot.astro";
+import { current, currentEditions } from "@/data/current";
 ---
 
 <BaseLayout
-  title="Current | Nik Manuel"
-  description="A dated snapshot of what Nik is building, reading, learning, listening to, practicing, and thinking about now."
+  title="Now | Nik Manuel"
+  description="What Nik is building, reading, learning, listening to, and exploring in November 2026."
 >
   <PageIntro
-    eyebrow={"Current / " + current.period}
-    title="Where the attention is now."
-    description="A concise snapshot of the work, study, and questions in motion. This is not a task list or daily log."
-    marker={"Edition " +
-      String(current.edition).padStart(3, "0") +
-      " / Updated " +
-      updated}
-    mark="compass"
-    graphic="orbital"
+    eyebrow={`Now · ${current.period}`}
+    title="What has my attention."
+    description="The work, books, music, and questions filling my days at the moment."
+    marker={`Updated ${current.updated}`}
   />
-
-  <section class="current-grid page-pad section">
-    <article>
-      <p class="label">01 / Building</p>
-      <p>{current.building}</p>
-    </article>
-    <article>
-      <p class="label">02 / Reading</p>
-      <ul class="current-list">
-        {current.reading.map((title) => <li>{title}</li>)}
-      </ul>
-    </article>
-    <article>
-      <p class="label">03 / Learning</p>
-      <p>{current.learning}</p>
-      <p class="artifact">
-        <span>Course</span>
-        <a href={current.course.url} target="_blank" rel="noreferrer">
-          {current.course.title}&nbsp;↗
+  <CurrentSnapshot edition={current} />
+  <nav class="edition-archive page-pad" aria-label="Earlier snapshots">
+    <p class="label">Earlier snapshots</p>{
+      currentEditions.slice(1).map((edition) => (
+        <a class="text-link" href={`/current/${edition.slug}/`}>
+          {edition.period} →
         </a>
-      </p>
-    </article>
-    <article>
-      <p class="label">04 / Listening</p>
-      <ul class="media-list">
-        {
-          current.listening.map((item) => (
-            <li>
-              <span>{item.format}</span>
-              <strong>{item.title}</strong>
-              <small>{item.creator}</small>
-            </li>
-          ))
-        }
-      </ul>
-    </article>
-    <article>
-      <p class="label">05 / Practicing</p>
-      <p>{current.practicing}</p>
-    </article>
-    <article>
-      <p class="label">06 / Thinking about</p>
-      <ul>
-        {current.thinking.map((question) => <li>{question}</li>)}
-      </ul>
-    </article>
-  </section>
-
-  <aside class="edition-note page-pad">
-    <p class="label">
-      Archive note / Edition {String(current.edition).padStart(3, "0")}
-    </p>
-    <p>
-      Each future Current edition will preserve its date instead of replacing
-      the record.
-    </p>
-  </aside>
-
-  <aside class="current-note page-pad section">
-    <p class="label">Field note</p>
-    <blockquote>
-      What am I doing today that will still matter in five years?
-    </blockquote>
-    <a class="text-link" href="/principles/#build-what-compounds">
-      Read Build What Compounds&nbsp;→
-    </a>
-  </aside>
+      ))
+    }
+  </nav>
 </BaseLayout>
-
 <style>
-  .current-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding-top: 0;
-  }
-
-  .current-grid article {
-    min-height: 25rem;
-    border-bottom: 1px solid var(--hairline-strong);
-    padding: clamp(3rem, 6vw, 5rem);
-  }
-
-  .current-grid article:nth-child(odd) {
-    border-right: 1px solid var(--hairline-strong);
-    padding-left: 0;
-  }
-
-  .current-grid article:nth-child(even) {
-    padding-right: 0;
-  }
-
-  .current-grid > article > ul:not(.media-list) li {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3.2vw, 3rem);
-    letter-spacing: -0.025em;
-    line-height: 1.16;
-  }
-
-  .current-grid article > p:not(.label, .artifact) {
-    margin-top: 4rem;
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3.2vw, 3rem);
-    letter-spacing: -0.025em;
-    line-height: 1.16;
-  }
-
-  .current-grid > article > ul:not(.media-list) {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 4rem;
-    padding-left: 1.4rem;
-  }
-
-  .artifact {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 3rem;
-    border-top: 1px solid var(--hairline-strong);
-    padding-top: 0.8rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .artifact a {
-    text-align: right;
-    text-decoration: none;
-  }
-
-  .artifact a:hover {
-    color: var(--orange);
-  }
-
-  .media-list {
-    display: grid;
-    margin-top: 3rem;
-    padding: 0;
-    list-style: none;
-  }
-
-  .media-list li {
-    display: grid;
-    grid-template-columns: 5.5rem minmax(0, 1fr);
-    border-top: 1px solid var(--hairline-strong);
-    padding: 0.8rem 0;
-  }
-
-  .media-list li > span {
-    grid-row: span 2;
-    padding-top: 0.25rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .media-list strong {
-    font-family: var(--font-display);
-    font-size: 1.35rem;
-    font-weight: 500;
-    line-height: 1.15;
-  }
-
-  .media-list small {
-    margin-top: 0.2rem;
-    font-size: 0.75rem;
-    opacity: 0.65;
-  }
-
-  .current-note {
-    border-top: 1px solid var(--hairline-strong);
-    background: var(--ink);
-    color: var(--paper-light);
-  }
-
-  .edition-note {
-    display: grid;
-    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
-    gap: clamp(3rem, 8vw, 8rem);
+  .edition-archive {
     padding-block: 2rem;
-    border-top: 1px solid var(--hairline-strong);
-  }
-
-  .edition-note > p:last-child {
-    max-width: 42rem;
-    margin: 0;
-    color: var(--ink-muted);
-  }
-
-  blockquote {
-    max-width: 18ch;
-    margin: 2rem 0 3rem;
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 7rem);
-    letter-spacing: -0.05em;
-    line-height: 0.92;
-  }
-
-  .current-note .text-link:hover {
-    color: var(--orange);
-  }
-
-  @media (max-width: 720px) {
-    .current-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .current-grid article,
-    .current-grid article:nth-child(odd),
-    .current-grid article:nth-child(even) {
-      min-height: 0;
-      border-right: 0;
-      padding-inline: 0;
-    }
-
-    .edition-note {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    gap: 1rem 2rem;
+    align-items: center;
+    flex-wrap: wrap;
   }
 </style>

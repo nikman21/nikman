@@ -17,9 +17,9 @@ const topics = Array.from(
   description="Personal essays on building, attention, faith, history, design, and the work of becoming."
 >
   <PageIntro
-    eyebrow="Essays / Developed arguments"
-    title="Writing to find the shape of an idea."
-    description="Personal experiences, durable questions, and ideas developed far enough to leave the workshop."
+    eyebrow="Writing"
+    title="Writing"
+    description="Stories from building, things I notice, and ideas I am trying to understand."
     mark="fish"
     graphic="stamp"
   />
@@ -61,14 +61,6 @@ const topics = Array.from(
       ))
     }
   </section>
-
-  <aside class="essays-aside page-pad section">
-    <p class="label">Publishing rule</p>
-    <p>
-      A developed argument, a concrete experience, and a conclusion worth
-      carrying forward.
-    </p>
-  </aside>
 </BaseLayout>
 
 <style>
@@ -91,10 +83,10 @@ const topics = Array.from(
   .register-years,
   .register-topics {
     margin: 0;
-    font-size: 0.68rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
   }
 
   .register-topics {
@@ -109,8 +101,8 @@ const topics = Array.from(
 
   .essay-row {
     display: grid;
-    min-height: 18rem;
-    grid-template-columns: 11rem minmax(0, 1fr) 9rem;
+    min-height: 12rem;
+    grid-template-columns: 9rem minmax(0, 1fr) 7rem;
     gap: clamp(2rem, 6vw, 6rem);
     align-items: center;
     border-bottom: 1px solid var(--hairline);
@@ -128,10 +120,10 @@ const topics = Array.from(
     display: grid;
     gap: 0.5rem;
     align-self: start;
-    font-size: 0.68rem;
+    font-size: 0.875rem;
     font-weight: 590;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
   }
 
   .essay-date {
@@ -139,10 +131,10 @@ const topics = Array.from(
   }
 
   h2 {
-    max-width: 17ch;
+    max-width: 30ch;
     margin-bottom: 1.25rem;
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    font-size: clamp(1.9rem, 3.2vw, 3.2rem);
     font-weight: 430;
     letter-spacing: -0.05em;
     line-height: 0.94;

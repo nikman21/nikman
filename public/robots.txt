@@ -10,4 +10,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://nikmanuel.com/sitemap-index.xml
+Sitemap: https://nikman.tech/sitemap-index.xml

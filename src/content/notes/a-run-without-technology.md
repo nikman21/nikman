@@ -7,8 +7,9 @@ status: published
 featured: false
 readingMinutes: 5
 order: 2
-relatedPrinciples:
-  - find-the-positive
+relatedPrinciples: []
+relatedGarden:
+  - attention-needs-somewhere-to-land
 ---
 
 I woke up feeling groggy and unmotivated. I made coffee because I thought it would give me the energy I needed to conquer the day.

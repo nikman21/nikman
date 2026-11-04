@@ -11,9 +11,11 @@ topics:
   - Design
   - Systems
 status: active
-order: 2
-featured: true
+order: 99
+featured: false
 public: true
+stage: Building the businesses
+externalUrl: https://freshindustries.co
 ---
 
 ## Fix Today. Build Tomorrow.

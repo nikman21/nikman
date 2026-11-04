@@ -1,0 +1,132 @@
+---
+import type { AboutAsset } from "@/data/about";
+
+interface Props {
+  asset: AboutAsset | null;
+  title: string;
+  detail: string;
+  format?: "portrait" | "landscape";
+  kind?: "photo" | "video";
+}
+
+const {
+  asset,
+  title,
+  detail,
+  format = "landscape",
+  kind = "photo",
+} = Astro.props;
+---
+
+<figure class:list={["personal-media", format]}>
+  <div
+    class="media-frame"
+    style={asset ? `aspect-ratio: ${asset.width} / ${asset.height}` : undefined}
+  >
+    {
+      asset?.kind === "image" ? (
+        <img
+          src={asset.src}
+          srcset={asset.srcSet}
+          sizes={asset.sizes}
+          alt={asset.alt}
+          width={asset.width}
+          height={asset.height}
+          loading={format === "portrait" ? "eager" : "lazy"}
+          decoding="async"
+        />
+      ) : asset?.kind === "video" ? (
+        <video
+          controls
+          playsinline
+          preload="none"
+          poster={asset.poster}
+          width={asset.width}
+          height={asset.height}
+          aria-label={asset.label}
+        >
+          <source src={asset.src} type="video/mp4" />
+          {asset.captions && (
+            <track
+              kind="captions"
+              src={asset.captions}
+              srclang="en"
+              label="English"
+              default
+            />
+          )}
+          <a href={asset.src}>Open the video</a>
+        </video>
+      ) : (
+        <div
+          class="media-placeholder"
+          role="note"
+          aria-label={`${title}: ${kind} not yet supplied`}
+        >
+          <span class="placeholder-label">
+            {kind === "video" ? "Video placeholder" : "Photo placeholder"}
+          </span>
+          <strong>{title}</strong>
+          <p>{detail}</p>
+        </div>
+      )
+    }
+  </div>
+  <figcaption>{asset?.caption ?? title}</figcaption>
+</figure>
+
+<style>
+  .personal-media {
+    margin: 0;
+    min-width: 0;
+  }
+  .media-frame {
+    aspect-ratio: 16 / 10;
+    background: var(--paper-light);
+  }
+  .portrait .media-frame {
+    aspect-ratio: 4 / 5;
+  }
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  video {
+    object-fit: contain;
+    background: var(--ink);
+  }
+  .media-placeholder {
+    display: flex;
+    min-height: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed var(--hairline-strong);
+    padding: 2rem;
+    text-align: center;
+  }
+  .placeholder-label {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+  .media-placeholder strong {
+    margin-top: 1rem;
+    font: 450 clamp(1.8rem, 3vw, 2.6rem)/1.12 var(--font-display);
+    letter-spacing: -0.025em;
+  }
+  .media-placeholder p {
+    max-width: 24ch;
+    margin: 1rem 0 0;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+  figcaption {
+    margin-top: 0.75rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+</style>

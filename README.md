@@ -25,6 +25,7 @@ pnpm format:check
 pnpm check
 pnpm build
 pnpm check:agents
+pnpm check:links
 ```
 
 ## Content
@@ -48,7 +49,7 @@ The site generates static HTML and is ready for Vercel or any static host. Set `
 SITE_URL=https://example.com pnpm build
 ```
 
-The fallback origin is currently `https://nikmanuel.com`; update `astro.config.mjs` if a different default is preferred.
+The fallback origin is currently `https://nikman.tech`; update `astro.config.mjs` if a different default is preferred.
 
 ## Project documentation
 

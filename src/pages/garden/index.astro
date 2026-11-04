@@ -12,8 +12,8 @@ const notes = await getPublicGardenNotes();
 >
   <PageIntro
     eyebrow="Garden / Connected notes"
-    title="Ideas still growing in public."
-    description="Useful concepts that support the essays and principles, labeled honestly by their present maturity."
+    title="Garden"
+    description="Questions, observations, and useful connections. The labels describe the note, not my expertise."
     mark="compass"
     graphic="orbital"
   />
@@ -57,11 +57,6 @@ const notes = await getPublicGardenNotes();
       ))
     }
   </section>
-
-  <aside class="garden-note page-pad section">
-    <p class="label">Maturity, not authority</p>
-    <p>Seedling, Growing, and Evergreen describe the note, not my expertise.</p>
-  </aside>
 </BaseLayout>
 
 <style>
@@ -75,7 +70,7 @@ const notes = await getPublicGardenNotes();
 
   .maturity-guide > div {
     display: grid;
-    min-height: 8.5rem;
+    min-height: 6rem;
     grid-template-columns: 2.5rem 1fr;
     gap: 0.6rem 1rem;
     align-content: center;
@@ -88,7 +83,7 @@ const notes = await getPublicGardenNotes();
 
   .maturity-guide span,
   .maturity-guide small {
-    font-size: 0.65rem;
+    font-size: 0.78rem;
     letter-spacing: 0.08em;
   }
 
@@ -114,7 +109,7 @@ const notes = await getPublicGardenNotes();
 
   .garden-row {
     display: grid;
-    min-height: 16rem;
+    min-height: 11rem;
     grid-template-columns: 8rem minmax(0, 1fr) 9rem;
     gap: clamp(2rem, 6vw, 6rem);
     align-items: center;
@@ -133,10 +128,10 @@ const notes = await getPublicGardenNotes();
     display: grid;
     gap: 0.5rem;
     align-self: start;
-    font-size: 0.68rem;
+    font-size: 0.875rem;
     font-weight: 590;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    text-transform: none;
   }
 
   .garden-date {
@@ -147,7 +142,7 @@ const notes = await getPublicGardenNotes();
     max-width: 18ch;
     margin-block: 1.4rem 1rem;
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 5vw, 5rem);
+    font-size: clamp(1.9rem, 3.2vw, 3.2rem);
     font-weight: 430;
     letter-spacing: -0.05em;
     line-height: 0.95;

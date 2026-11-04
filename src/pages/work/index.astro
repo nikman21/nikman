@@ -1,332 +1,64 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import PersonalMark from "@/components/PersonalMark.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 import { getPublicProjects } from "@/lib/content";
-
-const projects = await getPublicProjects();
-const currentBuild = projects.find((project) => project.id === "inflatemate");
-const parentCompany = projects.find(
-  (project) => project.id === "fresh-industries",
-);
-const otherProjects = projects.filter(
-  (project) =>
-    project.id !== "inflatemate" && project.id !== "fresh-industries",
+const projects = (await getPublicProjects()).filter(
+  (project) => project.data.kind !== "company",
 );
 ---
 
 <BaseLayout
   title="Build | Nik Manuel"
-  description="A growing record of the products, companies, systems, and experiments Nik Manuel has built over time."
+  description="Software, creative tools, and experiments by Nik Manuel, with project details, artifacts, and links."
 >
   <PageIntro
-    eyebrow="Build / Long-term record"
-    title="Useful things, built patiently."
-    description="A record of products, companies, experiments, and the lessons they leave behind."
-    mark="king"
-    graphic="calibration"
+    eyebrow="Build"
+    title="Projects"
+    description="Tools for businesses, creative work, and the ideas I want to keep. A few are products. Others are still experiments."
   />
-
-  <section class="build-context page-pad" aria-labelledby="build-context-title">
-    <p class="label">How the work connects</p>
-    <div>
-      <h2 id="build-context-title">
-        Fresh Industries is the long-term home. InflateMate is the work in front
-        of me now.
-      </h2>
-      <p>
-        The archive will grow as projects become real enough to document.
-        Entries stay visible when the work changes, so this page can become a
-        history rather than a highlight reel.
-      </p>
-    </div>
+  <section class="project-grid page-pad section" aria-label="Projects">
+    {projects.map((project) => <ProjectCard {project} />)}
   </section>
-
-  {
-    currentBuild && (
-      <section class="project-group" aria-labelledby="current-build-title">
-        <header class="group-heading page-pad">
-          <p class="label">01 / Currently building</p>
-          <p class="label label-muted">Since {currentBuild.data.started}</p>
-        </header>
-        <a
-          class="featured-project page-pad"
-          href={"/work/" + currentBuild.id + "/"}
-        >
-          <div>
-            <p class="label project-label">
-              <PersonalMark variant="king" size="1.1rem" />
-              <span>{currentBuild.data.eyebrow}</span>
-            </p>
-            <h2 id="current-build-title">{currentBuild.data.title}</h2>
-          </div>
-          <div class="project-copy">
-            <p>{currentBuild.data.description}</p>
-            <dl>
-              <div>
-                <>
-                  <dt>Status</dt>
-                  <dd>{currentBuild.data.status}</dd>
-                </>
-              </div>
-              <div>
-                <>
-                  <dt>Role</dt>
-                  <dd>{currentBuild.data.role}</dd>
-                </>
-              </div>
-              <div>
-                <>
-                  <dt>Topics</dt>
-                  <dd>{currentBuild.data.topics.join(" / ")}</dd>
-                </>
-              </div>
-            </dl>
-          </div>
-          <span class="project-arrow" aria-hidden="true">
-            →
-          </span>
-        </a>
-      </section>
-    )
-  }
-
-  {
-    parentCompany && (
-      <section
-        class="project-group company-group"
-        aria-labelledby="company-title"
-      >
-        <header class="group-heading page-pad">
-          <p class="label">02 / Building through</p>
-          <p class="label label-muted">Long horizon</p>
-        </header>
-        <a
-          class="featured-project page-pad"
-          href={"/work/" + parentCompany.id + "/"}
-        >
-          <div>
-            <p class="label project-label">
-              <PersonalMark variant="orange" size="1.1rem" />
-              <span>{parentCompany.data.eyebrow}</span>
-            </p>
-            <h2 id="company-title">{parentCompany.data.title}</h2>
-          </div>
-          <div class="project-copy">
-            <p>{parentCompany.data.description}</p>
-            <p class="slogan">Fix Today. Build Tomorrow.</p>
-          </div>
-          <span class="project-arrow" aria-hidden="true">
-            →
-          </span>
-        </a>
-      </section>
-    )
-  }
-
-  {
-    otherProjects.length > 0 && (
-      <section class="project-group" aria-labelledby="other-projects-title">
-        <header class="group-heading page-pad">
-          <p id="other-projects-title" class="label">
-            03 / Experiments and archive
-          </p>
-          <p class="label label-muted">{otherProjects.length} entries</p>
-        </header>
-        {otherProjects.map((project) => (
-          <a
-            class="archive-project page-pad"
-            href={"/work/" + project.id + "/"}
-          >
-            <span>{project.data.started}</span>
-            <strong>{project.data.title}</strong>
-            <span>{project.data.status}</span>
-          </a>
-        ))}
-      </section>
-    )
-  }
-
-  <aside class="archive-rule page-pad section">
-    <p class="label">Archive rule / 01</p>
+  <aside class="company-note page-pad">
     <p>
-      The record should show what survived, what changed, and what each attempt
-      taught me.
-    </p>
+      These projects are part of <a href="/work/fresh-industries/"
+        >Fresh Industries</a
+      >, the home for the businesses and ideas I’m building.
+    </p><a class="text-link" href="/current/">What I’m working on now →</a>
   </aside>
 </BaseLayout>
-
 <style>
-  .build-context {
+  .project-grid {
     display: grid;
-    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
-    gap: clamp(3rem, 9vw, 9rem);
-    padding-block: clamp(4rem, 8vw, 7rem);
-    border-bottom: 1px solid var(--hairline-strong);
-    background: var(--ink);
-    color: var(--paper-light);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5rem 2.5rem;
   }
-
-  .build-context h2 {
-    max-width: 21ch;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4.8vw, 5rem);
-    font-weight: 430;
-    letter-spacing: -0.04em;
-    line-height: 0.98;
-  }
-
-  .build-context div > p {
-    max-width: 42rem;
-    margin: 2rem 0 0;
-    color: rgba(248, 244, 235, 0.72);
-  }
-
-  .project-group {
-    border-bottom: 1px solid var(--hairline-strong);
-  }
-
-  .company-group {
-    background: var(--paper-light);
-  }
-
-  .group-heading {
-    display: flex;
-    min-height: 4.5rem;
-    justify-content: space-between;
-    gap: 2rem;
-    align-items: center;
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .featured-project {
-    display: grid;
-    min-height: 26rem;
-    grid-template-columns: minmax(18rem, 1fr) minmax(20rem, 0.8fr) auto;
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: center;
-    text-decoration: none;
-    transition: background-color 180ms ease;
-  }
-
-  .featured-project:hover {
-    background: rgba(248, 244, 235, 0.68);
-  }
-
-  .project-label {
-    display: inline-flex;
-    gap: 0.65rem;
-    align-items: center;
-  }
-
-  .featured-project h2 {
-    max-width: 11ch;
-    margin-block: 2rem 0;
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 7vw, 7rem);
-    font-weight: 430;
-    letter-spacing: -0.055em;
-    line-height: 0.9;
-  }
-
-  .project-copy > p:first-child {
-    color: var(--ink-muted);
-    font-size: 1.05rem;
-  }
-
-  .project-copy dl {
-    display: grid;
-    gap: 0;
-    margin-top: 2.5rem;
-  }
-
-  .project-copy dl > div {
-    display: grid;
-    grid-template-columns: 5rem 1fr;
-    gap: 1rem;
+  .company-note {
     border-top: 1px solid var(--hairline);
-    padding-block: 0.7rem;
+    padding-block: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
   }
-
-  .project-copy dt,
-  .project-copy dd {
+  .company-note p {
+    max-width: 40rem;
     margin: 0;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .project-copy dt {
     color: var(--ink-muted);
   }
-
-  .slogan {
-    margin-top: 2.5rem;
-    border-top: 2px solid var(--orange);
-    padding-top: 1.25rem;
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 3.6vw, 3.5rem) !important;
-    letter-spacing: -0.035em;
-    line-height: 1;
+  .company-note > .text-link {
+    flex: none;
   }
-
-  .project-arrow {
-    font-family: var(--font-display);
-    font-size: 2rem;
-  }
-
-  .archive-project {
-    display: grid;
-    min-height: 6rem;
-    grid-template-columns: 7rem 1fr auto;
-    gap: 2rem;
-    align-items: center;
-    border-bottom: 1px solid var(--hairline);
-    text-decoration: none;
-  }
-
-  .archive-project strong {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 470;
-  }
-
-  .archive-project > span {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .archive-rule {
-    display: grid;
-    grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
-    gap: clamp(3rem, 9vw, 9rem);
-  }
-
-  .archive-rule > p:last-child {
-    max-width: 20ch;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    letter-spacing: -0.045em;
-    line-height: 0.98;
-  }
-
-  @media (max-width: 760px) {
-    .build-context,
-    .archive-rule,
-    .featured-project {
+  @media (max-width: 680px) {
+    .project-grid {
       grid-template-columns: 1fr;
+      gap: 3rem;
     }
-
-    .featured-project {
-      gap: 2rem;
-      padding-block: 3rem;
-    }
-
-    .project-arrow {
-      display: none;
+    .company-note {
+      flex-direction: column;
+      align-items: start;
+      gap: 1rem;
     }
   }
 </style>

@@ -13,7 +13,7 @@ const entries = await getPublicCommonplaceEntries();
 >
   <PageIntro
     eyebrow="Commonplace / Preserved passages"
-    title="Words worth returning to."
+    title="Commonplace"
     description="Sourced quotations and passages that caught my attention, kept for reflection and not automatically adopted as principles."
     mark="orange"
     graphic="stamp"
@@ -29,7 +29,13 @@ const entries = await getPublicCommonplaceEntries();
           </div>
           <div class="entry-main">
             <p class="label">{entry.data.title}</p>
-            <blockquote>{entry.data.quotation}</blockquote>
+            <blockquote
+              class:list={[
+                { "long-quotation": entry.data.quotation.length > 180 },
+              ]}
+            >
+              {entry.data.quotation}
+            </blockquote>
             <p class="attribution">
               {entry.data.author}, <cite>{entry.data.work}</cite> (
               {entry.data.originalDate})
@@ -45,6 +51,13 @@ const entries = await getPublicCommonplaceEntries();
             >
               Read the verified source&nbsp;→
             </a>
+            {entry.data.relatedContent
+              .filter((path) => path.startsWith("/essays/"))
+              .map((path) => (
+                <a class="text-link source-link" href={path}>
+                  Read my reflection →
+                </a>
+              ))}
           </aside>
         </article>
       ))
@@ -62,7 +75,7 @@ const entries = await getPublicCommonplaceEntries();
     grid-template-columns: 7rem minmax(0, 1.25fr) minmax(18rem, 0.75fr);
     gap: clamp(2rem, 6vw, 6rem);
     border-bottom: 1px solid var(--hairline-strong);
-    padding: clamp(4rem, 9vw, 8rem) var(--page-pad);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--page-pad);
   }
 
   .entry-index {
@@ -78,6 +91,13 @@ const entries = await getPublicCommonplaceEntries();
     font-size: clamp(2.6rem, 5.5vw, 5.5rem);
     letter-spacing: -0.045em;
     line-height: 1;
+  }
+
+  blockquote.long-quotation {
+    max-width: 40ch;
+    font-size: clamp(1.4rem, 2.1vw, 1.9rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
   }
 
   .attribution {

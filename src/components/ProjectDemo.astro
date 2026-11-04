@@ -1,0 +1,206 @@
+<section class="project-demo" id="demo" aria-labelledby="demo-title">
+  <div class="demo-heading">
+    <p class="label">From the project</p>
+    <h2 id="demo-title">Animation exported from Bara</h2>
+    <p>
+      Actual frames exported by Bara. This small viewer lets you explore a saved
+      sequence and an agent edit.
+    </p>
+  </div>
+  <div class="demo-surface" data-animation-viewer>
+    <figure class="animation-export">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="/images/projects/bara-frame-00.webp"
+        width="960"
+        height="720"
+        aria-label="A two-second arm wave exported from Bara"
+      >
+        <source src="/media/bara-arm-wave.mp4" type="video/mp4" />
+        <a href="/media/bara-arm-wave.mp4"> Watch the exported animation </a>
+      </video>
+      <figcaption>Native MP4 export · 48 frames at 24 fps</figcaption>
+    </figure>
+    <figure class="animation-frame">
+      <>
+        <img
+          src="/images/projects/bara-frame-00.webp"
+          width="400"
+          height="300"
+          alt="A simple green character with an orange arm, exported from Bara"
+          data-animation-frame
+        />
+        <figcaption data-frame-label>Saved sequence · frame 0</figcaption>
+      </>
+    </figure>
+    <div class="demo-controls animation-controls">
+      <>
+        <label>
+          Scrub the saved sequence
+          <input type="range" name="frame" min="0" max="3" step="1" value="0" />
+        </label>
+        <label class="check-label">
+          <input type="checkbox" name="agent-edit" /> Compare the saved agent edit
+        </label>
+      </>
+    </div>
+    <p class="demo-feedback" data-feedback aria-live="polite">
+      The exported frames and the agent-edited frame remain separate files.
+      Switch back at any time.
+    </p>
+    <p class="demo-footnote">
+      Exported fixture artwork from the native project, rather than a browser
+      recreation of Bara’s editing engine.
+    </p>
+  </div>
+  <noscript
+    ><p class="demo-nojs">
+      Enable JavaScript to compare the saved frames. The exported video and
+      project story are still available.
+    </p></noscript
+  >
+</section>
+<script>
+  document
+    .querySelectorAll<HTMLElement>("[data-animation-viewer]")
+    .forEach((root) => {
+      const frameInput =
+        root.querySelector<HTMLInputElement>('[name="frame"]')!;
+      const editInput = root.querySelector<HTMLInputElement>(
+        '[name="agent-edit"]',
+      )!;
+      const image = root.querySelector<HTMLImageElement>(
+        "[data-animation-frame]",
+      )!;
+      const label = root.querySelector<HTMLElement>("[data-frame-label]")!;
+      const frames = ["00", "12", "23", "47"];
+      const render = () => {
+        const frame = frames[Number(frameInput.value)] ?? "00";
+        image.src = `/images/projects/${editInput.checked ? "bara-agent-edit" : `bara-frame-${frame}`}.webp`;
+        label.textContent = editInput.checked
+          ? "Separate saved agent edit"
+          : `Saved sequence · frame ${Number(frame)}`;
+      };
+      [frameInput, editInput].forEach((input) =>
+        input.addEventListener("input", render),
+      );
+    });
+</script>
+<style>
+  .project-demo {
+    padding: var(--section-space) var(--page-pad);
+    border-bottom: 1px solid var(--hairline);
+    background: var(--paper-light);
+  }
+  .demo-heading {
+    max-width: 48rem;
+    margin-bottom: 2rem;
+  }
+  .demo-heading h2 {
+    margin: 1rem 0;
+    font: 470 clamp(2rem, 3.6vw, 3.2rem)/1.05 var(--font-display);
+    letter-spacing: -0.035em;
+  }
+  .demo-heading > p:last-child {
+    color: var(--ink-muted);
+  }
+  .demo-surface {
+    border: 1px solid var(--hairline-strong);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--paper);
+  }
+  .demo-controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  label {
+    display: grid;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  input[type="range"] {
+    width: 100%;
+    min-height: 44px;
+    accent-color: var(--vermilion);
+    cursor: pointer;
+  }
+
+  .demo-feedback {
+    margin: 1rem 0;
+    min-height: 3em;
+  }
+  .demo-footnote {
+    max-width: 64rem;
+    margin: 1.5rem 0 0;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+
+  .animation-export {
+    margin: 0 0 2rem;
+  }
+  .animation-export video {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    margin-inline: auto;
+    background: #fff;
+  }
+  .animation-export figcaption {
+    margin-top: 0.75rem;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+  .animation-frame {
+    margin: 0 auto 1.5rem;
+    width: min(100%, 32rem);
+  }
+  .animation-frame img {
+    width: 100%;
+    background: #faf8f0;
+    border: 1px solid var(--hairline);
+  }
+  figcaption {
+    margin-top: 0.7rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+  .animation-controls {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .check-label {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--ink);
+    flex: none;
+  }
+
+  .demo-nojs {
+    margin-top: 1rem;
+  }
+  @media (max-width: 620px) {
+    .demo-controls,
+    .animation-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-feedback {
+      min-height: 0;
+    }
+  }
+</style>

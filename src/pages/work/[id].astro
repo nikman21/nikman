@@ -2,215 +2,280 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection, render } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PersonalMark from "@/components/PersonalMark.astro";
+import ProjectDemo from "@/components/ProjectDemo.astro";
+import VideoEmbed from "@/components/VideoEmbed.astro";
 import {
   freshIndustriesEntity,
   inflateMateEntity,
   structuredDataGraph,
 } from "@/lib/structured-data";
-
-export const getStaticPaths = (async () => {
-  const projects = await getCollection("projects", ({ data }) => data.public);
-  return projects.map((project) => ({
-    params: { id: project.id },
-    props: { project },
-  }));
-}) satisfies GetStaticPaths;
-
+export const getStaticPaths = (async () =>
+  (await getCollection("projects", ({ data }) => data.public)).map(
+    (project) => ({ params: { id: project.id }, props: { project } }),
+  )) satisfies GetStaticPaths;
 const { project } = Astro.props;
 const { Content } = await render(project);
 const structuredData = structuredDataGraph(
   Astro.site,
-  project.id === "fresh-industries"
-    ? freshIndustriesEntity(Astro.site)
-    : freshIndustriesEntity(Astro.site),
+  freshIndustriesEntity(Astro.site),
   ...(project.id === "inflatemate" ? [inflateMateEntity(Astro.site)] : []),
 );
-const projectIdentity =
-  project.id === "fresh-industries"
-    ? {
-        mark: "orange" as const,
-        image: "/assets/brand/landscapes/satellite-grove-01-plate.webp",
-        imageId: "IMG / SG-01",
-        imageLabel: "Cultivation system / Field plate",
-        alt: "Processed orange grove beneath a saturated blue sky",
-      }
-    : {
-        mark: "king" as const,
-        image: "/assets/brand/landscapes/field-station-dawn-01-plate.webp",
-        imageId: "IMG / FS-01",
-        imageLabel: "Working system / Field plate",
-        alt: "Retro-processed field station in an orange landscape",
-      };
 ---
 
 <BaseLayout
-  title={project.data.title + " | Work by Nik Manuel"}
+  title={`${project.data.title} | Build by Nik Manuel`}
   description={project.data.description}
   type="article"
   {structuredData}
 >
   <article>
-    <header class="project-hero page-pad">
-      <div class="project-meta">
-        <p class="label project-meta-label">
-          <PersonalMark variant={projectIdentity.mark} size="1.15rem" />
-          <span>{project.data.eyebrow}</span>
-        </p>
-        <p class="label label-muted">{project.data.status}</p>
-      </div>
-      <h1 class="page-title">{project.data.title}</h1>
-      <div class="project-evidence">
-        <figure class="project-plate">
-          <img
-            src={projectIdentity.image}
-            alt={projectIdentity.alt}
-            width="768"
-            height="512"
-            loading="eager"
-            decoding="async"
-            fetchpriority="low"
-          />
-          <figcaption>
-            <span>{projectIdentity.imageId}</span>
-            <span>{projectIdentity.imageLabel}</span>
-          </figcaption>
-        </figure>
-        <div class="project-facts">
-          <div>
-            <p class="label label-muted">For</p>
-            <p>{project.data.audience}</p>
-          </div>
-          <div>
-            <p class="label label-muted">Role</p>
-            <p>{project.data.role}</p>
-          </div>
-        </div>
+    <header class="project-header page-pad">
+      <a class="back-link" href="/work/">← All projects</a><div
+        class="project-kicker"
+      >
+        <p class="label">{project.data.eyebrow}</p><span class="stage"
+          >{project.data.stage}</span
+        >
+      </div><h1>{project.data.title}</h1><p class="project-description">
+        {project.data.description}
+      </p><div class="project-actions">
+        {
+          project.data.demo && (
+            <a class="text-link" href="#demo">
+              View the animation ↓
+            </a>
+          )
+        }{
+          project.data.videoId && (
+            <a class="text-link" href="#walkthrough">
+              Watch the walkthrough ↓
+            </a>
+          )
+        }{
+          project.data.externalUrl && (
+            <a
+              class="text-link"
+              href={project.data.externalUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visit {project.data.title} ↗
+            </a>
+          )
+        }
       </div>
     </header>
-    <div class="project-summary page-pad">
-      <p>{project.data.description}</p>
-    </div>
-    <div class="prose project-body">
-      <Content />
+    {
+      project.data.image && project.id !== "osef" && (
+        <figure class="project-image page-pad">
+          <>
+            <img
+              src={project.data.image}
+              alt={project.data.imageAlt ?? ""}
+              width={project.data.imageWidth}
+              height={project.data.imageHeight}
+              decoding="async"
+            />
+            <figcaption>{project.data.imageCaption}</figcaption>
+          </>
+        </figure>
+      )
+    }
+    {
+      project.id === "osef" && (
+        <figure class="osef-evidence page-pad">
+          <>
+            <img
+              src="/images/projects/osef-home.webp"
+              alt="Osef's minimal capture home"
+              width="393"
+              height="852"
+            />
+            <img
+              src="/images/projects/osef-library.webp"
+              alt="Osef's mixed library with synthetic example captures"
+              width="393"
+              height="852"
+            />
+            <figcaption>
+              Working capture and library screens, shown with synthetic test
+              material.
+            </figcaption>
+          </>
+        </figure>
+      )
+    }
+    {project.data.demo && <ProjectDemo />}
+    {
+      project.data.videoId && (
+        <section class="project-video page-pad section" id="walkthrough">
+          <VideoEmbed
+            id={project.data.videoId}
+            title="The Line List: An Agent-Native Manufacturing Workspace Built With WebMCP"
+          />
+        </section>
+      )
+    }
+    <div class="project-story">
+      <aside class="project-details">
+        <p class="label">At a glance</p><dl>
+          <dt>For</dt><dd>{project.data.audience}</dd><dt>My part</dt><dd>
+            {project.data.role}
+          </dd><dt>Working with</dt><dd>
+            {project.data.stack.join(" · ") || "Ideas, design, and people"}
+          </dd>
+        </dl>{
+          project.data.question && (
+            <p class="project-question">{project.data.question}</p>
+          )
+        }
+      </aside><div class="prose project-body"><Content /></div>
     </div>
   </article>
   <nav class="project-next page-pad" aria-label="Continue exploring">
-    <a class="text-link" href="/work/">← All work</a>
-    <a class="text-link" href="/essays/">Read the essays&nbsp;→</a>
+    <a class="text-link" href="/work/">← All projects</a><a
+      class="text-link"
+      href="/essays/">Read the writing →</a
+    >
   </nav>
 </BaseLayout>
-
 <style>
-  .project-hero {
-    padding-block: clamp(4rem, 10vw, 9rem);
-    border-bottom: 1px solid var(--hairline-strong);
+  .project-header {
+    padding-block: 2.5rem 2rem;
   }
-
-  .project-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: clamp(4rem, 9vw, 9rem);
-  }
-
-  .project-hero h1 {
-    margin-bottom: clamp(3rem, 7vw, 6rem);
-  }
-
-  .project-meta-label {
+  .back-link {
     display: inline-flex;
-    gap: 0.65rem;
+    min-height: 44px;
     align-items: center;
+    font-size: 0.88rem;
+    color: var(--ink-muted);
   }
-
-  .project-evidence {
-    display: grid;
-    grid-template-columns: minmax(20rem, 0.9fr) minmax(24rem, 1.1fr);
-    gap: clamp(2rem, 6vw, 6rem);
-    align-items: end;
-  }
-
-  .project-plate {
-    margin: 0;
-    border-top: 1px solid var(--orange);
-    padding-top: 0.55rem;
-  }
-
-  .project-plate img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-  }
-
-  .project-plate figcaption {
+  .project-kicker {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 0.65rem;
+    margin: 1rem 0 1.5rem;
+  }
+  .stage {
+    font-size: 0.85rem;
     color: var(--ink-muted);
-    font-size: 0.62rem;
-    font-weight: 590;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
-
-  .project-facts {
+  h1 {
+    margin: 0 0 1rem;
+    font: 430 clamp(3rem, 6.5vw, 6rem)/0.98 var(--font-display);
+    letter-spacing: -0.045em;
+  }
+  .project-description {
+    font: 450 clamp(1.3rem, 2.4vw, 2rem)/1.35 var(--font-display);
+    max-width: 47rem;
+    margin: 1.25rem 0;
+  }
+  .project-actions {
+    display: flex;
+    gap: 0.5rem 2rem;
+    flex-wrap: wrap;
+  }
+  .project-image {
+    margin: 0 0 3rem;
+  }
+  .project-image img {
+    width: 100%;
+    height: auto;
+    max-height: 43rem;
+    object-fit: contain;
+    object-position: top;
+    background: #f8f7f1;
+    border: 1px solid var(--hairline);
+  }
+  figcaption {
+    margin-top: 0.7rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+  }
+  .osef-evidence {
+    margin: 0 0 3rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 17rem));
+    gap: 1.5rem;
+    justify-content: center;
   }
-
-  .project-facts > div {
-    border-top: 1px solid var(--hairline-strong);
+  .osef-evidence img {
+    width: 100%;
+    border: 1px solid var(--hairline);
+  }
+  .osef-evidence figcaption {
+    grid-column: 1/-1;
+  }
+  .project-story {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.5fr) minmax(0, 1.5fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding: 2rem var(--page-pad) var(--section-space);
+  }
+  .project-details {
+    border-top: 1px solid var(--hairline);
     padding-top: 1rem;
+    align-self: start;
   }
-
-  .project-facts p:last-child {
-    margin-block: 0.65rem 0;
+  .project-details dt {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
   }
-
-  .project-summary {
-    padding-block: clamp(3rem, 6vw, 6rem);
-    background: var(--ink);
-    color: var(--paper-light);
+  .project-details dd {
+    margin: 0.4rem 0;
+    font-size: 0.92rem;
   }
-
-  .project-summary p {
-    max-width: 22ch;
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 5vw, 5rem);
-    letter-spacing: -0.04em;
-    line-height: 1;
+  .project-question {
+    border-top: 1px solid var(--hairline);
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    font: 450 1.6rem/1.25 var(--font-display);
   }
-
   .project-body {
-    padding-block: var(--section-space);
-    padding-inline: var(--page-pad);
+    margin: 0;
+    min-width: 0;
   }
-
+  .project-body > :global(:first-child) {
+    margin-top: 0;
+  }
+  .project-body img {
+    max-height: 34rem;
+    width: auto;
+    margin-inline: auto;
+  }
   .project-next {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
-    border-top: 1px solid var(--hairline-strong);
-    padding-block: 2rem;
+    gap: 1rem;
+    border-top: 1px solid var(--hairline);
+    padding-block: 1.5rem;
   }
-
-  @media (max-width: 560px) {
-    .project-evidence {
+  .project-video {
+    max-width: 60rem;
+    margin: auto;
+  }
+  @media (max-width: 760px) {
+    .project-story {
       grid-template-columns: 1fr;
     }
-
-    .project-facts {
-      grid-template-columns: 1fr;
+    .project-details {
+      order: 2;
     }
-
     .project-next {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 450px) {
+    .project-kicker {
       align-items: start;
       flex-direction: column;
+    }
+    .project-header {
+      padding-top: 1.5rem;
+    }
+    .osef-evidence {
+      gap: 0.75rem;
     }
   }
 </style>

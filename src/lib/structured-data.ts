@@ -1,6 +1,9 @@
+import { siteConfig } from "@/config";
+import { aboutProfile } from "@/data/about";
+
 export type JsonLdEntity = Record<string, unknown>;
 
-const fallbackSite = new URL("https://nikmanuel.com/");
+const fallbackSite = new URL("https://nikman.tech/");
 
 function siteRoot(site?: URL) {
   return new URL("/", site ?? fallbackSite);
@@ -25,11 +28,15 @@ export function personEntity(site?: URL): JsonLdEntity {
   return {
     "@type": "Person",
     "@id": ids.person,
-    name: "Nik Manuel",
+    name: aboutProfile.fullName,
+    alternateName: ["Nik", "Nik Manuel"],
     url: absoluteUrl("/about/", site),
     description:
-      "Software builder, founder of Fresh Industries, and creator of InflateMate.",
-    jobTitle: "Founder and software builder",
+      "Builder, co-founder of Fresh Industries, and creator of InflateMate.",
+    jobTitle: "Co-founder and software builder",
+    sameAs: siteConfig.socials.map((social) => social.href),
+    alumniOf: { "@type": "CollegeOrUniversity", name: aboutProfile.university },
+    homeLocation: { "@type": "Place", name: aboutProfile.location },
     worksFor: { "@id": ids.freshIndustries },
     knowsAbout: [
       "Software",
@@ -52,7 +59,7 @@ export function websiteEntity(site?: URL): JsonLdEntity {
     name: "Nik Manuel",
     url: absoluteUrl("/", site),
     description:
-      "Nik builds software, studies enduring ideas, and writes about the principles that shape a meaningful life.",
+      "Nik builds software and creative tools, and shares what he makes, writes, and figures out along the way.",
     author: { "@id": ids.person },
     publisher: { "@id": ids.person },
     inLanguage: "en-US",

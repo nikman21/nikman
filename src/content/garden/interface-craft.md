@@ -4,16 +4,22 @@ summary: Good interfaces come from noticing details, understanding mental models
 topic: Building and craftsmanship
 maturity: Growing
 created: 2026-08-01
-updated: 2026-08-01
+updated: 2026-11-02
 status: published
 order: 2
-relatedEssays: []
+relatedEssays: [this-app-is-messy]
 relatedPrinciples:
   - build-what-compounds
 relatedGarden:
   - trust-reduces-friction
 sources: []
 ---
+
+## A moment from the work
+
+In InflateMate, putting a cash-payment action beside an invoice action made it too easy to choose the wrong one. Separating the actions and adding a review step did more than changing their appearance.
+
+I wrote about that experience in [This App Is Messy](/essays/this-app-is-messy/). It is a useful example to keep next to the more general ideas below.
 
 Interface craft is the discipline of noticing, understanding, and shaping the details that make software feel clear, trustworthy, and usable.
 
