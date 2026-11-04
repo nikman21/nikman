@@ -27,12 +27,12 @@ The Line List keeps the product brief, packaging options, and manufacturer resea
 
 ## Shared state, visible decisions
 
-WebMCP tools connect the agent to the workspace the founder sees. Explicit answers can become confirmed information. Inferences and missing facts stay proposed or unknown.
+WebMCP tools let the agent work in the same workspace as the founder. A founder’s answers can become confirmed information. The agent’s inferences stay proposed, and missing facts stay unknown.
 
-The founder chooses a shortlist and reviews the exact introduction draft. Preparing a message and sending it are separate steps. The agent has no tool that can send an introduction on the founder's behalf.
+The founder chooses a shortlist and reviews the introduction draft. The agent can prepare that draft, but it has no tool to send it on the founder’s behalf.
 
 ## WebMCP and the web app
 
 Next.js, React, TypeScript, PostgreSQL, and Prisma support the workspace. WebMCP exposes structured operations over that same state. Supported package previews use Three.js.
 
-The video above walks through the project and the collaboration between the founder, the workspace, and the agent.
+The walkthrough shows the founder and agent working on a brief together.

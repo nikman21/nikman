@@ -5,52 +5,24 @@ category: Discipline and attention
 published: 2026-08-01
 status: published
 featured: false
-readingMinutes: 6
+readingMinutes: 2
 order: 3
 relatedPrinciples:
   - build-what-compounds
 ---
 
-I am naturally impatient.
+I want InflateMate to grow faster. I want design skill now. I want to feel comfortable sharing my work before I’ve spent enough time being uncomfortable. I know these things take years, and I still get frustrated that they aren’t moving faster today.
 
-I want InflateMate to grow faster. I want design skill now. I want to feel comfortable sharing my work before I have spent enough time being uncomfortable. I can understand that meaningful things take years and still feel frustrated that they are not moving faster today.
+For a while, I thought playing long-term games meant identifying which relationships or activities would be useful later and cutting away everything else. That made me treat them too much like transactions. I can’t predict everything a relationship or a skill will lead to. Staying with it gives me time to learn, earn trust, and find possibilities I couldn’t see at the start.
 
-For a while, I misunderstood the idea of playing long-term games. I thought it meant identifying which relationships or activities would be useful later and cutting away everything else.
+The slow parts make that hard to remember. One workout changes almost nothing I can see. A page of writing doesn’t feel like much either. An honest conversation may leave a relationship unresolved. I have to keep returning before I know what the result will be.
 
-That interpretation was too transactional.
+Status is more immediate. I can try to look impressive, stay quiet because I might sound foolish, or avoid the camera because somebody might judge me. I can protect my image by refusing to be seen as a beginner, but then I miss the practice I need.
 
-A long-term game is not valuable because I can predict exactly what I will get from it. It is valuable because repeated participation changes the people, the work, and the possibilities inside it.
+Working on a company, writing, learning design, and practicing my faith all mean accepting that I’m still learning. Repetition makes my weaknesses obvious. It also gives me a chance to work on them.
 
-Trust compounds. Knowledge compounds. Reputation compounds. Skill compounds. Relationships deepen because people keep showing up for one another.
+InflateMate keeps reminding me of this. Customers need the software to work when they return to it. I have to keep fixing problems and following through on what I’ve said. The same patience shows up outside work, whether I’m reading, exercising, making time for someone, or praying.
 
-The outcome is delayed, but the work starts compounding immediately.
+I’m still learning when urgency helps and when it makes me abandon something too early. Some decisions need to happen now. Getting better at a skill, or earning someone’s trust, takes longer than I’d like.
 
-That is difficult to remember when visible progress is slow. A day of building can feel small. One workout changes almost nothing I can see. A page of writing does not make me a writer. A prayer can feel quiet. An honest conversation may not resolve a relationship.
-
-But years are made out of days like those.
-
-The alternative is the status game.
-
-Status games are about how I appear right now: trying to look impressive, staying quiet because I might sound foolish, avoiding the camera because somebody might judge me, or refusing to be seen as a beginner.
-
-They reward protecting an image.
-
-Long-term games reward becoming someone.
-
-When I build a company, write regularly, learn design, improve my health, strengthen relationships, or practice my faith, I have to accept being unfinished in public and imperfect in private. Repetition exposes the distance between who I am and who I want to become. It also gives me the only reliable way to close that distance.
-
-InflateMate has taught me this more than any abstract idea could. Building real software for real customers means returning to the same promises again and again. Reliability is not one heroic release. Trust is not one good conversation. A business becomes durable through many ordinary decisions that nobody celebrates.
-
-The same is true outside work.
-
-Reading one book does not create understanding. One workout does not create health. One generous act does not create a strong relationship. One prayer does not create a spiritual life.
-
-Those things become meaningful because they are repeated.
-
-Patience does not mean losing ambition or pretending that urgency never matters. It means learning where urgency is useful and where it becomes self-sabotage. Some moments require decisive action. Most meaningful lives also require the humility to keep doing work whose result cannot be forced.
-
-I still struggle with this. I still want the visible outcome before the invisible foundation is ready.
-
-So I return to one question:
-
-What am I doing today that will still matter in five years?
+When I get impatient, I come back to the question: what am I doing today that will still matter in five years?

@@ -23,25 +23,25 @@ demo: animation
 
 ## The tools behind the artwork
 
-I have been getting into animation with AI. But I want more control than asking a model for a finished clip and hoping the next result matches the last one.
+I’ve been getting into animation with AI. Asking for a finished clip leaves me hoping the next result will match the last one. I want to be able to edit it myself.
 
-Bara gives me access to the underlying artwork, scenes, storyboards, and motion. I want to edit those pieces directly, then use the same tools to create my own work.
+Bara gives me access to the artwork, scenes, storyboards, and motion so I can work on those pieces directly. I’m making the tools I want to use for my own projects.
 
 ## One engine for a person and an agent
 
 The interface and command-line tools work through the same editing core. A change should mean the same thing whether it begins with a mouse, a keyboard, or an agent command.
 
-That makes originals, document versions, and recovery important. If an agent changes saved work while I have an unfinished edit, I need to understand both versions and choose what to keep.
+If an agent changes saved work while I have an unfinished edit, I need to see both versions and choose what to keep. That means keeping the originals and making recovery part of the editor.
 
-## Small animation, real output
+## The animation above
 
-The simple character above is exported fixture artwork from the native animation work. The video is an actual MP4 export: 48 frames at 24 frames per second. The saved sequence and the agent-edited frame are separate outputs. The viewer lets you compare them without running the entire native editor in this page.
+The character is test artwork exported from the native app. The MP4 has 48 frames at 24 frames per second. The viewer shows the saved sequence alongside a separate agent-edited frame; it doesn’t run the editor.
 
 ## Rust core, desktop shell
 
 A Rust core handles the shared document and editing behavior. The workspace includes command-line, desktop, media, and native host crates. The newer desktop shell uses React and Tauri over that existing engine.
 
-The project also explores reversible editing, local rendering and export, portable creative documents, and synchronization that preserves conflicting work instead of silently choosing a winner.
+I’m also working on reversible edits, local rendering and export, and documents you can move between workspaces. When synced versions conflict, both need to stay available.
 
 ## Current work
 

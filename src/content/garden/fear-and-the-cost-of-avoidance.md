@@ -20,14 +20,10 @@ Fear is an emotional response to danger, uncertainty, loss, pain, rejection, or 
 
 It can keep a person alive. It can also make retreat feel like wisdom when the real danger is only embarrassment.
 
-The fear I notice most often in modern work is social. I may avoid asking a question because I do not want to look uninformed. I may keep an idea private because criticism would make it real. I may delay publishing until the work can protect my image.
+The fear I notice most often in work is social. I might avoid a question because I don’t want to look uninformed, or keep an idea private so nobody can criticize it. Delaying publication lets me protect my image, but it also keeps me from finding out what someone thinks of the work.
 
-Each decision looks small. Together they can make a life narrower.
+I’m trying to ask: what does this fear protect, and what does it cost?
 
-One question I am trying to practice is: **What does this fear protect, and what does it cost?**
+Sometimes the danger is real. Other times I’m trying to look capable without letting anyone see me learn.
 
-Sometimes fear protects something real. Other times it protects a status game: the hope that I can appear capable without passing through the visible stage of becoming capable.
-
-I do not want to romanticize hardship or pretend every negative event is secretly good. I want to remain honest about loss while refusing to let fear write the final sentence. A setback may still contain knowledge, energy, direction, or a reason to change.
-
-Fear deserves attention. It does not always deserve authority.
+That doesn’t make every setback good. I can admit that something hurt and still look for what I can learn or change. I want to take fear seriously without letting it decide everything I do.

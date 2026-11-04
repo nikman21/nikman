@@ -15,8 +15,6 @@ sources: []
 
 During [a run without my phone or headphones](/essays/a-run-without-technology/), I noticed birds, wind, the river, and the other lives moving around me.
 
-None of them had appeared because I left my phone at home. I had become available to notice them.
-
-That is the distinction I want to keep thinking about. Removing a distraction is only one part of the experience. Giving attention somewhere real to land seems to matter too.
+Leaving the phone behind gave me a chance to notice them. I’m interested in that part of the experience: having something to pay attention to once the distraction is gone.
 
 What changes when I reach for a walk, a page, a conversation, or something I can make before I reach for another input?

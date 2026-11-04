@@ -15,26 +15,14 @@ relatedGarden:
 sources: []
 ---
 
-## A moment from the work
+## A payment screen in InflateMate
 
 In InflateMate, putting a cash-payment action beside an invoice action made it too easy to choose the wrong one. Separating the actions and adding a review step did more than changing their appearance.
 
-I wrote about that experience in [This App Is Messy](/essays/this-app-is-messy/). It is a useful example to keep next to the more general ideas below.
+I wrote about that experience in [This App Is Messy](/essays/this-app-is-messy/). The customer’s mistake made me look at the decisions I’d put in front of him.
 
-Interface craft is the discipline of noticing, understanding, and shaping the details that make software feel clear, trustworthy, and usable.
+“This screen feels crowded” describes a reaction. I still need to work out the cause. The problem might be the amount of information, the order of the actions, or words that make sense to me because I know the system.
 
-The first observation is usually shallow. “This screen feels crowded” or “this interaction feels slow” describes a reaction, not yet a cause. Better design begins by staying with the reaction long enough to discover the hidden relationship beneath it.
+The same applies to motion. An interaction can feel wrong because it suggests the wrong cause and effect, even if I adjust the timing. I need to look beyond its appearance to what the person expects to happen.
 
-A visual hierarchy problem may actually be an information problem. A confused customer may be revealing a mismatch between their mental model and the system's model. A motion detail may feel wrong because it communicates the wrong cause and effect, not because the duration is off by fifty milliseconds.
-
-Craft requires range. I need to move between the surface and the system: typography, spacing, workflow, language, state, consequence, and context.
-
-It also requires depth. The interface is often the place where an organization's internal complexity reaches another human being. If I pass that complexity straight through, the customer has to do the translation work that the product should have done.
-
-One practice I find useful is live tuning. Instead of guessing at spacing, timing, scale, or density in isolation, expose the important variables and change them while the real interface is visible. The short feedback loop turns abstract values into felt relationships.
-
-The goal is not endless polish. It is respect.
-
-A clear interface respects a person's attention. Reliable feedback respects their uncertainty. Good defaults respect their time. Honest language respects their ability to make a decision.
-
-Craft is where those small acts of respect become visible.
+One practice I find useful is live tuning: changing spacing, timing, scale, or density while the interface is visible. I can see what each change does in context. I also need to check the workflow, language, feedback, and defaults. Otherwise, I risk making the screen look better while leaving the customer to work out how it behaves.

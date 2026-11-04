@@ -27,17 +27,17 @@ imageCaption: A public product preview using sample data, showing a rental week 
 
 ## Why I started
 
-After college, I couldn’t get a job in technology. I started InflateMate for party-rental businesses that needed better tools for their everyday work. It became a product with real paying customers.
+After college, I couldn’t get a job in technology. I started InflateMate for party-rental businesses that needed better tools for their everyday work. It now has paying customers.
 
-## A setting can change a lot more than a number
+## Changing rental prices
 
 Take additional-day rental pricing. Charging $100 for the first day and half that for the second sounds simple. But that price has to agree across the quote, invoice, booking form, checkout, and saved booking.
 
-An old booking also needs to retain the terms it was made under. Changing a business setting should not quietly rewrite an agreement that already exists.
+An old booking still needs to keep the terms it was made under. Changing a setting shouldn’t rewrite an existing agreement.
 
 ## Customer feedback
 
-I know what each button does because I built the application. That does not mean the person trying to run a rental business should have to learn my mental model. When a customer gets confused, I need to look at the screen before blaming the click.
+I know what each button does because I made it. A rental operator is trying to get through their work. If they get confused, I need to look at how I’ve arranged the screen.
 
 I wrote about one of those moments in [This App Is Messy](/essays/this-app-is-messy/). It changed how I thought about separating actions, reviewing an invoice before sending it, and giving people clearer control.
 

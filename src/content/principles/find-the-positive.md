@@ -14,12 +14,10 @@ relatedNotes:
   - a-run-without-technology
 ---
 
-This does not mean pretending that pain is good or denying that something was lost.
-
-It means refusing to see a negative event as the end of the story. If I face reality and look hard enough, I can find knowledge, energy, direction, or opportunity to carry forward. The positive is often something I must choose and build.
+I can acknowledge pain and loss while looking for something I can learn or change. Sometimes I have to create the opportunity myself.
 
 I learned this through wrestling. Being removed from a team and changing schools felt like rejection, but it forced a new direction. I eventually won a state championship. The negative event did not become good; it became material I could use.
 
 The same pattern returned after college when I could not get a job in technology. That rejection pushed me to create work of my own. InflateMate grew from the next constructive action I could take.
 
-These stories are why the principle matters to me. It is not generic optimism. It is a refusal to surrender responsibility for what happens next.
+I want to keep taking responsibility for what I do next, even when the situation is hard.

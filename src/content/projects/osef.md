@@ -22,21 +22,21 @@ imageAlt: Osef's warm, minimal capture screen with one microphone action and Ima
 imageCaption: Capture screen from the mobile prototype
 ---
 
-## An idea should not need a filing system
+## Saving a thought
 
-I wanted a place to keep a thought without first deciding what to call it, where it belongs, or what I should do with it. That is the same frustration behind [my personal encyclopedia](/essays/why-i-built-a-personal-encyclopedia/).
+I wanted a place to keep a thought without first deciding what to call it or where it belongs. I ran into the same problem with [my personal encyclopedia](/essays/why-i-built-a-personal-encyclopedia/).
 
-Osef starts with capture: voice, an image, or a link. Saving does not ask an agent to analyze anything. The original is useful on its own.
+Osef lets me save voice, images, and links. I can keep the original without asking an agent to analyze it.
 
 ## Local capture, optional sync
 
-The original saves locally before optional private sync and processing. An unavailable service should not turn a passing thought into a lost recording.
+The original saves on the device before optional private sync and processing, so a service outage doesn’t cost me a recording.
 
-Saving an original, syncing a copy, and allowing an agent to read it are separate decisions. Capturing something should not require agreeing to all three.
+You can save locally, choose whether to sync, and decide whether an agent can read it.
 
 ## Keep the source and the interpretation separate
 
-An agent's summary is not the original thought. Osef keeps attributed agent notes beneath the source, with a separate permission for adding them. The original remains available to return to.
+Agent notes appear beneath the source and show who added them. Adding a note requires a separate permission, and the original stays available.
 
 ## Device storage and MCP
 
@@ -44,4 +44,4 @@ The application uses Expo and React Native, local device storage, and an Express
 
 ## Where it is today
 
-Osef is a working prototype. I am still working on device behavior, distribution, and production hosting.
+Osef is a working prototype. I’m still working on device behavior, distribution, and production hosting.

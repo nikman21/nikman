@@ -18,13 +18,13 @@ question: What if discovering a video felt more like turning on the television?
 externalUrl: https://tv.freshindustries.co
 ---
 
-## Sometimes I want to tune in
+## Scheduled channels
 
-Sometimes I want to turn something on without choosing from an endless feed. Fresh TV brings my interests in technology, history, travel, food, and media into scheduled channels.
+I sometimes want to turn something on and see what’s playing. Fresh TV is a set of scheduled channels drawn from my interests in technology, history, travel, food, and media.
 
 ## Choosing what goes on air
 
-The visible experience depends on quieter work: approving a video, deciding where it belongs, preparing a lineup, checking availability, and choosing when a schedule should become public.
+Before a video goes on air, it needs to be reviewed, assigned to a channel, and checked for availability. I prepare the lineup before publishing the schedule.
 
 ## The player and programming tools
 

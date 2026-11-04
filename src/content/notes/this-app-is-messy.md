@@ -5,7 +5,7 @@ category: Design and craftsmanship
 published: 2026-11-02
 status: published
 featured: true
-readingMinutes: 2
+readingMinutes: 1
 order: 1
 relatedPrinciples: []
 relatedGarden: [interface-craft]
@@ -21,5 +21,3 @@ At first, I thought about it as someone clicking the wrong button. But I had mad
 AI helped me build the app, but it didn’t understand that experience for me. I had to sit down and look at the flow like someone using it for the first time. I changed the layout, separated online and offline payments, and added a review step before sending an invoice or recording a cash payment.
 
 That conversation made me look harder at the rest of InflateMate. If I keep having to explain a screen to a customer, I should probably look at the screen first.
-
-There are a lot of interesting things I can add to an application. Sometimes the useful work is moving two buttons farther apart and giving someone a chance to understand what is about to happen.

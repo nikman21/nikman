@@ -5,98 +5,32 @@ category: Building and technology
 published: 2026-08-01
 status: published
 featured: true
-readingMinutes: 9
+readingMinutes: 3
 order: 1
 relatedPrinciples:
   - build-what-compounds
 ---
 
-I used to think the problem was that I had not found the right system yet.
+I used to think I just hadn’t found the right system yet. I tried PARA, bullet journaling, Zettelkasten, and my own versions of them. I watched videos, read posts, changed folders, and renamed notes. I kept thinking I was one tweak away from a learning system I’d stick with.
 
-So I kept looking.
+Each would work for a while, then become another thing to manage. Where does this note go? Is this a project, an area, a resource, or an archive? Is it a fleeting note or a permanent one? Should I make a new note or add to an old one?
 
-I tried PARA. I tried bullet journaling. I tried Zettelkasten. I tried my own versions of all of them. I watched videos, read posts, changed folders, renamed notes, moved things around, and kept thinking I was one tweak away from finally having the perfect learning system.
+I was spending more energy organizing my knowledge than learning.
 
-But the same thing kept happening.
+Some people like working with folders, tags, templates, and rules. I found that I kept stopping to make decisions about the system. My mind jumps between history, software, faith, business, and design, sometimes in the same day. I wanted to follow those interests without filing everything as I went.
 
-The system would work for a little while, and then it would become another thing I had to manage.
+The system also had to work when I was busy, tired, or had only a few seconds to save an idea. I wanted to keep using it for years, after the excitement of setting it up had passed. That’s how I ended up with a personal encyclopedia.
 
-That was the real problem.
-
-The system was supposed to help me learn, but instead it gave me more decisions to make. Where does this note go? Is this a project, an area, a resource, or an archive? Is this a fleeting note or a permanent note? Should this be a new note or part of an old one?
-
-After a while, I was spending more energy organizing my knowledge than actually building it.
-
-I do not think those systems are bad. They work for certain people. Some people love structure, labels, workflows, folders, tags, templates, and rules. For them, those systems might be perfect.
-
-But for me, they created too much friction.
-
-My mind jumps from subject to subject. I might learn about history, then software, then faith, then business, then design all in the same day. I needed a system that could handle that without making me stop and organize everything manually.
-
-I wanted something simple enough to survive my actual life.
-
-That is what I think most systems get wrong. They are built for the perfect version of you. The version that always has time, always has energy, always files things correctly, and always follows the process.
-
-But a good system should work when you are busy. It should work when your mind is racing. It should work when you only have a few seconds to capture an idea. It should work for years, not just during the week when you are excited about setting it up.
-
-A system needs to be simple and timeless.
-
-That is why I stopped trying to build a productivity system and started building a personal encyclopedia.
-
-I do not need Obsidian to manage my whole life. I already have physical notebooks for that. I have a personal journal for thoughts and things happening in my life. I have a scratch notebook for todos, grocery lists, quick notes, and random ideas. I have a spiritual journal for Bible studies, prayers, and talks with God. Inside Obsidian, I keep a digital commonplace for sourced quotations and memorable material, alongside a separate digital copy of the principles I want to live by.
-
-So my vault does not need to be everything.
-
-It has one job: to hold the knowledge that is worth keeping.
+I already use physical notebooks for much of my life: a personal journal, a scratch notebook for tasks and grocery lists, and a spiritual journal for Bible studies and prayers. In Obsidian, I keep a digital commonplace for quotations and a separate copy of the principles I want to live by. The rest of the vault holds knowledge I want to keep.
 
 The structure is simple. I have a Library, Thoughts, Archive, System, and one Capture file.
 
-The Library is where knowledge lives. Not book summaries. Not YouTube notes. Not random chapter notes. Actual knowledge. Things like capitalism, Stoicism, TCP/IP, Roman Republic, React, or Christianity.
+The Library is organized around subjects such as capitalism, Stoicism, TCP/IP, the Roman Republic, React, and Christianity. Material from a book or video goes into the subject it helps me understand, instead of staying in a separate summary of that source.
 
-Thoughts is where my own writing lives. My essays, reflections, interpretations, and personal ideas. That matters too, but it is different from the Library. The Library is what I understand about the world. Thoughts is how I am wrestling with it.
+Thoughts holds my essays, reflections, and interpretations. I keep my own responses there so I can distinguish them from the knowledge in the Library.
 
-Capture is the only place I have to worry about in the moment.
+When I learn something, it goes into Capture. I can save it without choosing a folder or deciding how it fits with everything else. Later, AI can act as a librarian: read the capture, pull out useful knowledge, and connect it to the right subjects.
 
-If I learn something, I can put it in Capture. I do not have to decide where it belongs right away. I do not have to create a folder. I do not have to stop learning so I can organize.
+Separating those steps is what made the system work for me. I capture first and digest later. The Library grows as I return to subjects, and I spend less time creating folders.
 
-Later, I can have AI act like a librarian. It can digest the Capture note, pull out the useful knowledge, connect it to the right topics, and clean up the mess.
-
-That is the part that finally made the system click for me.
-
-AI is not the point of the system. The point is simplicity. AI just removes the friction that kept making every other system fall apart.
-
-Now the workflow is simple:
-
-Capture first.
-
-Digest later.
-
-Let the Library get richer over time.
-
-That feels more natural to me than constantly creating new notes and folders. I do not want my folder count to grow every time I learn something. I want my understanding to grow.
-
-That is the difference.
-
-A productivity system is usually about managing what you need to do.
-
-A personal encyclopedia is about deepening what you understand.
-
-I still care about getting things done, but that is not what this vault is for. This vault is for learning over a lifetime. It is for building a place where my understanding of history, philosophy, science, business, technology, faith, psychology, and design can keep getting better.
-
-The more I think about it, the more I believe simple systems are the only systems that last.
-
-Complicated systems feel exciting at first because they make you feel organized. But if the system takes too much effort to maintain, it eventually becomes a burden.
-
-A simple system may feel less impressive, but it is easier to trust. It gets out of the way. It lets you keep going.
-
-That is what I wanted.
-
-Not a perfect system.
-
-Not a productivity machine.
-
-Not a second brain full of folders I have to babysit.
-
-Just a simple place to keep learning, keep thinking, and keep building understanding over time.
-
-Do what is simple enough to stick with for a lifetime.
+I still care about getting things done. I also want a place where my understanding of history, philosophy, science, business, technology, faith, psychology, and design can develop over a lifetime. A complicated setup can feel satisfying at first, then become a burden to maintain. I’d rather have something simple enough that I keep using it.

@@ -22,45 +22,43 @@ const structuredData = structuredDataGraph(
 const featuredVideo = videos[0];
 const rabbitHoles = [
   {
-    title: "What happens after I hit deploy?",
+    title: "Infrastructure",
     detail:
-      "Hatch, my Linux server, Go, Docker, and learning what it takes to keep software running.",
+      "Learning Go and Docker on my Linux server, and working on deployments through Hatch.",
   },
   {
-    title: "What should an agent remember?",
+    title: "Personal context",
     detail:
-      "Osef, Nima, personal context, and keeping original material separate from an agent’s interpretation.",
+      "Osef, Nima, and deciding which notes and recordings an agent should be able to use.",
   },
   {
-    title: "Can I make the tools and the story?",
+    title: "Animation",
     detail:
-      "Bara, animation with AI, and getting more control over the things I want to create.",
+      "Making animation with AI and developing Bara so I can edit the artwork and motion myself.",
   },
   {
-    title: "How does an idea become a physical thing?",
+    title: "Hardware and manufacturing",
     detail:
-      "Hardware, 3D printing, manufacturing, and the steps between a design and something you can hold.",
+      "3D printing and learning how a design makes its way into production.",
   },
 ];
 ---
 
 <BaseLayout
   title="About Nikolas Manuel | Nik Manuel"
-  description="I'm Nik, a builder and Fresh Industries co-founder in New Braunfels, Texas. My story includes wrestling, ASU, software, creative experiments, and a lot of curiosity."
+  description="I'm Nik, co-founder of Fresh Industries in New Braunfels, Texas. A bit about my work, wrestling, and life outside software."
   {structuredData}
 >
   <header class="about-hero page-pad">
     <div class="hero-copy">
       <p class="label">About me</p>
       <h1>Hi, I’m Nik</h1>
-      <p class="name-line">{aboutProfile.fullName}, but I go by Nik.</p>
       <p class="hero-intro">
         I’m {aboutProfile.age} and live in {aboutProfile.location}. Most days,
         I’m working on software or a creative project.
       </p>
       <p class="hero-intro">
-        Martial arts and a growing pile of books take up the rest of my
-        attention.
+        Outside of work, I’m into martial arts, reading, and getting outdoors.
       </p>
     </div>
     <div class="hero-media">
@@ -88,7 +86,7 @@ const rabbitHoles = [
     aria-labelledby="story-title"
   >
     <div class="section-intro">
-      <h2 id="story-title">A little of my story</h2>
+      <h2 id="story-title">After college</h2>
       <dl class="education-note">
         <dt>Education</dt>
         <dd>{aboutProfile.university}</dd>
@@ -99,17 +97,16 @@ const rabbitHoles = [
     <div class="about-copy">
       <p>
         InflateMate started after I graduated from ASU and couldn’t get a job in
-        technology. A real product gave me somewhere to put that energy.
+        technology. I put that energy into a product of my own.
       </p>
       <p>
-        Since then, customer support has become as much a part of the job as
-        code. A question about an invoice can send me back to a screen I thought
-        was finished.
+        Customer support is now as much a part of my work as code. Hearing where
+        someone gets stuck makes me reconsider decisions I thought were
+        finished.
       </p>
       <p>
-        That same curiosity takes me from a web app to a Linux server, a 3D
-        printer, or an animation. I learn best when I can try something and see
-        what happens.
+        Lately I’ve been learning more about Linux servers, 3D printing, and
+        animation. I like having something to try while I’m learning.
       </p>
     </div>
   </section>
@@ -164,8 +161,8 @@ const rabbitHoles = [
         <a href="/work/fresh-industries/">Fresh Industries</a>
       </h2>
       <p>
-        I co-founded the company as a home for software products, creative
-        tools, and services. Here are a few current projects.
+        I co-founded Fresh Industries to work on software, creative media, and
+        services. These are a few of the projects I’m spending time on.
       </p>
       <a class="text-link" href="/work/">All projects →</a>
     </div>
@@ -173,9 +170,9 @@ const rabbitHoles = [
       <article>
         <h3><a href="/work/inflatemate/">InflateMate</a></h3>
         <p>
-          Software for party-rental businesses, with real paying customers.
-          Working on bookings, inventory, payments, and waivers keeps teaching
-          me how much the small details matter to the person using them.
+          Party-rental software for bookings, inventory, payments, and waivers.
+          It has paying customers, so I get to hear where it helps and where it
+          still needs work.
         </p>
       </article>
       <article id="hatch">
@@ -196,8 +193,8 @@ const rabbitHoles = [
       <article>
         <h3><a href="/work/osef/">Osef</a> and Nima</h3>
         <p>
-          Experiments in personal context, knowledge, and agentic workspaces. I
-          want the things I save to be useful later, without losing the
+          Experiments with saving thoughts and giving agents useful context. I
+          want to be able to return to the things I save, including the
           originals.
         </p>
       </article>
@@ -213,8 +210,8 @@ const rabbitHoles = [
       <h2 id="curiosity">Away from the desk</h2>
       <p>
         I read fiction alongside design and marketing books, work out, and spend
-        time with history, faith, and philosophy. Sometimes getting outside
-        without my phone is the most useful thing I can do with a morning.
+        time with history, faith, and philosophy. I’ve also been trying to spend
+        more time outside without my phone.
       </p>
       <a class="text-link" href="/essays/a-run-without-technology/"
         >A run without technology →</a
@@ -229,7 +226,7 @@ const rabbitHoles = [
         <h3>Usually playing</h3>
         <p>
           Smooth jazz while I work, or my old high school playlist. Mostly
-          2016–2018 rap. A different kind of concentration music.
+          2016–2018 rap.
         </p>
       </div>
       <a class="text-link" href="/current/">November update →</a>
@@ -244,12 +241,9 @@ const rabbitHoles = [
     <div class="section-intro">
       <h2 id="sharing-title">Videos and writing</h2>
       <p>
-        I make YouTube videos to document what I’m learning and help everyday
-        people use AI. Explaining a tool or walking through a project helps me
-        understand it better, too.
-      </p>
-      <p>
-        I hope they give people the confidence to try something on their own.
+        I make YouTube videos about what I’m learning, including walkthroughs of
+        my projects and ways to use AI. Explaining something helps me understand
+        it better. I hope it helps someone else try it, too.
       </p>
       <a class="text-link" href="/essays/">Essays →</a>
     </div>
@@ -294,10 +288,6 @@ const rabbitHoles = [
     margin: 1.5rem 0;
     font: 430 clamp(3.5rem, 6.5vw, 6.2rem)/1.02 var(--font-display);
     letter-spacing: -0.045em;
-  }
-  .name-line {
-    font: 450 clamp(1.5rem, 2.3vw, 2rem)/1.3 var(--font-display);
-    margin-bottom: 1.5rem;
   }
   .hero-intro {
     font-size: 1.12rem;

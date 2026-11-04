@@ -17,23 +17,23 @@ stack: [TypeScript, React, PostgreSQL, Node.js, Linux]
 question: What should be shared, and what should each app own?
 ---
 
-## The work beneath the application
+## Reusing work across apps
 
-Building one application exposes a lot of problems that the next application will have too: storing private files, signing documents, tracking a booking, handling a payment, or recovering a job after a process stops.
+My apps keep needing some of the same things: private file storage, document signing, bookings, payments, and jobs that can recover after a process stops.
 
-Fresh Infra is where I am turning that work into reusable foundations. It currently has twelve private packages, with a separate sample application that puts them together.
+I’m turning that work into Fresh Infra. It has twelve private packages and a separate sample application that uses them together.
 
-## A toolkit should leave room for different products
+## What each app owns
 
 A document-signing engine can be shared. A rental company's rules, a product's branding, its authorization decisions, and its database belong to the application using it.
 
-Each app owns its configuration, accounts, data, and migrations. The packages do not reach back into a product's checkout. I want to reuse the hard parts without making every new product behave like InflateMate.
+Each app owns its configuration, accounts, data, and migrations. The packages don’t import code from a product’s checkout. Reusing a signing engine shouldn’t mean inheriting InflateMate’s rental rules.
 
 ## Packages and application boundaries
 
 The toolkit includes authentication, organizations, UI, files, documents, a document builder, bookings, payments, billing, contacts, email, and a website foundation. Browser-safe contracts and server-only services have separate entry points.
 
-Applications select their own storage, payment accounts, and policies. I test the packages in separate consumer apps to catch assumptions that only work inside the development workspace. I am also working on how jobs and requests recover after a process or connection stops.
+Applications select their own storage, payment accounts, and policies. I test the packages in separate apps to catch assumptions that only work inside the development workspace. I’m also working on recovery when a process or connection stops during a job or request.
 
 ## Where it is today
 

@@ -20,6 +20,6 @@ I am drawn to tradition because it challenges the assumption that the present au
 
 Survival is not proof of goodness. Traditions can preserve errors, exclusions, and power structures alongside wisdom.
 
-The useful question is not simply whether something is old or new. It is: **What does this tradition protect, and what does it prevent?**
+I want to ask what a tradition protects and what it prevents, as well as how long it has lasted.
 
 Receiving an inheritance requires humility toward the people who carried it and responsibility toward the people who will receive it next.

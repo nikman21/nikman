@@ -15,8 +15,8 @@ relatedNotes:
   - playing-long-term-games
 ---
 
-Impatience tempts me to abandon what is quietly beginning to compound.
+When progress is slow, I’m tempted to stop before the work has had time to pay off.
 
 A prayer, a workout, a page read, a promise kept, a customer helped, and an honest conversation may feel small today. Repeated over years, they become character and direction.
 
-The principle is difficult precisely because I am ambitious. I want evidence that the work is paying off, and I want it early. Returning to the long horizon helps me distinguish urgency that serves the work from impatience that abandons it.
+I want evidence that the work is paying off, and I want it early. This principle helps me notice when my impatience is getting in the way of something I care about.

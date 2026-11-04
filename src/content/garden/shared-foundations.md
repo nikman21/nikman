@@ -19,12 +19,12 @@ I keep running into similar problems across the applications I build: private fi
 
 A signing engine can understand a document, recipient, and request. The application should decide who is authorized, which business rule requires the agreement, and where its data lives.
 
-## A boundary worth testing
+## Testing from a separate app
 
-A package working inside its own workspace is only part of the story. A separate consumer helps reveal accidental dependencies: a product-specific import, a server service in a browser bundle, or configuration that was never made explicit.
+A package can work in its own workspace and still fail in another app. Testing a separate consumer helps me find product-specific imports, server code in a browser bundle, and configuration I forgot to make explicit.
 
 ## An open question
 
 At what point does a useful shared foundation become an abstraction that makes the next product harder to build?
 
-I want the answer to come from actual consumers and their differences, rather than extracting everything that happens to look similar.
+I need to see how different apps use the packages before deciding what else to share.
